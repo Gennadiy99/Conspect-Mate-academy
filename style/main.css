@@ -1,0 +1,139 @@
+html {
+  box-sizing: border-box;
+  /* font-size: 14px; */
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+/* стили для заголовков */
+.main-topic-title{
+  text-align: center;
+  background-color: #d0d2d2;
+  padding: 10px;
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.topic-title{
+  background-color: #d0d2d2;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 5px;
+}
+/*  */
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+body {
+  margin: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+}
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  /* background-color: #e0dfdf; */
+}
+section {
+  /* background-color: #b9f6b8; */
+  padding: 50px 0;
+}
+.operator {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #e0dfdf;
+}
+.operator-bulean {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #b5b3b3;
+  font-style: toLowerCase;
+}
+/* для пробных блоков (внутренние размерв) */
+.outer {
+  background-color: yellow;
+  /* width: 200px; */
+  /* height: 200px; */
+  /* overflow: auto; */
+}
+.inner {
+  background-color: blue;
+  height: 300px;
+
+  min-width: 320px;
+  max-width: 960px;
+  width: 80%;
+  margin: 0 auto;
+}
+/* псевдоэлементы и селекторы */
+.proba > :last-child {
+  display: block;
+  background-color: red;
+}
+/* стилизация Ссылок*/
+.icon-item {
+  font-size: 24px;
+  /* color: inherit; */
+}
+.link-icon {
+  text-decoration: none;
+  transition: all 0.5s;
+  display: inline-block;
+}
+.link-icon:link {
+  color: rgb(3, 89, 15);
+}
+.link-icon:visited{
+  color: rgb(244, 122, 7);
+}
+.link-icon:hover {
+  color: red;
+}
+.link-icon:active {
+  color: rgb(126, 125, 125);
+}
+
+/* float */
+.img-float{
+  float: left;
+  width: 300px;
+  height: auto;
+  margin-right: 20px;
+}
+.close-float{
+  clear: both;
+}
+/* работа с формой и псевдоєлементами для ее стилизации */
+:focus{
+  background-color: #ff0;
+}
+input::placeholder{
+  color: purple;
+  font-weight: 800;
+  font-style: italic;
+}
+/* форматирокание Примеров кода */
+pre{
+  padding: 10px 20px;
+  border: 1px solid #525252;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #f30a0a;
+}
+.Useful-links{
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #000;
+}
