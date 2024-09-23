@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git / Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./images/Logo MateAcademy.png" />
+    <link rel="stylesheet" href="style/fontello.css" />
+    <link rel="stylesheet" href="style/main.css" />
+    <style>
+      .Setup_for_Windows img {
+        display: block;
+        width: 100%;
+        margin: 40px 0;
+      }
+      .bord__left {
+        border-left: 5px solid rgba(96, 95, 95, 0.5);
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body id="Git">
+    <section class="nav-bar">
+      <div class="nav"> 
+        <a href="index.html">Index</a>
+        <a href="Git_and_Terminal.html">Git and Terminal</a>
+        <!-- <a href="#Git">Git and Terminal</a> -->
+        <a href="about.html">About</a>
+        <a href="contacts.html">Contact</a>
+      </div>
+    </section> 
+    <section class="Environment_Setup">
+      <div class="container">
+        <div class="Setup_for_Windows">
+          <h3>Налаштування середовища для Windows</h3>
+          <p>
+            В цьому уроці ти встановиш VSCode та Git, які знадобляться тобі
+            протягом курсу. Git - це система контролю версій. VSCode - це
+            безкоштовний та зручний редактор коду. Ми будемо використовувати
+            його для деяких прикладів.
+          </p>
+          <h3>Встановлення VSCode (Windows)</h3>
+          <ol>
+            <li>Завантаж VSCode.</li>
+            <li>Запусти файл як завжди (НЕ як Адміністратор).</li>
+            <li>Продовжуй до кроку Select Additional Tasks.</li>
+            <li>
+              Обери наступні опції:
+              <ul>
+                <li>
+                  Add "Open with Code" action ... дозволяє тобі відкривати файли
+                  та папки з контекстного меню (правою клавішею миші); Register
+                  Code ... дозволить відкривати підтримувані файли в VSCode
+                  після подвійного кліку; Add to PATH дозволить запускати VSCode
+                  з Терміналу за допомогою команди code.
+                  <img
+                    src="https://media.mate.academy/select_additional_6fd7825674.png"
+                    alt="picture setap"
+                  />
+                </li>
+              </ul>
+            </li>
+            <li>Продовжуй до завершення.</li>
+          </ol>
+          <h3>Встановлення Git (Windows)</h3>
+          <ol>
+            <li>Завантаж Git. Краще обрати 64-бітну версію.</li>
+            <li>Запусти файл як завжди (НЕ як Адміністратор).</li>
+            <li>Продовжуй до кроку Select Components.</li>
+            <li>
+              На додачу до обраних компонентів, обери всі опції зі списку
+              Windows Explorer integration та опцію Add a Git Bash Profile to
+              Windows Terminal.
+              <img
+                src="https://media.mate.academy/git_select_components_8dc74d61ce.png"
+                alt="picture Git"
+              />
+            </li>
+            <li>
+              На кроці Choosing the default editor used by Git, обери опцію Use
+              the Nano editor by default.
+              <img
+                src="https://media.mate.academy/git_choose_default_editor_c7c66e19bb.png"
+                alt="picture  editor"
+              />
+            </li>
+            <li>
+              На кроці Adjusting your PATH environment, переконайся, що обрана
+              рекомендована опція.
+              <img
+                src="https://media.mate.academy/git_adjust_path_env_e3dc4dbc4c.png"
+                alt=" Adjusting"
+              />
+            </li>
+            <li>
+              На кроці Configuring the line ending, обери останній пункт Check
+              out as-is, commit as-is.
+              <img
+                src="https://media.mate.academy/git_configure_line_ending_0e0ce11826.png"
+                alt="Configuring"
+              />
+            </li>
+            <li>
+              Коли встановлення завершиться, обери пункт Launch Git Bash та
+              натисни Finish.
+            </li>
+            <li>
+              Набери git --version та натисни клавішу Enter в терміналі Git
+              Bash, щоб перевірити, чи git працює.
+              <img
+                src="https://media.mate.academy/win_git_version_486fcd1339.png"
+                alt="picture version"
+              />
+            </li>
+            <p class="bord__left">
+              В майбутньому завжди використовуй термінал Git Bash, а не інші
+              термінали Windows для всіх команд, щоб уникнути можливих
+              несумісностей.
+            </p>
+          </ol>
+          <h3>Глобальні налаштування Git (Windows)</h3>
+          <p>
+            Відкрий Git Bash та запусти ці команди по черзі зі своїм іменем та
+            поштою, щоб завершити налаштування Git (зміни текст у лапках ""
+            перед натисканням клавіші Enter):
+          </p>
+          <!-- Нужно завершить перенос инормации !!! -->
+        </div>
+      </div>
+    </section>
+    <section class="Command-Line">
+      <div class="container">
+        <div class="Managing_files_directories releative__block">
+          <h3 class="main-topic-title">Управление файлами и каталогами</h3>
+          <p>
+            Далее мы обсудим команды, которые позволяют создавать, редактировать
+            и удалять файлы и каталоги.
+          </p>
+          <ul>
+            <li><b>touch file.name</b> - Создать пустой файл</li>
+            <li><b>cat file.name</b> - Отобразить содержимое файла</li>
+            <li>
+              <b>cat > file.name</b> - Создать файл и ввести его содержимое
+              построчно
+            </li>
+            <li><b>mkdir dirname</b> - Создать новый каталог</li>
+            <li>
+              <b>mkdir -p dir1/dir2/dir3</b> - Создать каталоги рекурсивно
+            </li>
+            <li>
+              <b>mv path/to/name path/to/existing-folder</b> - Переместить файл
+              или папку в другой каталог
+            </li>
+            <li>
+              <b>mv path/to/name path/to/non-existing-name</b> - Переименовать
+              файл или папку
+            </li>
+            <li>
+              <b>cp path/to/file path/to/new-file-name</b> - Копировать файл в
+              новую директорию с новым иминем.
+            </li>
+            <li>
+              <b>cp -r path/to/folder path/to/new-folder-name</b> - Копировать
+              директорию в новую директорию.
+            </li>
+            <li>
+              <b>
+                <u> rm path/to/file</u>
+              </b>
+              - Удалить файл
+            </li>
+            <li>
+              <b><u>rm -r</u> path/to/folder </b> - Удалить папку вместе со всем
+              ее содержимым
+            </li>
+            <li>
+              <b><u>rm -r path/*</u></b> - Удалить все содержимое указанной
+              папки
+            </li>
+            <li>
+              <b><u>rm -rf</u> path/to/folder</b> - Удалить папку без запроса
+              дополнительных подтверждений
+            </li>
+          </ul>
+          <h3>Creating Files</h3>
+          <p>
+            Команда cat > file.name позволяет создать файл и ввести его
+            содержимое построчно.
+          </p>
+
+          <p>
+            С помощью команды <b>cat file.name</b> можно отобразить содержимое
+            файла на экране.
+          </p>
+
+          <p>
+            Команда <b>touch</b> позволяет создать пустой файл,
+            <u>указав его путь:</u>
+          </p>
+          <pre>
+            touch ./project-folder/readme.md
+          </pre>
+          <h3>Создание каталогов</h3>
+          <p>
+            Команда mkdir отвечает за создание каталогов. Ключ -p позволяет
+            создавать несколько вложенных каталогов.
+          </p>
+          <pre>
+            mkdir -p parent/child/grand-child
+          </pre>
+          <p>
+            <b>Переименование и перемещение файлов и папок</b>
+          </p>
+          <p>
+            Команда
+            <b><u>cp</u> path/to/file path/to/new-file-name</b> позволяет
+            создать копию файла.
+          </p>
+          <p>
+            Чтобы скопировать каталог, необходимо добавить ключ -r (рекурсивно),
+            чтобы он был скопирован вместе со всем его содержимым.
+          </p>
+          <p>
+            <b>Удаление файлов и папок</b>
+          </p>
+          <p>
+            По умолчанию команда <b>rm</b> удаляет только обычные файлы. Для
+            системных файлов она запросит подтверждение. Чтобы удалить без
+            необходимости ручного подтверждения, можно добавить флаг -f. <br />
+            Также можно указать несколько файлов через пробел, чтобы удалить их
+            вместе. <br />
+            Чтобы удалить каталоги, нужно добавить ключ <b>-r</b> (рекурсивно).
+            Его можно объединить с ключом <b>-f:</b>
+          </p>
+          <pre>
+            rm -rf node-modules
+          </pre>
+          <p>
+            <u
+              >* в пути означает любое имя, поэтому rm -r src/* удалит все
+              содержимое каталога src.</u
+            >
+          </p>
+          <p>
+            <b>Шпаргалка по полезным командам терминала</b>
+          </p>
+          <p>Basic Commands</p>
+          <ul>
+            <li><b>clear</b> - Очистить окно терминала</li>
+            <li>
+              <b>man some-command</b> - Показать документацию для указанной
+              команды в MacOS
+            </li>
+            <li>
+              <b>some-command --help</b> - Показать документацию для указанной
+              команды
+            </li>
+            <li>
+              в Windows <b>which some-command</b> - Найти местоположение команды
+            </li>
+            <li><b>echo</b> - Показать какой-то текст</li>
+            <li><b>echo $PATH</b> - Показать переменную окружения PATH</li>
+          </ul>
+          <p>
+            <b>Файлы и Папки</b>
+          </p>
+          <ul>
+            <li><b>pwd</b> - Вывести текущий путь к каталогу</li>
+            <li><b>ls path/to/folder</b> - Отобразить содержимое папки</li>
+            <li><b>ls -l path</b> - Отобразить содержимое в виде списка</li>
+            <li><b>ls -a path</b> - Показать скрытое содержимое</li>
+            <li><b>ls -t path</b> - Сортировать содержимое по дате</li>
+            <li><b>cd path/to/folder</b> - Изменить текущий каталог</li>
+            <li><b>touch file.name</b> - Создать пустой файл</li>
+            <li><b>cat file.name</b> - Отобразить содержимое файла</li>
+            <li>
+              <b>cat > file.name</b> - Создать файл и ввести содержимое
+              построчно
+            </li>
+            <li><b>mkdir dirname</b> - Создать новый каталог</li>
+            <li>
+              <b>mkdir -p dir1/dir2/dir3</b> - Создать каталоги рекурсивно
+            </li>
+            <li>
+              <b>mv path/to/name path/to/existing-folder</b> - Переместить файл
+              или папку в другой каталог
+            </li>
+            <li>
+              <b>mv path/to/name path/to/non-existing-name</b> - Переименовать
+              файл или папку
+            </li>
+            <li>
+              <b>cp path/to/file path/to/new-file-name</b> - Копировать файл
+            </li>
+            <li>
+              <b>cp -r path/to/folder path/to/new-folder-name</b> - Копировать
+              каталог
+            </li>
+            <li><b>rm path/to/file</b> - Удалить file</li>
+            <li>
+              <b>rm -r path/to/folder</b> - Удалить папку вместе со всем ее
+              содержимым
+            </li>
+            <li><b>rm -r path/*</b> - Удалить все внутри указанной папки</li>
+            <li>
+              <b>rm -rf path/to/folder</b> - Удалить папку без запроса
+              дополнительных подтверждений
+            </li>
+            <li><b>head -n 5 fileName</b> - Показать первые 5 строк файла</li>
+            <li>
+              <b>tail -f file</b> - Показать последние 10 строк файла и
+              дождаться обновлений
+            </li>
+            <li>
+              <b>grep pattern file</b> - Найти все совпадения шаблона в файле
+            </li>
+            <li>
+              <b>less path/to/file</b> - Открыть файл в Less (текстовый
+              просмотрщик командной строки)
+            </li>
+            <li>
+              <b>nano path/to/file</b> - Открыть файл в Nano (текстовый редактор
+              командной строки)
+            </li>
+            <li><b>code path/to/file</b> - Открыть файл в VSCode</li>
+          </ul>
+          <h3>Command History</h3>
+          <ul>
+            <li><b>Arrow UP</b> - Стрелка ВВЕРХ Показать предыдущую команду</li>
+            <li><b>Arrow DOWN</b> - Стрелка ВНИЗ Показать следующую команду</li>
+            <li><b>history</b> - Показать историю команд</li>
+            <li><b>history -c</b> - Очистить историю команд</li>
+            <li><b>!!</b> -Выполнить последнюю команду из истории</li>
+            <li><b>!12</b> -Выполнить 12-ю команду из истории</li>
+            <li>
+              <b>!some-text</b> - Выполнить последнюю команду из истории,
+              которая начинается с указанного текста
+            </li>
+            <li><b>CTRL + R</b> - Поиск в истории команд</li>
+          </ul>
+        </div>
+        <div class="Useful-links">
+          <ul>
+            <li><b>" /"</b> - root folder (MacOS)</li>
+            <li><b>"C:/, D:/"</b> - disk root (Windows)</li>
+            <li><b>"~"</b> - home folder</li>
+            <li><b>"."</b> - current folder</li>
+            <li><b>".."</b> - Parent folder</li>
+            <li><b>"../.."</b> - 2 level up folder</li>
+            <li><b>"*"</b> - Any path</li>
+            <li>
+              <b>"img/*.png"</b> - all the <b>png</b> files in <b>img folder</b>
+            </li>
+          </ul>
+          <p>
+            <a
+              href="https://docs.google.com/document/d/1lCt8y3kz62z5dAlMvJ7kQRWouHJRkr991cBHc1bhSbU/edit#heading=h.w1hy05o1ju5m"
+              >Git & Terminal Recap</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

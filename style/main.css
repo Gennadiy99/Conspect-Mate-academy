@@ -7,17 +7,55 @@ html {
 *::before {
   box-sizing: inherit;
 }
+/* Стили для Nav-bar */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 25px 15px;
+  margin: 0 auto;
+  border-bottom: 1px solid;
+  background-color: #8cf7e2;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+}
+.nav a{
+  text-decoration: none;
+  background-color: #0666f7;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+.nav a:link{
+  background-color: #07f1b3;
+}
+.nav a:hover{
+  background-color: red;
+}
+.nav a:active{
+  background-color: green;
+}
+section:target{
+  background-color: rgb(103, 241, 103);
+}
 /* стили для заголовков */
-.main-topic-title{
+.releative__block {
+  position: relative;
+}
+.main-topic-title {
   text-align: center;
   background-color: #d0d2d2;
   padding: 10px;
   display: block;
-  width: 300px;
   margin: 0 auto;
   border-radius: 5px;
+  position: sticky;
+  top: 10px;
 }
-.topic-title{
+.topic-title {
   background-color: #d0d2d2;
   padding: 10px;
   display: inline-block;
@@ -44,11 +82,11 @@ body {
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
-  /* background-color: #e0dfdf; */
+  padding: 0 25px;
 }
 section {
   /* background-color: #b9f6b8; */
-  padding: 50px 0;
+  padding: 80px 0 50px;
 }
 .operator {
   padding-left: 20px;
@@ -60,22 +98,6 @@ section {
   padding-right: 20px;
   background-color: #b5b3b3;
   font-style: toLowerCase;
-}
-/* для пробных блоков (внутренние размерв) */
-.outer {
-  background-color: yellow;
-  /* width: 200px; */
-  /* height: 200px; */
-  /* overflow: auto; */
-}
-.inner {
-  background-color: blue;
-  height: 300px;
-
-  min-width: 320px;
-  max-width: 960px;
-  width: 80%;
-  margin: 0 auto;
 }
 /* псевдоэлементы и селекторы */
 .proba > :last-child {
@@ -95,7 +117,7 @@ section {
 .link-icon:link {
   color: rgb(3, 89, 15);
 }
-.link-icon:visited{
+.link-icon:visited {
   color: rgb(244, 122, 7);
 }
 .link-icon:hover {
@@ -106,33 +128,33 @@ section {
 }
 
 /* float */
-.img-float{
+.img-float {
   float: left;
   width: 300px;
   height: auto;
   margin-right: 20px;
 }
-.close-float{
+.close-float {
   clear: both;
 }
-/* работа с формой и псевдоєлементами для ее стилизации */
-:focus{
+/* работа с формой и псевдоєлементами для ее стилизации Проба!*/
+:focus {
   background-color: #ff0;
 }
-input::placeholder{
+input::placeholder {
   color: purple;
   font-weight: 800;
   font-style: italic;
 }
 /* форматирокание Примеров кода */
-pre{
+pre {
   padding: 10px 20px;
   border: 1px solid #525252;
   border-radius: 8px;
   font-size: 15px;
   color: #f30a0a;
 }
-.Useful-links{
+.Useful-links {
   text-align: center;
   background-color: #fff;
   border: 1px solid #000;

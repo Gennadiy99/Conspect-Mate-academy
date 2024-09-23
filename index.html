@@ -4,44 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Конспект MateAcademy " JS Bsics"</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- <link rel="stylesheet" href="style/main.css" media="print"> -->
-
     <link rel="icon" href="./images/Logo MateAcademy.png">
     <link rel="stylesheet" href="style/fontello.css">
     <link rel="stylesheet" href="style/main.css" />
     <style>
-      @media(min-width:500px){
+      /* @media(min-width:500px){
         section{
           background-color: #f9a2a2;
           color: blue;
         }
-      }
+      } */
     </style>
   </head>
-  <body> 
-    <style media="(min-width: 600px)">
-      section{
-        background-color: #a7f5ae;
-        color: rgb(82, 26, 26);
-      }
-    </style>
+  <body>
+    <section class="nav-bar">
+      <div class="nav"> 
+        <a href="index.html">Index</a>
+        <a href="Git_and_Terminal.html">Git and Terminal</a>
+        <!-- <a href="#Git">Git and Terminal</a> -->
+        <a href="about.html">About</a>
+        <a href="contacts.html">Contact</a>
+      </div>
+    </section> 
     <section class="section1">
       <div class="container">
         <div class="operator">
           <h1 style="text-align: center">Курс "JS Bsics"</h1>
-<!-- Пробный блок ссылками по стр Сайта. -->
           <p>переменные</p> 
-          <div class="nav">
-            <a href="index.html">Index</a>
-            <a href="courses.html">Courses</a>
-            <a href="about.html">About</a>
-            <a href="contacts.html">Contact</a>
-          </div>
           <div class="proba">
             <p class="numer1">1</p>
             <p class="numer2">2</p>
@@ -85,7 +77,7 @@
         </div>
       </div>
     </section>
-    <section class="number">
+    <section class="number" id="Git">
       <div class="container">
         <div class="number-variable">
           Числа У JavaScript всі числа належать до типу number. Вони можуть
@@ -3670,11 +3662,11 @@ a {
     </section>
     <section class="position">
       <div class="container">
-        <div class="position-relative">
-          <h3>Позиціонування</h3>
+        <div class="position-relative releative__block">
+          <h3 class="main-topic-title">Позиціонування</h3>
           <hr>
           <p>В цьому уроці ми розглянемо способи контролю позиції елемента на сторінці.</p>
-          <h3>Відносне позиціонування</h3>
+          <h3 class="topic-title">Відносне позиціонування</h3>
           <hr>
           <p>
             За замовчуванням всі елементи розташовуються в так званому "потоці документа". При цьому елементи що стоять раніше в HTML зсувають подальші елементи вниз (блокові) або праворуч (рядкові). Таке розташування назвивається статичним (position: static).
@@ -3697,7 +3689,7 @@ a {
           </p>
         </div>
         <div class="position-absolut">
-          <h3>Абсолютне позиціонування</h3>
+          <h3 class="topic-title">Абсолютне позиціонування</h3>
           <hr>
           <p>
             На відміну від елементів із відносним позиціонуванням, position: absolute видаляє елемент із потоку документа та поміщає його в окремий шар відображення. Значення top та left обчислюються відносно найближчого спозиціонованого пращура (який має position відмінним від стандартного static) або елемента body, якщо такий пращур відсутній.
