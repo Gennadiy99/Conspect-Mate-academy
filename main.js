@@ -184,6 +184,7 @@ function getLocation(coordinates, commands) {
   return coordinates;
 }
 console.log(getLocation([2, 1], ["left", "back", "back"]));
+
 // выбор секции и переход на нее.
 document.getElementById('select_section-1').addEventListener('change',function(){
   let valueSection = this.value;

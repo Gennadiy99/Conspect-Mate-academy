@@ -47,6 +47,7 @@ section:target {
   position: fixed;
   top: 90px;
   left: 10px;
+  z-index: 2;
 }
 /* стили для заголовков */
 .releative__block {
@@ -165,4 +166,8 @@ pre {
   text-align: center;
   background-color: #fff;
   border: 1px solid #000;
+}
+/* стиль для картинок на стр Git Terminal */
+.Git-Basics img {
+  display: block;
 }
