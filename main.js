@@ -186,9 +186,98 @@ function getLocation(coordinates, commands) {
 console.log(getLocation([2, 1], ["left", "back", "back"]));
 
 // выбор секции и переход на нее.
-document.getElementById('select_section-1').addEventListener('change',function(){
-  let valueSection = this.value;
-  if(valueSection){
-    window.location.href = valueSection;
+
+// document.getElementById('select_section-1').addEventListener('change',function(){
+//   let valueSection = this.value;
+//   if(valueSection){
+//     window.location.href = valueSection;
+//   }
+// });
+
+// Проба практика в академии ПОТОМ УДАЛИТЬ.
+function getSuccessRate(statistic) {
+  if (statistic.length === 0) {
+    return 0;
   }
-});
+  let understood = 0;
+  let notUnderstand = 0;
+  for (const elem of statistic) {
+    if (elem === "1") {
+      understood += 1;
+    } else {
+      if (elem === "0") {
+        notUnderstand += 1;
+      }
+    }
+  }
+
+  return (understood * 100) / statistic.length;
+}
+console.log(getSuccessRate("111001"));
+// 2 зд
+function getCentury(year) {
+  if (year === 0) {
+    return 1;
+  } else {
+    return Math.ceil(year / 100);
+  }
+}
+
+console.log(getCentury(800));
+//  3
+function convertCurrency(amount, exchangeRate, currencyName) {
+  if (amount > 0 && exchangeRate > 0) {
+    return `Give them ${+(amount * exchangeRate).toFixed(2)} ${currencyName}(s)`;
+  } else {
+    return 'Enter valid data';
+  }
+}
+console.log(convertCurrency(10000, 1.0946, 'dollar')); 
+//  4
+
+function getPlan(startProduction, numberOfMonths, percent) {
+
+  let variable = startProduction;
+  let arrayMonth = [];
+  for (let i = 0; i < numberOfMonths; i++) {
+    variable += Math.floor(variable * (percent / 100));
+    arrayMonth.push(variable);
+  }
+  return arrayMonth;
+}
+console.log(getPlan(1000, 6, 20));
+// 5
+function getSpeedStatistic(testResults) {
+  let minSpeed = testResults[0] || 0;
+  let maxSpeed = testResults[0] || 0;
+  let averageSpeed = 0;
+  let arrayStatSpeed = [];
+  let summSpeed = 0;
+
+  if (testResults.length === 0) {
+    arrayStatSpeed.push(minSpeed, maxSpeed, averageSpeed);
+    return arrayStatSpeed;
+  }
+
+  for (let n of testResults) {
+    if (n < minSpeed) {
+      minSpeed = n;
+    }
+  }
+
+  for (let n of testResults) {
+    if (n > maxSpeed) {
+      maxSpeed = n;
+    }
+  }
+
+  for (let n of testResults) {
+    summSpeed += n;
+  }
+  averageSpeed = Math.floor(summSpeed / testResults.length);
+
+  arrayStatSpeed.push(minSpeed, maxSpeed, averageSpeed);
+
+  return arrayStatSpeed;
+}
+console.log(getSpeedStatistic([15, 20, 35, 85]));

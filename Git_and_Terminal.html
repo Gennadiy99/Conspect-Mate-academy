@@ -30,7 +30,7 @@
       <div class="nav">
         <a href="index.html">Index</a>
         <a href="Git_and_Terminal.html">Git and Terminal</a>
-        <a href="about.html">About</a>
+        <a href="Style_code.html">Style code</a>
         <a href="contacts.html">Contact</a>
       </div>
     </section>
@@ -41,6 +41,7 @@
       <option value="#Command">Command-Line</option>
       <option value="#Git">Git-Basics</option>
       <option value="#list_Command">list Command Git</option>
+      <option value="#Git-Hub">Working-GitHub</option>
     </select>
     <section class="Environment_Setup" id="setup">
       <div class="container">
@@ -691,13 +692,16 @@
             Якщо при створенні гілки було допущено помилку, її можна
             перейменувати:
           </p>
+          <pre>
+            git branch -m new_name
+          </pre>
           <p>Це перейменує лише активну гілку.</p>
           <p>
             Видалити можна лише неактивну гілку. Для цього використовується ключ
             -d:
           </p>
           <pre>
-git branch -d branch_name
+            git branch -d branch_name
           </pre>
           <p>
             Якщо на одному коміті знаходяться кілька гілок, то при збереженні
@@ -807,74 +811,227 @@ git branch -d branch_name
             стала публічною, щоб уникнути конфліктів.
           </p>
           <ul>
+            <li>git branch Показати всі гілки</li>
             <li>
-              git branch	Показати всі гілки
-git branch new_branch	Створити нову гілку з назвою new_branch
-git branch -m new_name	Перейменувати поточну гілку на new_name
-git branch -d branch_name	Видалити неактивну гілку
-git checkout branch_name	Перейти з поточної гілки на гілку branch_name
-git switch branch_name	Перейти з поточної гілки на гілку branch_name
-git checkout -b new_branch	Створити гілку new_branch та одразу перейти на неї
-git switch -c new_branch	Створити гілку new_branch та одразу перейти на неї
-git merge branch_name	Об'єднати branch_name з поточною гілкою
-git revert hash_of_commit	Створити новий коміт зі змінами протилежними змінам у вибраному коміті
-git reset hash_of_commit	Переставити гілку на вказаний коміт
-git reset HEAD^^ --hard	Переставити активну гілку на 2 коміти назад та видалити всі зміни в файлах
-git rebase branch_name	Перебудувати зміни з поточної гілки під branch_name. Усі коміти поточної гілки будуть перебудовані під branch_name
-git rebase -i branch_name	Перебудувати зміни з поточної гілки під branch_name. Лише вибрані коміти поточної гілки будуть перебудовані під branch_name
-git restore file_name	Видалити непідготовлені зміни до коміту в file_name
-git restore --staged file_name	Видалити підготовлені зміни до коміту в file_name
-git restore -SW	Видалити всі зміни у файлах (підготовлені та непідготовлені до коміту)
-git commit --amend	Замінити поточний коміт на інший
+              git branch new_branch Створити нову гілку з назвою new_branch
+            </li>
+            git branch -m new_name Перейменувати поточну гілку на new_name
+            <li>git branch -d branch_name Видалити неактивну гілку</li>
+            <li>
+              git checkout branch_name Перейти з поточної гілки на гілку
+              branch_name
             </li>
             <li>
-
+              git switch branch_name Перейти з поточної гілки на гілку
+              branch_name
             </li>
             <li>
-
+              git checkout -b new_branch Створити гілку new_branch та одразу
+              перейти на неї
             </li>
             <li>
-
+              git switch -c new_branch Створити гілку new_branch та одразу
+              перейти на неї
             </li>
             <li>
-
+              git merge branch_name Об'єднати branch_name з поточною гілкою
             </li>
             <li>
-
+              git revert hash_of_commit Створити новий коміт зі змінами
+              протилежними змінам у вибраному коміті
             </li>
             <li>
-
+              git reset hash_of_commit Переставити гілку на вказаний коміт
             </li>
             <li>
-
+              git reset HEAD^^ --hard Переставити активну гілку на 2 коміти
+              назад та видалити всі зміни в файлах
             </li>
             <li>
-
+              git rebase branch_name Перебудувати зміни з поточної гілки під
+              branch_name. Усі коміти поточної гілки будуть перебудовані під
+              branch_name
             </li>
             <li>
-
+              git rebase -i branch_name Перебудувати зміни з поточної гілки під
+              branch_name. Лише вибрані коміти поточної гілки будуть
+              перебудовані під branch_name
             </li>
             <li>
-
+              git restore file_name Видалити непідготовлені зміни до коміту в
+              file_name
             </li>
             <li>
-
+              git restore --staged file_name Видалити підготовлені зміни до
+              коміту в file_name
             </li>
             <li>
-
+              git restore -SW Видалити всі зміни у файлах (підготовлені та
+              непідготовлені до коміту)
+            </li>
+            <li>git commit --amend Замінити поточний коміт на інший</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="Working-GitHub" id="Git-Hub">
+      <div class="container">
+        <div class="Working-With-Remote releative__block">
+          <h3 class="main-topic-title">Working With Remote Repo (GitHub)</h3>
+          <p>
+            Для початку, прочитай офіційну документацію
+            <a
+              href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh"
+              >Connecting to GitHub with SSH.</a
+            >
+            Також впевнись, що перші три кроки з уроку Git Basics уже виконані.
+          </p>
+          <h4>Крок 1. Перевіряємо SSH-ключ на існування</h4>
+          <p>
+            Щоб перевірити, чи є в тебе SSH-ключ, відкрий термінал та виконай
+            наступну команду:
+          </p>
+          <pre>
+            ls -al ~/.ssh
+          </pre>
+          <p>
+            Ця команда виведе список файлів та каталогів, які знаходяться в
+            каталозі ~/.ssh. Також будуть виведені приховані файли, наприклад,
+            файли ключів SSH, такі як id_rsa та id_rsa.pub, або інші файли,
+            пов'язані з SSH-ключами та налаштуваннями
+          </p>
+          <p>
+            Ось приклад перевірки наявності ключа (твій результат може трошки
+            відрізнятися):
+          </p>
+          <img
+            src="https://media.mate.academy/256819649_5d20e95d_f1b9_470c_928f_0fd1644c22de_d61e44d5fb.png"
+            alt="picture key  SSH"
+          />
+          <p>
+            На зображенні можна побачити файл SSH-ключа. За замовчуванням його
+            назва може бути однією з перелічених:
+          </p>
+          <pre>
+            id_rsa.pub
+            id_ecdsa.pub
+            id_ed25519.pub
+          </pre>
+          <p>
+            Якщо в тебе немає файлів із такою назвою, тоді потрібно згенерувати новий ключ. Якщо ж ключ уже є, то крок 2 можна пропустити й одразу перейти до кроку 3.
+          </p>
+          <h4>Крок 2. Генеруємо новий SSH-ключ</h4>
+          <p>
+            Щоб згенерувати новий ключ, виконай наступну комадну, де <your_email@example.com> заміни на свій емейл:
+          </p>
+          <pre>
+            ssh-keygen -t ed25519 -C "your_email@example.com"
+          </pre>
+          <p>
+            На зображенні ти можеш побачити виконання першої частини генерації ключа. Тут термінал запитує куди потрібно зберегти ключ. Розташування можна змінити, ввівши нове розташування після двох крапок, але ми не рекомендуємо це робити:
+          </p>
+          <img src="https://media.mate.academy/2_bc8a0fb8ff.png" alt="picture key">
+          <p>
+            Далі термінал запитує, чи потрібно додати passphrase — парольну фразу. Краще пропустити цей крок і просто натиснути ENTER. Зверни увагу: якщо ти введеш passphrase, то її треба обов'язково запамʼятати. В іншому випадку доведеться створювати ключ заново:
+          </p>
+          <img src="https://media.mate.academy/3_523cbd408d.png" alt="picture passphrase">
+          <p>
+            Після підтвердження всіх операцій буде згенеровано ключ. Він буде мати приблизно такий вигляд:
+          </p>
+          <img src="https://media.mate.academy/4_ff09345a4b.png" alt="type of key">
+          <h4>Крок 3. Додаємо SSH-ключ до SSH-агента</h4>
+          <p>
+            SSH-агент — це програма, яка допомагає керувати приватними ключами SSH та автоматично використовує їх під час спроби з'єднання з віддаленим сервером. Щоб додати ключ до агента, потрібно виконати таку команду:
+          </p>
+          <pre>eval "$(ssh-agent -s)"</pre>
+          <p>
+            Ця команда запустить агента SSH та встановить змінні середовища для поточного сеансу оболонки. Якщо команда відпрацює успішно, то ти побачиш наступне:
+          </p>
+          <img src="https://media.mate.academy/5_8300c5a08f.png" alt="picture ">
+          <p>Подальші інструкції відрізняються для Windows та macOS.</p>
+          <h4>Windows</h4>
+          <p>Якщо ти працюєш на Windows, виконай наступну команду:</p>
+          <pre>
+            ssh-add ~/.ssh/id_ed25519
+          </pre>
+          <p>
+            <b>
+              Далі переходь до кроку 4.
+            </b>
+          </p>
+          <p>
+            <b>
+              macOS
+            </b>
+          </p>
+          <p>
+            У залежності від середовища, яким ти користуєшся, тобі можуть знадобитися такі команди:
+          </p>
+          <ul>
+            <li>sudo -s -H для кореневого доступу перед запуском SSH-агенту;</li>
+            <li>exec ssh-agent bash або exec ssh-agent zsh для запуску SSH-агенту.</li>
+          </ul>
+          <p>
+            Якщо ти користуєшся macOS Sierra 10.12.2 або новішою версією, то щоб автоматично завантажувати ключі в SSH-агент і зберігати парольні фрази у зв’язку ключів, потрібно буде змінити файл ~/.ssh/config:
+          </p>
+          <ol>
+            <li>Спочатку перевір чи такий файл існує:
+              <pre>
+                open ~/.ssh/config
+              </pre>
+            </li>
+          ДАЛЬШЕ НУЖНО ВНЕСТИ ВСЕ ПУНКТЫ ИЗ КОНСПЕКТА.... я пока пропущу и внесу список команд
+          </ol>
+          ///////////////
+          <h4>Корисні команди GIT для роботи з віддаленими репо</h4>
+          <ul>
+            <li>
+              git clone repo_url	Клонує існуюче репо
+            </li>
+            <li> 
+              git remote	Показує список віддалених серверів
             </li>
             <li>
-
+              it remote -v	Показує список віддалених серверів з URL
             </li>
             <li>
-
+              git remote show server_alias	Показує детальну інформацію про сервер
             </li>
             <li>
-
+              git remote add server_alias repo_url	Додає новий псевдонім для сервера з даною repo_url
+            </li>
+            <li>
+              git remote remove server_alias	Від'єднується від сервера
+            </li>
+            <li>
+              git push server_alias branch_name	Відправляє branch_name на server_alias
+            </li>
+            <li>
+              git fetch server_alias branch_name	Завантажує зміни без їх злиття з локальною гілкою
+            </li>
+            <li>
+              git pull server_alias branch_name	Завантажує та зливає зміни
             </li>
           </ul>
         </div>
       </div>
+    </section>
+    <section class="Useful-links">
+      <div class="container">
+        <h3 class="main-topic-title">Корисні посилання</h3>
+        <hr />
+        <p>
+          <a href="https://docs.google.com/document/d/1lCt8y3kz62z5dAlMvJ7kQRWouHJRkr991cBHc1bhSbU/edit?tab=t.0">Git & Terminal Recap</a>
+        </p>
+        <p>
+          <a href="https://pages.github.com/">About Github Pages</a>
+        </p>
+        <p>
+          <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a>
+        </p>
+        <p>
+          <a href="https://learngitbranching.js.org/?locale=en">Додаткові завдання</a>
+        </p>
     </section>
     <script src="main.js"></script>
   </body>

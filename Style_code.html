@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Style code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./images/Logo MateAcademy.png" />
+    <link rel="stylesheet" href="style/fontello.css" />
+    <link rel="stylesheet" href="style/main.css" />
+  </head>
+  <body>
+    <section class="nav-bar">
+      <div class="nav">
+        <a href="index.html">Index</a>
+        <a href="Git_and_Terminal.html">Git and Terminal</a>
+        <a href="Style_code.html">Style code</a>
+        <a href="contacts.html">Contact</a>
+      </div>
+    </section>
+    <div class="container">
+      <section class="style-code">
+        <h1 class="main-topic-title">Style code</h1>
+        <h3>Стиль коду</h3>
+        <p>
+          Хороша програма має не тільки правильно працювати, але й бути
+          зрозумілою, щоб її легко було покращувати та виправляти помилки за
+          потреби. Дуже важливо при цьому дотримуватись певних правил написання
+          коду. Вони можуть бути різними на різних проєктах. Ось правила, які ми
+          використовуємо в Mate academy. Загальні рекомендації Код завжди має
+          бути зрозумілим. Скорочувати код варто, тільки якщо це його не
+          ускладнює. Коментарі пишемо, щоб пояснити, чому прийнято таке рішення,
+          а не як це працює (це має бути ясно з коду). Видаляємо зайвий код (не
+          залишаємо закоментованого).
+        </p>
+        <h3>Команди</h3>
+        <p>
+          Кожну команду ми пишемо з нового рядка, щоб легше було знайти її межі.
+          Щоб уникнути неочевидності в коді, наприкінці кожної команди ставимо
+          ;. Рядок не повинен бути довшим за 80 символів, щоб програму було
+          зручно читати.
+        </p>
+        <h3>Змінні</h3>
+        <p>
+          Змінні ми оголошуємо за допомогою let або const, але не var (старий
+          спосіб).
+        </p>
+        <p>Кожну змінну оголошуємо окремим let або const:</p>
+        <pre>
+          // good
+          let x = 1;
+          let y = 2;
+        </pre>
+        <pre>
+          // bad
+          let x = 1, y = 2;
+        </pre>
+        <p>
+          Назви змінних та функцій пишемо в camelCase (без _ і всі слова, окрім
+          першого, пишуться з великої літери):
+        </p>
+        <pre>
+          // good
+          let userName = '';
+        </pre>
+        <pre>
+          // bad
+          let user_name = '';
+          let UserName = ''; // can be used in some situations
+        </pre>
+        <ul>
+          <li>
+            Однолітерні змінні допустимі лише там, де очевидне їх значення:
+            <ul>
+              <li>індекс у циклі;</li>
+              <li>для математичних змінних (x, y, a, b, c);</li>
+              <li>
+                якщо це значно скорочує та спрощує код і робить його більш
+                зрозумілим.
+              </li>
+            </ul>
+          </li>
+          <li>Тільки англійська мова, жодних транслітерацій.</li>
+          <li>Назви змінних мають пояснювати, що в них зберігається.</li>
+          <li>
+            Для булевих значень використовуємо дієслова у 3-й формі, пасивний
+            стан або модальні дієслова (isLoaded, loaded, hasEnoughMoney,
+            canBuy)
+          </li>
+          <li>Для масивів — іменники в множині.</li>
+          <li>
+            Не використовуємо суфікси та приставки arr, obj і подібні — назва
+            повинна бути зрозумілою і без них.
+          </li>
+          <li>
+            Назва функції має починатися з дієслова та описувати, що вона
+            робить. Виняток: обробники подій можуть називатися, наприклад,
+            onClick або submitHandler (буде обговорено пізніше).
+          </li>
+        </ul>
+        <h3>Приклади поганих назв</h3>
+        <ul>
+          <li>
+            Абстрактні назви змінних та функцій (obj, data, value, item, elem
+            тощо), коли можна підібрати більш слушні.
+          </li>
+          <li>
+            Схожі імена змінних (num1 та num2), оскільки легко зробити
+            друкарську помилку.
+          </li>
+          <li>
+            Повторне використання змінних та параметрів для нових значень,
+            оскільки при читанні незрозуміло, що там зберігається зараз.
+          </li>
+          <li>
+            Функція не робить те, що написано в її назві або робить ще щось,
+            крім того, що вказано в назві (побічний ефект)
+          </li>
+        </ul>
+        <h3>Блоки</h3>
+        <ul>
+          <li>
+            Тіло циклу, функції, блоки if ми завжди обгортаємо в {}:
+            <pre>
+              // good
+              if (condition) {
+                result += 123;
+              }
+              for (let i = 0; i < text.length; i++) {
+                result = text[i] + result;
+              }
+            </pre>
+            <pre>
+              // bad
+              if (condition) result += 123;;
+              for (let i = 0; i < text.length; i++)
+                result = text[i] + result;
+            </pre>
+          </li>
+          <li>
+            Відкриваючу { ставимо на тому ж рядку, де почалася конструкція.
+          </li>
+          <li>
+            Закриваючу } ставимо на наступному рядку після останньої команди
+            блоку:
+          </li>
+          <pre>
+            // good
+            if (condition) {
+              result = 123;
+            } else {
+              result = 456;
+            }
+            function sum(a, b) {
+              return a + b;
+            }
+          </pre>
+          <pre>
+            // bad
+            if (condition) { result = 123; }
+            else { result = 456; }
+            function sum(a, b)
+            {
+              return a + b;
+            }
+          </pre>
+        </ul>
+        <h3>Відступи</h3>
+        <ul>
+          <li>
+            Вкладений код повинен мати відступ на 2 пробіли більше, ніж
+            зовнішній:
+            <pre>
+              // good
+              if (condition) {
+                console.log(456);
+                console.log(123);
+              }
+            </pre>
+            <pre>
+              // bad
+              if (condition) {
+                  console.log(456)
+              console.log(123)
+              }
+            </pre>
+          </li>
+          <li>
+            Ми відокремлюємо смислові блоки один від одного порожнім рядком,
+            коли вони стоять поряд (на одному рівні вкладеності). До таких
+            блоків відносяться функції, цикли, if, return, блок змінних та групи
+            пов'язаних команд:
+            <pre>
+              // good
+              function test() {
+                let x = 10;
+                while (x > 5) {
+                  x--;
+                  console.log(x);
+                }
+                return x;
+              }
+            </pre>
+            <pre>
+              // bad
+              function test() {
+                let x = 10;
+                while (x > 5) {
+                  x--;
+                  console.log(x);
+                }
+                return x;
+              }
+            </pre>
+          </li>
+        </ul>
+        <h3>JSDoc</h3>
+        <p>
+          Починаючи з цього урока, для покращення автодоповнення, ми будемо
+          додавати до кожної функції коментарі в форматі JSDoc:
+        </p>
+        <pre>
+          /**
+          * @param {number} a
+          * @param {number} b
+          *
+          * @returns {string}
+          */
+          function getSumText(a, b) {
+            return `${a} + ${b} = ${a + b}`;
+          }
+        </pre>
+        <p>
+          Коментар @param {type} name дозволяє підказати редактору, що параметр
+          з ім'ям name має тип, вказаний в {}. Це може бути number, string,
+          boolean, null, undefined для примітивних значень, або number[] для
+          масиву чисел, string[] для масиву рядків, тощо.
+        </p>
+        <p>
+          Також в {} можна записати два чи більше типів через |, тоді параметр
+          має бути одного з цих типів. Наприклад:
+        </p>
+        <pre>
+          /**
+          * @param {number|string} id
+          */
+          function check(id) {}
+        </pre>
+        <p>
+          Аналогічно, тип, що стоїть після @returns {type}, підказує тип
+          значення, яке має повертати функція.
+        </p>
+        <h3>Умовний (тернарний) оператор</h3>
+        <p>
+          Іноді необхідно записати різні значення в змінну залежно від умови. Це
+          можна зробити за допомогою if та else:
+        </p>
+        <pre>
+          let age = 23;
+          let result = '';
+          // умова
+          if (age >= 18) {
+            // значення1
+            result = 'Дорослий';
+          } else {
+            // значення2
+            result = 'Не дорослий';
+          }
+          console.log(result); // 'Дорослий'
+        </pre>
+        <p>Але це не дуже зручно з двох причин:</p>
+        <ol>
+          <li>Занадто велика конструкція.</li>
+          <li>
+            Ми не зможемо використати const для змінної result, тому що нам
+            потрібно записати в неї нове значення всередині if else.
+          </li>
+        </ol>
+        <p>
+          Є коротший та зручніший варіант запису — умовний (тернарний) оператор.
+          Розглянемо приклад:
+        </p>
+        <pre>
+          let age = 23;
+          const result = age >= 18 ? 'Дорослий' : 'Не дорослий';
+          console.log(result); // 'Дорослий'
+        </pre>
+        <p>
+          Якщо умова age >= 18 виконалася (як у нашому прикладі), то буде обрано
+          те, що стоїть після ? ('Дорослий'), інакше — те, що стоїть після :
+          ('Не дорослий').
+        </p>
+        <p>Для наочності, вираз в умові можна взяти в дужки:</p>
+        <pre>
+          const result = (age >= 18) ? 'Дорослий' : 'Не дорослий';
+        </pre>
+        <p>Якщо вираз довгий, то можна переносити значення на нові рядки:</p>
+        <pre>
+          const result = (age >= 18)
+          ? 'Дорослий'
+          : 'Не дорослий';
+        </pre>
+        <p>
+          Цей оператор часто називають тернарним, оскільки це єдиний оператор, у
+          якому використовуються 3 частини.
+        </p>
+      </section>
+      <section class="Useful-links">
+        <p>Корисні посилання</p>
+        <hr />
+        <p>
+          <a
+            href="https://doc.clickup.com/24383048/p/h/q83j8-478895/5c8e6ac12123a17"
+            >Комбінації клавіш VSCode</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://doc.clickup.com/24383048/p/h/q83j8-478955/72cf30d21cab1bc"
+            >Словничок термінів</a
+          >
+        </p>
+        <p>
+          <a href="https://javascript.info/coding-style">Coding Style</a>
+        </p>
+        <p>
+          <a href="https://javascript.info/strict-mode"
+            >The modern mode, "use strict"</a
+          >
+        </p>
+        <p>
+          <a href="https://javascript.info/ninja-code"
+            >Ninja code (bad code style examples)</a
+          >
+        </p>
+      </section>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
