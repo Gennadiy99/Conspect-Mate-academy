@@ -281,3 +281,14 @@ function getSpeedStatistic(testResults) {
   return arrayStatSpeed;
 }
 console.log(getSpeedStatistic([15, 20, 35, 85]));
+// 6
+function getGuestsCount(guestsInput) {
+  let numberGuests = parseInt(guestsInput);
+  console.log(numberGuests);
+  if (numberGuests){
+    return numberGuests;
+  } else {
+    return 'not a number'
+  }
+}
+console.log(getGuestsCount('!3девочки'));

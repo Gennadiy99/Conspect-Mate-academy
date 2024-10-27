@@ -27,13 +27,13 @@
   </head>
   <body>
     <section class="nav-bar">
-      <div class="nav">
+      <div class="nav"> 
         <a href="index.html">Index</a>
         <a href="Git_and_Terminal.html">Git and Terminal</a>
-        <a href="Style_code.html">Style code</a>
+        <a href="JS_Basics _Extended.html">JS Basics Extended</a>
         <a href="contacts.html">Contact</a>
       </div>
-    </section>
+    </section> 
     <!-- Меню страници по Секциям -->
     <select class="menu-pege" name="menu-pege" id="select_section-1">
       <option value="">Select section</option>
@@ -904,11 +904,13 @@
             Ось приклад перевірки наявності ключа (твій результат може трошки
             відрізнятися):
           </p>
-          <img
-            src="https://media.mate.academy/256819649_5d20e95d_f1b9_470c_928f_0fd1644c22de_d61e44d5fb.png"
-            alt="picture key  SSH"
-          />
-          <p>
+          <pre>
+            <img
+              src="https://media.mate.academy/256819649_5d20e95d_f1b9_470c_928f_0fd1644c22de_d61e44d5fb.png"
+              alt="picture key  SSH"
+            />
+            <p>
+          </pre>
             На зображенні можна побачити файл SSH-ключа. За замовчуванням його
             назва може бути однією з перелічених:
           </p>
@@ -930,15 +932,21 @@
           <p>
             На зображенні ти можеш побачити виконання першої частини генерації ключа. Тут термінал запитує куди потрібно зберегти ключ. Розташування можна змінити, ввівши нове розташування після двох крапок, але ми не рекомендуємо це робити:
           </p>
-          <img src="https://media.mate.academy/2_bc8a0fb8ff.png" alt="picture key">
-          <p>
+          <pre>
+            <img src="https://media.mate.academy/2_bc8a0fb8ff.png" alt="picture key">
+            <p>
+          </pre>
             Далі термінал запитує, чи потрібно додати passphrase — парольну фразу. Краще пропустити цей крок і просто натиснути ENTER. Зверни увагу: якщо ти введеш passphrase, то її треба обов'язково запамʼятати. В іншому випадку доведеться створювати ключ заново:
           </p>
-          <img src="https://media.mate.academy/3_523cbd408d.png" alt="picture passphrase">
+          <pre>
+            <img src="https://media.mate.academy/3_523cbd408d.png" alt="picture passphrase">
+          </pre>
           <p>
             Після підтвердження всіх операцій буде згенеровано ключ. Він буде мати приблизно такий вигляд:
           </p>
-          <img src="https://media.mate.academy/4_ff09345a4b.png" alt="type of key">
+          <pre>
+            <img src="https://media.mate.academy/4_ff09345a4b.png" alt="type of key">
+          </pre>
           <h4>Крок 3. Додаємо SSH-ключ до SSH-агента</h4>
           <p>
             SSH-агент — це програма, яка допомагає керувати приватними ключами SSH та автоматично використовує їх під час спроби з'єднання з віддаленим сервером. Щоб додати ключ до агента, потрібно виконати таку команду:
@@ -947,7 +955,9 @@
           <p>
             Ця команда запустить агента SSH та встановить змінні середовища для поточного сеансу оболонки. Якщо команда відпрацює успішно, то ти побачиш наступне:
           </p>
-          <img src="https://media.mate.academy/5_8300c5a08f.png" alt="picture ">
+          <pre>
+            <img src="https://media.mate.academy/5_8300c5a08f.png" alt="picture ">
+          </pre>
           <p>Подальші інструкції відрізняються для Windows та macOS.</p>
           <h4>Windows</h4>
           <p>Якщо ти працюєш на Windows, виконай наступну команду:</p>
