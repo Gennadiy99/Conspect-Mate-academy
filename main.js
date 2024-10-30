@@ -227,16 +227,17 @@ console.log(getCentury(800));
 //  3
 function convertCurrency(amount, exchangeRate, currencyName) {
   if (amount > 0 && exchangeRate > 0) {
-    return `Give them ${+(amount * exchangeRate).toFixed(2)} ${currencyName}(s)`;
+    return `Give them ${+(amount * exchangeRate).toFixed(
+      2
+    )} ${currencyName}(s)`;
   } else {
-    return 'Enter valid data';
+    return "Enter valid data";
   }
 }
-console.log(convertCurrency(10000, 1.0946, 'dollar')); 
+console.log(convertCurrency(10000, 1.0946, "dollar"));
 //  4
 
 function getPlan(startProduction, numberOfMonths, percent) {
-
   let variable = startProduction;
   let arrayMonth = [];
   for (let i = 0; i < numberOfMonths; i++) {
@@ -285,10 +286,80 @@ console.log(getSpeedStatistic([15, 20, 35, 85]));
 function getGuestsCount(guestsInput) {
   let numberGuests = parseInt(guestsInput);
   console.log(numberGuests);
-  if (numberGuests){
+  if (numberGuests) {
     return numberGuests;
   } else {
-    return 'not a number'
+    return "not a number";
   }
 }
-console.log(getGuestsCount('!3девочки'));
+console.log(getGuestsCount("!3девочки"));
+// проба работы дебагера указав в: JS коде команду: debugger
+let n = 4;
+let summ = 0;
+
+for (let i = 0; i <= 4; i++) {
+  summ += i;
+}
+console.log(summ);
+
+for (let i = 0; i < 15; i += 5) {
+  console.log(i);
+}
+// функция расчет прибіли вклада в банк
+function calculateProfit(amount, percent, period) {
+  let profit = amount;
+
+  for (let i = 1; i <= period; i++) {
+    profit += profit * (percent / 100);
+  }
+
+  return Math.floor(profit - amount);
+}
+console.log(calculateProfit(1000, 5.5, 7));
+// функция перевертыш
+
+function isWerewolf(target) {
+  let target1 = "";
+  let newTarget = "";
+
+  for (const n of target) {
+    if (n.toLowerCase() !== n.toUpperCase()) {
+      target1 += n;
+      newTarget = n + newTarget;
+    }
+  }
+  console.log(newTarget);
+  console.log(target1);
+
+  if (target1.toLowerCase() === newTarget.toLowerCase()) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isWerewolf("A$b+a"));
+
+// РАБОТА С ЦИКЛОМ И МЕТОДОМ slice()
+
+function splitString(str) {
+  let resultArry = [];
+
+  for (let i = 0; i < str.length; i += 2) {
+
+    let result = (str.slice(i, i + 2));
+
+    if(result.length < 2){
+      result += '_';
+      resultArry.push(result);
+    } else {
+      resultArry.push(result);
+    }
+  }
+
+  return resultArry;
+}
+
+console.log(splitString("АВРОР"));
+
+
