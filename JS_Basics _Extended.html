@@ -691,13 +691,1012 @@
       </section>
       <section class="Infinit_Loop_break_and_continue">
         <h1 class="main-topic-title">Безкінечний цикл</h1>
-        <hr>
+        <hr />
         <p>
-          Безкінечним називається такий цикл, умова якого завжди вірна (наприклад, true). Це означає, що тіло циклу буде виконуватись вічно. Такий цикл може виконуватись доти, доки працює комп'ютер користувача. Більшість браузерів можуть це виявити та запропонують зупинити виконання такого скрипту.
+          Безкінечним називається такий цикл, умова якого завжди вірна
+          (наприклад, true). Це означає, що тіло циклу буде виконуватись вічно.
+          Такий цикл може виконуватись доти, доки працює комп'ютер користувача.
+          Більшість браузерів можуть це виявити та запропонують зупинити
+          виконання такого скрипту.
         </p>
         <p>Приклад безкінечного циклу:</p>
+        <pre>
+          for (let i = 2; i > 1; i++) {
+            console.log(i);
+          }
+        </pre>
+        <h3>break</h3>
+        <hr />
         <p>
-          <b>ВНЕСТИ ВСЮ ТЕОРИЮ ИЗ ЭТОГО РАЗДЕЛА</b>
+          Команда break дозволяє в будь-який момент вийти з циклу, навіть якщо
+          умова досі істинна. Після цієї команди виконання циклу повністю
+          переривається, і починає виконуватись код, що йде після циклу:
+        </p>
+        <pre>
+          for (let i = 2; i > 1; i++) {
+            if (i === 9) {
+              break;
+            }
+          
+            console.log(i);
+          }
+          
+        </pre>
+        <p>
+          Тепер, як тільки i стане рівним 9, цикл закінчиться. Значення 9 навіть
+          не надрукується в консолі.
+        </p>
+        <h3>continue</h3>
+        <hr />
+        <p>
+          Іноді буває необхідно перейти до наступної ітерації циклу, не
+          виконуючи команди, що стоять нижче в тілі циклу. Для цього існує
+          команда continue:
+        </p>
+        <pre>
+          for (let i = 1; i <= 10; i++) {
+            if (i === 5) {
+              continue;
+            }
+          
+            console.log(i);
+          }
+        </pre>
+        <p>
+          При цьому для i === 5 ми не будемо виконувати команду console.log(i);.
+          Звісно того ж самого можна досягти, змінивши умову на протилежну і
+          перемістивши команду всередину if:
+        </p>
+        <pre>
+          for (let i = 1; i <= 10; i++) {
+            if (i !== 5) {
+              console.log(i);
+            }
+          }
+          
+        </pre>
+        <p>Але, якщо код ускладниться, то можуть з'явитися вкладені умови:</p>
+        <pre>
+          for (let i = 1; i <= 10; i++) {
+            if (i % 2 === 0) {
+              console.log('Even number');
+          
+              if (i === 4) {
+                console.log(i);   
+              }
+            }
+          }
+          
+        </pre>
+        <p>І цієї вкладеності можна позбутися з використанням continue;</p>
+        <pre>
+          for (let i = 1; i <= 10; i++) {
+            if (i % 2 !== 0) {
+              continue;
+            }
+          
+            console.log('Even number');
+          
+            if (i === 4) {
+              console.log(i);   
+            }
+          }
+        </pre>
+        <h3>Цикл while</h3>
+        <hr />
+        <p>
+          Іноді ми не знаємо заздалегідь, скільки разів потрібно виконати ту чи
+          іншу команду. Наприклад, при розкладанні числа на дільники, чи пошуку
+          остачі.
+        </p>
+        <p>
+          У таких випадках можна скористатися циклом while, який буде
+          виконуватися, поки його умова істинна. <br />
+          Розглянемо приклад:
+        </p>
+        <pre>
+          let value = 22;
+
+          while (value >= 5) {
+            value -= 5; // 17, 12, 7, 2
+          }
+
+          console.log(value); // 2
+        </pre>
+        <p>
+          Тут value >= 5 — це умова. Якщо вона істинна, то виконається тіло
+          циклу.
+        </p>
+        <h3>Цикл do while</h3>
+        <hr />
+        <p>
+          Якщо нам потрібно перевіряти умову після першої ітерації (а не до), то
+          підійде цикл із постумовою do while.
+        </p>
+        <p>
+          Він подібний до циклу while, але перевіряє умову вже після виконання
+          тіла циклу. <br />
+          Розглянемо приклад:
+        </p>
+        <pre>
+          let i = 0;
+
+          do {
+            console.log(i);
+            i++;
+          } while (i < 3);
+        </pre>
+        <p>У консолі ми побачимо:</p>
+        <pre>
+          0
+          1
+          2
+        </pre>
+        <p>Розглянемо ще один приклад:</p>
+        <pre>
+          let i = 7;
+
+          do {
+            console.log(i);
+            i++;
+          } while (i < 3);
+        </pre>
+        <p>
+          На відміну від циклу while (i < 3), цей код надрукує 7 і лише потім
+          завершиться, незважаючи на те, що умова одразу хибна.
+        </p>
+        <p>На практиці цикл do while використовується вкрай рідко.</p>
+        <h3>while(true)</h3>
+        <hr />
+        <p>
+          Іноді одні й ті самі команди треба виконувати перед початком циклу, та
+          на кожній ітерації. Наприклад, якщо потрібно друкувати в консоль
+          випадкові числа, поки вони < 0.9. Для цього можна написати наступний
+          код:
+        </p>
+        <pre>
+          let n = Math.random();
+
+          while (n < 0.9) {
+            console.log(n);
+            n = Math.random();
+          }
+        </pre>
+        <p>
+          Як ти бачиш, нам довелося двічі написати рядок генерації випадкового
+          числа. Цикл з постумовою тут не допоможе, бо завжди друкуватиме перше
+          число незалежно від умови:
+        </p>
+        <pre>
+          do {
+            let n = Math.random();
+          
+            console.log(n);
+          } while (n < 0.9)
+          
+        </pre>
+        <p>Тут нам може допомогти break:</p>
+        <pre>
+          do {
+            let n = Math.random();
+          
+            if (n < 0.9) {
+              break;
+            }
+          
+            console.log(n);
+          } while (n < 0.9)
+          
+        </pre>
+        <p>
+          Але тепер ми перевіряємо ту саму умову двічі. Хоча насправді тепер
+          умова для while нам не потрібна. Її можна замінити на true:
+        </p>
+        <pre>
+          do {
+            let n = Math.random();
+          
+            if (n < 0.9) {
+              break;
+            }
+          
+            console.log(n);
+          } while (true)
+          
+        </pre>
+        <p>
+          І тепер не важливо, де стоїть while, на початку чи в кінці, вихід з
+          циклу відбудеться тільки якщо спрацює break:
+        </p>
+        <pre>
+          while (true) {
+            let n = Math.random();
+          
+            if (n < 0.9) {
+              break;
+            }
+          
+            console.log(n);
+          }
+          
+        </pre>
+      </section>
+      <section class="Working_With_Strings">
+        <h1 class="main-topic-title">
+          Getting Characters in a String / Робота з рядками
+        </h1>
+        <hr />
+        <p>
+          Тобі часто доведеться виконувати різні операції з рядками. Наприклад,
+          отримувати довжину або знаходити символ на певній позиції. У цьому
+          уроці ми розглянемо найтиповіші операції з рядками.
+        </p>
+        <h3>Символ у рядку</h3>
+        <p>
+          Отримати окремий символ у рядку можна за його індексом. Індекси в
+          рядку починаються з 0 (не з 1). Наприклад:
+        </p>
+        <pre>
+          const fullName = 'Misha Hrynko';
+
+          console.log(
+            fullName[0], // 'M'
+            fullName[1], // 'i'
+            fullName[5], // ' '
+            fullName[11], // 'o'
+  
+            // індекс останнього символа на 1 менше за довжину рядка
+            fullName[fullName.length - 1], // 'o'
+
+            // якщо індекс від'ємний або завеликий, отримаємо `undefined`
+            fullName[100], // undefined
+            fullName[-5] // undefined
+          );
+
+        </pre>
+
+        <h3>Special Characters / Спеціальні символи</h3>
+        <hr />
+        <p>
+          Деякі символи неможливо вставити в рядок просто надрукувавши його,
+          наприклад, одинарні лапки або перенос рядка. Але такі символи можна
+          екранувати за допомогою оберненого слешу — \, наприклад:
+        </p>
+        <pre>
+          const str = 'first \' line\
+          second \\ line';
+
+          /*
+          first ' line
+          second \ line
+          */
+
+        </pre>
+        <p>
+          Якщо ми не поставимо \ перед ' після слова first, JavaScript читатиме
+          це як закриваючі лапки. Таким чином, текст після буде аналізуватися як
+          команди, але не як рядковий літерал. У комбінації з іншими символами,
+          \ має такі значення:
+        </p>
+        <ul>
+          <li>
+            \n додає перенесення рядка в одинарних і подвійних лапках:
+            <pre>
+              const greeting = 'Hello! \n I am Alex.'
+
+              console.log(greeting);
+
+              /*
+              Hello!
+              I am Alex.
+              */
+
+            </pre>
+          </li>
+          <li>
+            \\ додає в рядок обернений слеш — перший із них є символом
+            екранування, а другий потрапляє безпосередньо в рядок;
+          </li>
+          <li>\t додає в рядок табуляцію.</li>
+        </ul>
+
+        <h3>String Comparison / Код символу та порівняння рядків</h3>
+        <hr />
+
+        <p>
+          Рядки складаються із символів. Ми вже знаємо, що в кожного символу є
+          індекс — його позиція в рядку. Крім індексу, кожен символ має ще й
+          свій код.
+        </p>
+        <p>
+          Символ у рядок можна додати за кодом. Наприклад, символ © можна додати
+          такими способами:
+        </p>
+        <pre>
+          console.log('\xA9');
+          console.log('\u00A9');
+          console.log('\u{A9}');
+
+        </pre>
+        <p>
+          Щоб отримати код символу, можна використати метод charCodeAt.
+          Параметром цей метод приймає індекс символу в рядку:
+        </p>
+        <pre>
+          'Appple'.charCodeAt(0) // `65` — це код `A`
+
+        </pre>
+        <p>
+          JavaScript дозволяє не тільки із символу отримати його код, але й
+          навпаки, з коду отримати символ. Для цього існує метод
+          String.fromCharCode():
+        </p>
+        <pre>
+          String.fromCharCode(65); // 'A'
+        </pre>
+        <p>
+          В JavaScript рядки порівнюються посимвольно, а точніше, по кодах
+          символів. Порівнюючи рядки, слід враховувати ряд особливостей:
+        </p>
+        <ul>
+          <li>маленькі літери більші, ніж великі;</li>
+          <li>
+            спецсимволи та літери з діакритичними знаками, наприклад, Ö, йдуть
+            після основного алфавіту.
+          </li>
+        </ul>
+        <p>
+          Щоб порівняти рядки з врахуванням особливостей алфавіту та регістру,
+          існує метод localeCompare. Він має синтаксис str1.localeCompare(str2)
+          та повертає число:
+        </p>
+        <ul>
+          <li>від'ємне, якщо рядок str1 менший, ніж str2;</li>
+          <li>додатне, якщо рядок str1 більший, ніж str2;</li>
+          <li>0, якщо рядки рівні.</li>
+        </ul>
+        <pre>
+          console.log('Ö' < 'Z'); // false
+  
+          // але
+          console.log('Ö'.localeCompare('Z')); // -1
+        </pre>
+      </section>
+      <section class="Converting_to_String">
+        <h1 class="main-topic-title">Перетворення в рядок і назад</h1>
+        <hr />
+        <p>
+          Іноді потрібно перетворити число на рядок. Це можна зробити кількома
+          способами:
+        </p>
+        <pre>
+          const n = -123;
+
+          console.log(
+            String(n), // '-123'
+            n.toString(), // '-123'
+            `${n}`, // '-123'
+            '' + n, // '-123'
+          );
+
+        </pre>
+        <p>Таким способом можна отримати окрему цифру числа:</p>
+        <pre>
+          function getFirstDigit(n) {
+            return String(n)[0];
+          }
+          
+          console.log(
+            getFirstDigit(123), // '1'
+            getFirstDigit(76543), // '7'
+            getFirstDigit(0), // '0'
+          );
+          
+        </pre>
+        <p>
+          Але коли ми працюємо із символами, результат завжди є рядком. Якщо
+          далі потрібно буде число, то доведеться зробити явне приведення типів:
+        </p>
+        <pre>
+          const digits = '123';
+
+          console.log(
+            Number(digits), // 123
+            +digits, // 123
+          );
+
+        </pre>
+        <p>На практиці найчастіше використовують оператор +.</p>
+      </section>
+      <section class="Text-Case">
+        <h3 class="main-topic-title">Text Case / Регістр тексту</h3>
+        <hr />
+        <p>
+          Методи toUpperCase() та toLowerCase() повертають новий рядок, у якому
+          всі символи вхідного рядка будуть у верхньому або нижньому регістрі.
+          <br />
+          Наприклад:
+        </p>
+        <pre>
+          const name = 'Misha';
+
+          console.log(
+            name.toLowerCase(), // 'misha'
+            name.toUpperCase(), // 'MISHA'
+
+            name[0].toLowerCase(), // 'm'
+            name[0].toUpperCase(), // 'M'
+          );
+
+        </pre>
+        <p>Зверни увагу: змінити регістр можна тільки для літер:</p>
+        <pre>
+          console.log(
+          '1'.toLowerCase(), // '1'
+          '1'.toUpperCase(), // '1'
+          ','.toUpperCase(), // ','
+          ' '.toUpperCase(), // ' '
+          ''.toUpperCase(), // ''
+        );
+
+        </pre>
+        <p>Ця особливість дозволяє перевірити, чи є символ літерою:</p>
+        <pre>
+          function isLetter(ch) {
+            return ch.toLowerCase() !== ch.toUpperCase();
+          }
+          
+          console.log(
+            isLetter('a'), // true
+            isLetter('B'), // true
+            isLetter('1'), // false
+            isLetter(','), // false
+            isLetter(' '), // false
+          );
+          
+        </pre>
+        <p>Код нижче перевіряє, чи є літера великою:</p>
+        <pre>
+          function isBigLetter(ch) {
+            return ch !== ch.toLowerCase();
+          }
+          
+          console.log(
+            isBigLetter('A'), // true
+            isBigLetter('a'), // false
+            isBigLetter('1'), // false
+            isBigLetter(','), // false
+            isBigLetter(' '), // false
+          );
+          
+        </pre>
+      </section>
+      <section class="String-Modification-Methods">
+        <h3 class="main-topic-title">
+          String Modification Methods / Видалення пробілів
+        </h3>
+        <hr />
+        <p>
+          За допомогою методу trim() можна видалити всі пробіли на початку та в
+          кінці рядку, наприклад:
+        </p>
+        <pre>
+          const name = '       Misha';
+          const fullName = 'Misha Hrynko      ';
+          const word = '     abrakadabra     ';
+
+          console.log(
+            name.trim(), // 'Misha'
+            fullName.trim(), // 'Misha Hrynko'
+            word.trim(), // 'abrakadabra'
+          );
+        </pre>
+        <h3>padStart та padEnd</h3>
+        <hr />
+        <p>
+          Метод padStart додає новий рядок до початку існуючого рядка. Він має
+          синтаксис padStart(targetLength, padString), де targetLength — це
+          довжина результуючого рядка, а padString — це рядок, який ми додамо до
+          існуючого (значення за замовчуванням — пробіл):
+        </p>
+        <pre>
+          const word = 'fruit';
+
+          console.log(word.padStart(10, '*')); // '*****fruit'
+          console.log(word.padStart(10, ' ')); // '     fruit'
+          console.log(word.padStart(10)); // '     fruit'
+          console.log(word.padStart(19, '0123456789')); // '01234567890123fruit'
+
+        </pre>
+        <p>Метод padEnd() додає новий рядок у кінець існуючого рядка:</p>
+        <pre>
+          const word = 'fruit';
+
+          console.log(word.padEnd(10)); // 'fruit     '
+          console.log(word.padEnd(10, '3')); // 'fruit33333'
+          console.log(word.padEnd(17, ' yummy')); // 'fruit yummy yummy'
+
+        </pre>
+        <h3>repeat</h3>
+        <hr />
+        <p>Метод repeat повторює рядок у вказане число разів:</p>
+        <pre>
+          const newString = 'John'.repeat(2);
+
+          console.log(newString); // 'JohnJohn'
+
+        </pre>
+      </section>
+      <section class="Finding-Substring">
+        <h3 class="main-topic-title">Finding a Substring / Пошук підрядка</h3>
+        <hr />
+        <p>
+          За допомогою методу includes() можна перевірити, чи містить рядок
+          певний символ або підрядок, наприклад:
+        </p>
+        <pre>
+          const name = 'Misha';
+
+          console.log(
+            name.includes('M'), // true
+            name.includes('e'), // false
+  
+            // у рядку є тільки велика літера `M`
+            name.includes('m'), // false
+  
+            // шукаємо підрядок
+            name.includes('Mis'), // true
+            name.includes('mis'), // false
+  
+            // підрядок шукається повністю, а не окремі літери
+            name.includes('ia'), // false
+          );
+
+        </pre>
+        <p>
+          Пошук можна розпочати не з початку, а із зазначеного індексу. Для
+          цього потрібно передати стартовий індекс другим аргументом, наприклад:
+        </p>
+        <pre>
+          const word = 'abrakadabra';
+
+          console.log(
+            word.includes('k'), // true
+  
+            // 'k' стоїть на 4-ому індексі, а ми починаємо перевірку з 5-го 
+            word.includes('k', 5), // false
+  
+            // якщо індекс більше довжини рядка, повертаємо false
+            word.includes('b', 15), // false
+  
+            // якщо індекс від'ємний, шукаємо з кінця рядка
+            word.includes('b', -1), // true
+            word.includes('b', -100), // true
+          );
+
+        </pre>
+        <h3>Регістронезалежний пошук</h3>
+        <p>
+          Якщо ти хочеш перевірити, чи містить рядок певний підрядок без
+          урахування регістру, то потрібно привести рядок і підрядок до одного
+          регістру (наприклад, до нижнього):
+        </p>
+        <pre>
+          function search(text, part) {
+            const normalizedText = text.toLowerCase();
+            const normalizedPart = part.toLowerCase();
+            
+            return normalizedText.includes(normalizedPart);
+          }
+          
+          console.log(
+            search('Misha', 'm'), // true
+            search('Misha', 'SHA'), // true
+          );
+          
+        </pre>
+        <h3>Пошук на початку і в кінці рядка</h3>
+        <p>
+          За допомогою методу startsWith() можна визначити, чи починається рядок
+          із певного підрядка, а endsWith() — чи закінчується рядок певним
+          підрядком. <br />Наприклад:
+        </p>
+        <pre>
+          const name = 'Misha';
+
+          console.log(
+            name.startsWith('Mis'), // true
+            name.startsWith('Misha'), // true
+            name.startsWith('M'), // true
+  
+            name.startsWith('is'), // false
+            name.startsWith('a'), // false
+          );
+
+          console.log(
+            name.endsWith('a'), // true
+            name.endsWith('sha'), // true
+            name.endsWith('Misha'), // true
+
+            name.endsWith('is'), // false
+            name.endsWith('Mi'), // false
+          );
+
+        </pre>
+        <h3>Пошук індексу</h3>
+        <hr />
+        <p>
+          Щоб дізнатися, де в рядку вперше зустрічається символ чи підрядок,
+          можна використати метод indexOf(). Якщо символ або підрядок знайдено,
+          то повернеться індекс першого входження. Якщо не знайдені —
+          повернеться -1. <br />Наприклад:
+        </p>
+        <pre>
+          const name = 'My name is Misha';
+
+          console.log(
+            name.indexOf('y'), // 1
+            name.indexOf('n'), // 3
+            name.indexOf('My'), // 0
+
+            // символ не знайдений
+            name.indexOf('x'), // -1
+
+            // регістр має значення
+            name.indexOf('my'), // -1
+  
+            // індекс першого входження
+            name.indexOf('M'), // 0
+            name.indexOf('a'), // 4
+            name.indexOf(' '), // 2
+  
+            // маленька літера 'm' стоїть шостою
+            name.indexOf('m'), // 5
+          );
+
+        </pre>
+        <p>
+          Якщо пошук позиції потрібно почати з певного індексу, передай його
+          другим аргументом:
+        </p>
+        <pre>
+          const name = 'My name is Misha';
+
+          console.log(
+            name.indexOf('M'), // 0
+            name.indexOf('M', 1), // 11
+  
+            // 'M' не трапляється, починаючи з 12 індекса
+            name.indexOf('M', 12), // -1
+          );
+
+        </pre>
+        <p>
+          Існує метод для пошуку індексу у зворотному напрямку — lastIndexOf().
+          Він повертає індекс останнього входження символу або підрядка:
+        </p>
+        <pre>
+          const name = 'My name is Misha';
+
+          console.log(
+            name.lastIndexOf('y'), // 1
+            name.lastIndexOf('M'), // 11
+  
+            // можна вказати індекс, з якого починається пошук у зворотній бік
+            name.lastIndexOf('M', 10), // 0
+          );
+
+        </pre>
+      </section>
+      <section class="Extracting-Substring">
+        <h3 class="main-topic-title">
+          Extracting a Substring / Отримання підрядка
+        </h3>
+        <hr />
+        <p>
+          Досить часто тобі потрібно буде отримувати частину рядка (підрядок). І
+          тут зручно скористатися методом slice(). Він приймає 2 аргументи:
+        </p>
+        <ul>
+          <li>індекс, з якого починається копіювання символів;</li>
+          <li>
+            індекс, на якому закінчується копіювання символів. Символ за цим
+            індексом не буде включений.
+          </li>
+        </ul>
+        <p>Наприклад:</p>
+        <pre>
+          const text = '0123456789';
+
+          console.log(
+            // символ з індексом 5 не буде включений
+            text.slice(1, 5), // '1234'
+  
+            // беремо перші 8 символів
+            text.slice(0, 8), // '01234567'
+
+            // якщо початок більший за кінець, отримуємо пустий рядок
+            text.slice(5, 1), // ''
+
+            //  без аргументів отримуємо весь рядок
+            text.slice(), // '0123456789'
+
+            // якщо другий аргумент не переданий, беремо все до кінця
+            text.slice(2), // '23456789'
+
+            // якщо індекс початку занадто великий, отримаємо пустий рядок
+            text.slice(15), // ''
+
+            // від'ємні індекси рахуються з кінця
+            text.slice(-5, -2), // '567'
+
+            // беремо останні 3 символа
+            text.slice(-3), // '789'
+
+            // усі символи окрім 0-го та останнього
+            text.slice(1, -1), // '12345678'
+          );          
+
+        </pre>
+        <p>Цей метод можна використати, щоб зібрати новий рядок із частин:</p>
+        <pre>
+          const text = 'I have 4 dogs';
+
+          // 'I have five dogs'
+          const text2 = text.slice(0, 7) + 'five' + text.slice(-5);
+          
+          // 'We don't have dogs'
+          const text3 = `We don't ${text.slice(2, 6)} ${text.slice(-4)}`;
+
+        </pre>
+      </section>
+      <section class="Useful-links">
+        <h3>Корисні посилання</h3>
+        <hr />
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/at"
+            >at()</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart"
+            >trimStart()</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd"
+            >trimEnd()</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/replace"
+            >replace()</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll"
+            >replaceAll()</a
+          >
+        </p>
+        <p><a href="https://javascript.info/string">Strings</a></p>
+      </section>
+      <section class="Functions-Revisited">
+        <h1 class="main-topic-title">Functions Revisited</h1>
+        <hr />
+        <p>
+          У цьому уроці ви дізнаєтеся, як обробляти пропущені аргументи функцій
+          та що таке стрілкові функції.
+        </p>
+        <h3>Пропущені аргументи та значення за замовчуванням</h3>
+        <hr />
+        <p>
+          Ми вже знаємо, що параметр — це змінна, записана між круглими дужками
+          функції під час оголошення. Аргумент — це значення, передане у функцію
+          під час її виклику. Аргументи стають значеннями відповідних параметрів
+          по порядку: перший аргумент стає значенням першого параметру, другий
+          другого, і т.д. <br />
+          Наприклад:
+        </p>
+        <pre>
+          function message(text, name) { // `text` та `name` — це параметри
+            return `${text}, ${name}!`;
+          }
+          
+          const greeting = message('Hi', 'Alex'); // 'Hi' та 'Alex' — це аргументи
+          
+          console.log(greeting); // 'Hi, Alex!'
+          
+        </pre>
+        <p>
+          Але можна встановити значення за замовчуванням для параметра, тоді
+          воно буде використано замість undefined:
+        </p>
+        <pre>
+          function multiply(a, b = 3) { // якщо значення для `b` не буде передано, воно дорівнюватиме `3`
+            return a * b;
+          }
+          
+          console.log(multiply(5, 2)); // 10
+          console.log(multiply(5)); // 5 * 3 = 15
+          
+        </pre>
+        <p>Параметром за замовчуванням можна задати й вираз:</p>
+        <pre>
+          function multiply(a, b = a + 10) { // якщо `b` не передано, то його значенням буде `a + 10`
+            return a * b;
+          }
+          
+          console.log(multiply(3)); // 3 * 13 = 39
+          console.log(multiply(7)); // 7 * 17 = 119
+          
+        </pre>
+      </section>
+      <section class="Extra-Arguments">
+        <h3 class="main-topic-title">Додаткові аргументи</h3>
+        <hr />
+        <p>
+          Якщо у функцію передано більше аргументів, ніж вона очікує, то «зайві»
+          аргументи просто ігноруються:
+        </p>
+        <pre>
+          function multiply(a, b) {
+            return a * b;
+          }
+          
+          multiply(3, 4, 5, 6); // поверне `12`, аргументи `5` і `6` ігноруються
+          
+        </pre>
+        <p>
+          Якщо потрібно отримати всі передані аргументи, можна використати
+          оператор rest, наприклад ...args. У цьому випадку args буде масивом,
+          який містить усі аргументи, передані у функцію:
+        </p>
+        <pre>
+          function sum(...args) {
+            console.log(args);
+          }
+          
+          sum(3, 4); // args = [3, 4]
+          sum(3, 4, 5, 6); // args = [3, 4, 5, 6]
+          
+        </pre>
+        <p>
+          Також за потреби можна отримати частину аргументів до окремих
+          параметрів, а решту зібрати в масив:
+        </p>
+        <pre>
+          function sum(x, ...args) {
+            console.log(x, args);
+          }
+          
+          sum(); // x = undefined, args = []
+          sum(1, 2); // x = 1, args = [2]
+          sum(3, 4, 5, 6); // x = 3, args = [4, 5, 6]
+          
+        </pre>
+      </section>
+      <section class="Function-Declaration-Expression">
+        <h3 class="main-topic-title">
+          Оголошення Функції (Function Declaration) та Функціональний Вираз
+          (Function Expression)
+        </h3>
+        <hr />
+        <p>
+          Раніше ми завжди оголошували функції окремо від іншого коду. Їх можна
+          викликати як до, так і після оголошення:
+        </p>
+        <pre>
+          const result1 = sum(1, 2);
+
+          function sum(a, b) {
+            return a + b;
+          }
+          
+          const result2 = sum(3, 4);
+
+        </pre>
+        <p>
+          Але іноді буває зручно присвоїти функцію змінній (наприклад, в
+          залежності від умов):
+        </p>
+        <pre>
+          const operation = function sum(a, b) {
+            return a + b;
+          };
+          
+          const result = operation(1, 2); // result = 3
+          
+        </pre>
+        <p>
+          Таке створення функції називається функціональним виразом (Function
+          Expression). Її можна викликати тільки після присвоєння, і тільки за
+          іменем змінної, куди вона присвоєна:
+        </p>
+        <pre>
+          operation(1, 2); // Uncaught ReferenceError: Cannot access 'operation' before initialization
+
+          const operation = function sum(a, b) {
+            return a + b;
+          };
+
+          sum(1, 2); // Uncaught ReferenceError: sum is not defined
+
+        </pre>
+      </section>
+      <section class="Arrow-Function">
+        <h3 class="main-topic-title">Функція-стрілка</h3>
+        <hr />
+        <p>
+          Функції у програмах використовують дуже часто, тому для максимального
+          скорочення часто використовують => (стрілку) після круглих дужок
+          замість слова function перед ними. Наступні дві функції працюватимуть
+          однаково:
+        </p>
+        <pre>
+          const sum1 = function(a, b) {
+            return a + b;
+          };
+          
+          const sum2 = (a, b) => {
+            return a + b;
+          };
+          
+        </pre>
+        <p>
+          Якщо функція одразу повертає результат, то {} та return можна прибрати
+          і записати результат після стрілки:
+        </p>
+        <pre>
+          let sum = (a, b) => a + b;
+
+        </pre>
+        <p>Якщо аргумент лише один, його можна написати без дужок:</p>
+        <pre>
+          let sum = () => 3 + 5;
+
+        </pre>
+        <p>Якщо аргументів немає, круглі дужки все одно повинні бути:</p>
+        <pre>
+          let sum = () => 3 + 5;
+
+        </pre>
+        <p>
+          Так само, як і у звичайній функції, параметрам можна встановлювати
+          значення за замовчуванням та використовувати rest-оператор:
+        </p>
+        <pre>
+          let f = (a, b = 10, ...args) => {
+            console.log(a, b, args);
+          };
+          
+        </pre>
+      </section>
+      <section class="Useful-links">
+        <h3>Корисні посилання</h3>
+        <hr />
+        <p>
+          <a href="https://javascript.info/function-basics">Functions</a>
+        </p>
+        <p>
+          <a href="https://javascript.info/function-expressions"
+            >Function expressions</a
+          >
+        </p>
+        <p>
+          <a href="https://javascript.info/arrow-functions-basics"
+            >Arrow functions, the basics</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/rest_parameters"
+            >Rest parameters</a
+          >
         </p>
       </section>
     </div>

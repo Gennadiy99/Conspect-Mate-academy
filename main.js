@@ -346,11 +346,10 @@ function splitString(str) {
   let resultArry = [];
 
   for (let i = 0; i < str.length; i += 2) {
+    let result = str.slice(i, i + 2);
 
-    let result = (str.slice(i, i + 2));
-
-    if(result.length < 2){
-      result += '_';
+    if (result.length < 2) {
+      result += "_";
       resultArry.push(result);
     } else {
       resultArry.push(result);
@@ -361,5 +360,42 @@ function splitString(str) {
 }
 
 console.log(splitString("АВРОР"));
+// проба перевода в числа в стрку
+let num = 123;
+let numSt = String(num);
+let N = "" + num;
+let numSt2 = +num.toString()[1];
 
+console.log(num);
+console.log(numSt);
+console.log(numSt2);
+console.log("Преобразование in str " + numSt2);
 
+//функция перебирает строку если числа меньше или  = 5 то Special end Not
+
+function isSpecialNumber(n) {
+  let sort = n.toString();
+  for (let i = 0; i <= sort.length; i++) {
+    if (sort[i] > 5) {
+      return "NOT!!";
+    }
+  }
+  return "Special!!";
+}
+console.log(isSpecialNumber(5411));
+// функция опрятное число.
+
+function isTidy(n) {
+  if (n < 0) {
+    return false;
+  }
+  let nStr = String(n);
+
+  for (let i = 0; i < nStr.length - 1; i++) {
+    if (nStr[i] > nStr[i + 1]) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(isTidy(-1339));
