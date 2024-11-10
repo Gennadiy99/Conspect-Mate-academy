@@ -179,3 +179,13 @@ img {
 .Git-Basics img {
   display: block;
 }
+/*  выбор секций для перехода раздел JS Basics  */
+.container {
+  position: relative;
+}
+.select-Section-JS {
+  position: sticky;
+  top: 93px;
+  left: 20px;
+  z-index: 150;
+}

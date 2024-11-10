@@ -24,7 +24,30 @@
       </div>
     </section>
     <div class="container">
-      <section class="style-code">
+      <div class="select-Section-JS">
+        <select name="selectSection" id="SelectJs">
+          <option value="#styleCode">style code</option>
+          <option value="#WorkingNumber">Working With Numbers</option>
+          <option value="#Loops">Loops in Details</option>
+          <option value="#LoopBreakContinue">Infinit / break / continue</option>
+          <option value="#WorkingStrings">Working With Strings</option>
+          <option value="#ConvString">Converting to String</option>
+          <option value="#TextCase">Text Case</option>
+          <option value="#StringMethods">String Modification Methods</option>
+          <option value="#FindSubstring">Finding Substring</option>
+          <option value="#ExtrSubstring">Extracting Substring</option>
+          <option value="#FunctRevisited">Functions Revisited</option>
+          <option value="#ExtraArgum">Extra Arguments</option>
+          <option value="#FunctDeclarExpres">
+            Function Declaration Expression
+          </option>
+          <option value="#ArrowFunct">Arrow Function</option>
+          <option value="#Switch">Switch</option>
+          <option value="#TypeConver">Type Conversion</option>
+          <option value="#ObjectBasics">Object Basics</option>
+        </select>
+      </div>
+      <section class="style-code" id="styleCode">
         <h1 class="main-topic-title">Style code</h1>
         <h3>Стиль коду</h3>
         <p>
@@ -339,7 +362,7 @@
           >
         </p>
       </section>
-      <section class="Working-With-Numbers">
+      <section class="Working-With-Numbers" id="WorkingNumber">
         <h1 class="main-topic-title">Работа с числами</h1>
         <hr />
         <p>
@@ -645,10 +668,9 @@
           >
         </p>
       </section>
-      <section class="Loops_in_Details">
-        <h1 class="main-topic-title"></h1>
+      <section class="Loops_in_Details" id="Loops">
+        <h1 class="main-topic-title">Цикли в деталях</h1>
         <hr />
-        <h3>Цикли в деталях</h3>
         <p>У цьому уроці ми розглянемо цикли більш детально.</p>
         <p class="b">debugger</p>
         <p>
@@ -689,7 +711,7 @@
           його покроково, щоб краще зрозуміти, як він працює.
         </p>
       </section>
-      <section class="Infinit_Loop_break_and_continue">
+      <section class="Infinit_Loop_break_and_continue" id="LoopBreakContinue">
         <h1 class="main-topic-title">Безкінечний цикл</h1>
         <hr />
         <p>
@@ -921,7 +943,7 @@
           
         </pre>
       </section>
-      <section class="Working_With_Strings">
+      <section class="Working_With_Strings" id="WorkingStrings">
         <h1 class="main-topic-title">
           Getting Characters in a String / Робота з рядками
         </h1>
@@ -1062,7 +1084,7 @@
           console.log('Ö'.localeCompare('Z')); // -1
         </pre>
       </section>
-      <section class="Converting_to_String">
+      <section class="Converting_to_String" id="ConvString">
         <h1 class="main-topic-title">Перетворення в рядок і назад</h1>
         <hr />
         <p>
@@ -1108,7 +1130,7 @@
         </pre>
         <p>На практиці найчастіше використовують оператор +.</p>
       </section>
-      <section class="Text-Case">
+      <section class="Text-Case" id="TextCase">
         <h3 class="main-topic-title">Text Case / Регістр тексту</h3>
         <hr />
         <p>
@@ -1171,7 +1193,7 @@
           
         </pre>
       </section>
-      <section class="String-Modification-Methods">
+      <section class="String-Modification-Methods" id="StringMethods">
         <h3 class="main-topic-title">
           String Modification Methods / Видалення пробілів
         </h3>
@@ -1227,7 +1249,7 @@
 
         </pre>
       </section>
-      <section class="Finding-Substring">
+      <section class="Finding-Substring" id="FindSubstring">
         <h3 class="main-topic-title">Finding a Substring / Пошук підрядка</h3>
         <hr />
         <p>
@@ -1388,7 +1410,7 @@
 
         </pre>
       </section>
-      <section class="Extracting-Substring">
+      <section class="Extracting-Substring" id="ExtrSubstring">
         <h3 class="main-topic-title">
           Extracting a Substring / Отримання підрядка
         </h3>
@@ -1485,7 +1507,7 @@
         </p>
         <p><a href="https://javascript.info/string">Strings</a></p>
       </section>
-      <section class="Functions-Revisited">
+      <section class="Functions-Revisited" id="FunctRevisited">
         <h1 class="main-topic-title">Functions Revisited</h1>
         <hr />
         <p>
@@ -1536,7 +1558,7 @@
           
         </pre>
       </section>
-      <section class="Extra-Arguments">
+      <section class="Extra-Arguments" id="ExtraArgum">
         <h3 class="main-topic-title">Додаткові аргументи</h3>
         <hr />
         <p>
@@ -1580,7 +1602,7 @@
           
         </pre>
       </section>
-      <section class="Function-Declaration-Expression">
+      <section class="Function-Declaration-Expression" id="FunctDeclarExpres">
         <h3 class="main-topic-title">
           Оголошення Функції (Function Declaration) та Функціональний Вираз
           (Function Expression)
@@ -1628,7 +1650,7 @@
 
         </pre>
       </section>
-      <section class="Arrow-Function">
+      <section class="Arrow-Function" id="ArrowFunct">
         <h3 class="main-topic-title">Функція-стрілка</h3>
         <hr />
         <p>
@@ -1699,7 +1721,7 @@
           >
         </p>
       </section>
-      <section class="Switch">
+      <section class="Switch" id="Switch">
         <h1 class="main-topic-title">Switch</h1>
         <hr />
         <p>
@@ -1861,7 +1883,7 @@
           <a href="https://javascript.info/switch">The "switch" statement</a>
         </p>
       </section>
-      <section class="Type-Conversion">
+      <section class="Type-Conversion" id="TypeConver">
         <h1 class="main-topic-title">Type Conversion / Преобразование типа</h1>
         <hr />
         <h3>Конвертація типів</h3>
@@ -2000,6 +2022,324 @@
             href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is"
             >Object.is()</a
           >
+        </p>
+      </section>
+      <section class="Object-Basics" id="ObjectBasics">
+        <h1 class="main-topic-title">Object Basics / Основы Обьекта</h1>
+        <hr />
+        <h3>Основи роботи з об'єктами</h3>
+        <hr />
+        <p>
+          Об’єкти використовуються для групування даних, пов'язаних між собою.
+          При цьому кожне значення в об'єкті зберігається під певною назвою
+          (ключем). Наприклад, інформацію про людину можна записати наступним
+          чином:
+        </p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            age: 20,
+          };
+          
+          console.log(user); // { firstName: 'John', lastName: 'Smith', age: 20 }
+          
+        </pre>
+        <p>
+          У цьому прикладі firstName, lastName та age є ключами (keys), а John,
+          Smith та 20 — значеннями (values). Ключ і значення разом часто
+          називають властивістю об'єкта (property).
+        </p>
+        <p>
+          При цьому, якщо ключ співпадає з назвою якоїсь змінної, то додавання
+          такої властивості можна скоротити:
+        </p>
+        <pre>
+          const age = 20;
+          const user = {
+            age: 30,
+            age: age, // повний запис
+            age, // скорочений запис
+          };
+
+          console.log(user); // { age: 20 }
+
+        </pre>
+        <p>
+          Зверни увагу: Коли один ключ в об'єкті додається декілька разів, то
+          використовується тільки його останнє значення.
+        </p>
+        <p>
+          Ключ об'єкта — це рядок, тому його можна писати в лапках (одинарних чи
+          подвійних). При цьому в лапках можуть бути будь-які символи, а без
+          лапок можна записати тільки ключі, які:
+        </p>
+        <ul>
+          <li>
+            Є валідною назвою змінної (містять лише літери, цифри, _ чи $ і не
+            починаються з цифри).
+          </li>
+          <li>або є цілим невід'ємним числом (як індекс в масиві).</li>
+        </ul>
+        <p>Усі інші ключі треба писати в лапках.</p>
+        <pre>
+          const user = {
+            '!@#$%^&*() first name': 'John',
+            "1234567890 last name": 'Smith',
+            age: 20,
+            0: 'zero',
+            9: 'nine',
+          };
+          
+        </pre>
+        <p>
+          Також при створенні об'єкта можна скористатися квадратними дужками для
+          обчислення ключа:
+        </p>
+        <pre>
+          const prefix = 'last';
+
+          const user = {
+            [prefix + 'Name']: 'Smith',
+            ['a' + 'g' + 'e']: 20,
+          };
+
+          console.log(user); // { lastName: 'Smith', age: 20 }
+
+        </pre>
+        <pre>
+          const prefix = 'last';
+
+          const user = {
+            [prefix + 'Name']: 'Smith',
+            ['a' + 'g' + 'e']: 20,
+          };
+
+          console.log(user); // { lastName: 'Smith', age: 20 }
+
+        </pre>
+        <h3>Отримання властивостей</h3>
+        <hr />
+        <p>
+          Щоб отримати значення, збережене під якимось ключем, можна використати
+          оператор . (user.age) або квадратні дужки з рядком всередині
+          (user['age']):
+        </p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            age: 20,
+          };
+          
+          console.log(
+            user.firstName, // John
+            user['age'], // 20
+          );
+          
+        </pre>
+        <p>
+          Зверни увагу: крапку . можна використати тільки для ключа, що є
+          валідною назвою змінної (який можна створити без лапок).
+        </p>
+        <p>
+          У квадратних дужках може бути будь-який рядок в лапках або вираз для
+          обчислення ключа. Наприклад, можна зробити конкатенацію або навіть
+          викликати функцію:
+        </p>
+        <pre>
+          function getKey() {
+            return 'age';
+          }
+          
+          const prefix = 'last';
+          
+          console.log(
+            user[prefix + 'Name'], // user['lastName'] === 'Smith'
+            user[getKey()], // user['age'] === 20
+          );
+          
+        </pre>
+        <h3>Редагування або додавання властивостей</h3>
+        <hr />
+        <p>
+          Щоб редагувати або додати нову властивість, також можна використати
+          оператор . (dot notation) або квадратні дужки:
+        </p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            age: 20,
+          };
+          
+          // редагування
+          user.age = 21;
+          user['firstName'] = 'Michael';
+          
+          console.log(
+            user.firstName, // Michael
+            user.age, // 21
+          );
+          
+          // додавання
+          user.isMarried = false;
+          user['hasJob'] = true;
+          
+          console.log(user);
+          /*
+          {
+            firstName: 'Michael',
+            lastName: 'Smith',
+            age: 21,
+            isMarried: false,
+            hasJob: true
+          }
+          */
+          
+        </pre>
+        <h3>Видалення властивостей</h3>
+        <hr />
+        <p>Щоб видалити властивість з об’єкта, використай оператор delete:</p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            age: 20,
+            hasJob: true,
+          };
+          
+          delete user.age;
+          delete user['hasJob'];
+          
+          console.log(user); // { firstName: 'John', lastName: 'Smith' }
+          
+        </pre>
+        <h3>Перевірка властивостей</h3>
+        <hr />
+        <p>
+          Щоб перевірити, чи має об’єкт властивість, можна скористатися
+          оператором in. Він поверне true, якщо об'єкт має вказану властивість:
+        </p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            age: 20,
+          };
+          
+          console.log(
+            'age' in user, // true
+            'isMarried' in user, // false
+          );
+          
+        </pre>
+        <p>
+          В оператора in є недолік — він перевіряє і успадковані властивості (ми
+          обговоримо їх пізніше в цьому курсі). Але існують методи
+          hasOwnProperty і Object.hasOwn, які повертають true, якщо об'єкт має
+          власну (не успадковану) властивість:
+        </p>
+        <pre>
+          console.log(
+            user.hasOwnProperty('age'), // true
+            user.hasOwnProperty('isMarried'), // false
+          )
+
+          console.log(
+            Object.hasOwn(user, 'age'), // true
+            Object.hasOwn(user, 'isMarried'), // false
+          );
+
+        </pre>
+        <p>
+          Зверни увагу: метод Object.hasOwn найнадійніший, але він з'явився не
+          так давно, і підтримується не всіма середовищами. Тому
+          .hasOwnProperty() все ще актуальний.
+        </p>
+        <h3>Перебір властивостей об'єкта</h3>
+        <hr />
+        <p>Для перебору властивостей об’єкта можна використати цикл for in:</p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            age: 20,
+          };
+          
+          for (let key in user) {
+            console.log(`${key} is ${user[key]}`); 
+          }
+          
+          /*
+          firstName is John
+          lastName is Smith
+          age is 20
+          */
+          
+        </pre>
+        <p>
+          Крім того, за допомогою методів Object.keys, Object.values та
+          Object.entries можна
+        </p>
+        <p>отримати масиви ключів, значень або пар [key, value].</p>
+        <pre>
+          console.log(
+            Object.keys(user), // ['firstName', 'lastName', 'age']
+            Object.values(user), // ['John', 'Smith', 20]
+
+            Object.entries(user),
+            /*
+            [
+              ['firstName', 'John'],
+              ['lastName', 'Smith'],
+              ['age', 20]
+            ]
+            */
+          ); 
+
+        </pre>
+        <p>
+          І перебір об'єкта може виглядати наступним чином:
+        </p>
+        <pre>
+          for (const key of Object.keys(user)) {
+            console.log(`${key} is ${user[key]}`); 
+          }
+          
+          for (const value of Object.values(user)) {
+            console.log(value); 
+          }
+          
+          for (const entry of Object.entries(user)) {
+            console.log(`${entry[0]} is ${entry[1]}`); 
+          }
+          
+        </pre>
+      </section>
+      <section class="Useful-links">
+        <h3>Корисні посилання</h3>
+        <hr>
+        <p>
+          <a href="https://www.w3schools.com/js/js_objects.asp">JavaScript Objects</a>
+        </p>
+        <p>
+          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/delete">delete operator</a>
+        </p>
+        <p>
+          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/in">in operator</a>
+        </p>
+        <p>
+          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty">hasOwnProperty()</a>
+        </p>
+        <p>
+          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">Object.keys()</a>
+        </p>
+        <p>
+          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/values">Object.values()</a>
+        </p>
+        <p>
+          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/entries">Object.entries()</a>
         </p>
       </section>
     </div>

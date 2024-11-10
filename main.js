@@ -1,3 +1,13 @@
+// Рабочий скрипт для Конспекта, - Не удалять
+const selectElem = document.querySelector("#SelectJs");
+selectElem.addEventListener("change", function () {
+  let sectionId = this.value;
+  if (sectionId) {
+    window.location.href = sectionId;
+  }
+});
+console.log(selectElem);
+// --------- //
 let mark = 59;
 let passedTheTest = mark >= 60;
 // оператор "не равенства" - !значение;
@@ -402,26 +412,246 @@ console.log(isTidy(-1339));
 // переписать функцияю на swith
 
 function getTask(weekday) {
-  switch(weekday){
-    case 'monday': return 'Write a new module for the program';
-    case 'tuesday': return 'Test the module and find bugs';
-    case 'wednesday': return 'Write a new module for the program';
-    case 'thursday': return 'Test the module and find bugs';
-    case 'friday': return 'You need to meet the boss today';
-    case 'saturday': return 'Spend the evening with your friends';
-    case 'sunday': return 'Go to the movies in the evening';
-    default: return 'Entered the wrong day of the week';
+  switch (weekday) {
+    case "monday":
+      return "Write a new module for the program";
+    case "tuesday":
+      return "Test the module and find bugs";
+    case "wednesday":
+      return "Write a new module for the program";
+    case "thursday":
+      return "Test the module and find bugs";
+    case "friday":
+      return "You need to meet the boss today";
+    case "saturday":
+      return "Spend the evening with your friends";
+    case "sunday":
+      return "Go to the movies in the evening";
+    default:
+      return "Entered the wrong day of the week";
   }
-}  
-console.log(getTask('monday'));
-console.log(getTask(''));
+}
+console.log(getTask("monday"));
+console.log(getTask(""));
 
-function getName(count){
-
-  switch(true){
-    case count < 2: return 'one';
-    case count <= 4: return 'A few';
-    default: return 'Many';
+function getName(count) {
+  switch (true) {
+    case count < 2:
+      return "one";
+    case count <= 4:
+      return "A few";
+    default:
+      return "Many";
   }
 }
 console.log(getName(5));
+// Подсчет детей и взрослых для бронирования номера
+
+function canTheyBook(adultsCount, childrenCount) {
+  countPerson = +adultsCount + +childrenCount;
+  console.log(+adultsCount, +childrenCount);
+  if (countPerson > 8 || !adultsCount || childrenCount > adultsCount * 2) {
+    return false;
+  } else {
+    return true;
+  }
+}
+console.log(canTheyBook(0, 0));
+// предложение номеров согласно данным
+
+// small room для 4 осіб
+// small room + extra bed
+// big room для 8 осіб
+// 'big room + extra bed'
+console.log(`************`);
+
+function recommendRoom(adultsCount, childrenCount = 0, babiesCount = 0) {
+  if (adultsCount) {
+    let personeCount = adultsCount + childrenCount + babiesCount;
+
+    if (personeCount <= 4 && babiesCount + childrenCount <= adultsCount * 2) {
+      return `small room`;
+    }
+    if (
+      babiesCount &&
+      personeCount < 6 &&
+      babiesCount + childrenCount <= adultsCount * 2
+    ) {
+      return `small room + extra bed`;
+    }
+    if (
+      personeCount > 4 &&
+      personeCount <= 8 &&
+      babiesCount + childrenCount <= adultsCount * 2
+    ) {
+      return `big room`;
+    }
+    if (
+      babiesCount &&
+      personeCount > 4 &&
+      personeCount <= 9 &&
+      babiesCount + childrenCount <= adultsCount * 2
+    ) {
+      return "big room + extra bed";
+    }
+    return ` incorrect number of guests`;
+  }
+  return `not adult guest`;
+}
+
+console.log(recommendRoom(3, 2));
+console.log("****************");
+
+// Обьекты / Object
+let firstName = "Gennadiy";
+let lastName = "Bashliy";
+let age1 = 45;
+
+printInfo(firstName, lastName, age1);
+
+function printInfo(firstName, lastName, age) {
+  console.log(`User ${firstName} ${lastName} is ${age}`);
+}
+const user1 = {
+  firstName: "Tanya",
+  LastName: "Sorokina",
+  age: 38,
+};
+console.log(user1);
+
+const people = [
+  { 
+    nameFirst: "Diana", 
+    lastName: "Voronova", 
+    gender: "female", 
+    age: 25,
+  },
+  {
+    nameFirst: "Dmitro",
+    lastName: "Gogol",
+    gender: "male",
+    age: 35,
+  },
+];
+
+function removeFemaleAges(peop) {
+  for (const i of peop) {
+    if (i.gender === 'female') {
+      delete i.age;
+    }
+  }
+}
+removeFemaleAges(people)
+console.log(people);
+// Массив роботов и отбор их по Версии
+const robots = [
+  { coreVersion: 9 },
+  { coreVersion: 13 },
+  { coreVersion: 16 },
+  { coreVersion: 9 },
+  { coreVersion: 14 },
+];
+
+
+function getOutdated(robotsArr, newVersion) {
+  const arrayInd = [];
+  for(let i = 0; i < robotsArr.length; i ++){
+    if(robotsArr[i].coreVersion < newVersion){
+      console.log(robotsArr[i]);
+      arrayInd.push(i);
+    } 
+  }
+  return arrayInd;
+}
+console.log(getOutdated(robots, 10));
+// классная работа условие по нахождение наличие свойства в обьекте
+const userN = {
+  firstName: 'Misha',
+  age: 39,
+  isMarried: false,
+}
+const key = 'isMarried';
+
+// хорошая проверка если не указать явно undefined в занчении свойства.
+
+if(userN[key] !== undefined){
+  console.log(
+    `Property exists`,
+     userN[key],
+     );
+}
+// Надежная проверка, но проверяет и унаследованные свойства.
+if (key in userN){
+  console.log(
+    `Property exists`,
+    userN[key],
+    userN.age)
+}
+// Отличная проверка но этот метод новый и еще потдерживаетс яне всеми браузерами
+if(Object.hasOwn(userN, 'isMarried')){
+  console.log('Object.hasOwn сработал !')
+}
+// проверка на наличии свойства в обьекте и создание свойства из имеющегося свойства с получением значения из его первой части свойства.
+const usersAll = [
+  {
+    firstName: undefined,
+    lastName: 'Holy',
+    fullName: 'Jack Holy',
+  },
+  {
+    lastName: 'Adams',
+    fullName: 'Mike Adams',
+  },
+];
+function restoreNames(users) {
+  for (const n of users) {
+    if (!n.firstName || n.firstName === undefined) {
+      n.firstName = n.fullName.split(' ')[0];
+    }
+  }
+}
+restoreNames(usersAll);
+console.log(usersAll)
+// подсчет типов товаров и создание обьекта с типом и колличеством
+
+
+let boxesObj = {};
+function countBoxes(boxes) {
+  for (const n of boxes) {
+    if(!boxesObj[n]){
+      boxesObj[n] = 1;
+    } else
+    if (boxesObj[n]) {
+      boxesObj[n] += 1;
+    }
+  }
+  return boxesObj;
+}
+console.log(countBoxes('aabbbbbca'));
+
+for(const k in boxesObj){
+  console.log(k, boxesObj[k]);
+}
+// let arrObj = (Object.keys(boxesObj));
+
+
+for(const k of Object.keys(boxesObj)){
+  console.log(k, boxesObj[k]);
+}
+console.log(Object.keys(boxesObj));
+console.log(Object.values(boxesObj));
+console.log(Object.entries(boxesObj));
+// сравнение роботов 
+const charlie = { serialNo: 1, chipVer: 12 };
+
+const lordy = { serialNo: 2, chipVer: 12 };
+
+const compareRobots = (robot1, robot2) => {
+  console.log(Object.entries(robot1)[1], Object.entries(robot2)[1]);
+  if(Object.entries(robot1)[1] === Object.entries(robot2)[1]){
+    return true;
+  } else {
+    false
+  }
+};
+console.log(compareRobots(charlie, lordy));
