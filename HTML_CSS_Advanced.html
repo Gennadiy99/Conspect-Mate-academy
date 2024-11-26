@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML + CSS Advanced</title>
+  </head>
+  <body>
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Конспект MateAcademy " JS Bsics"</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+      <link rel="icon" href="./images/Logo MateAcademy.png" />
+      <link rel="stylesheet" href="style/fontello.css" />
+      <link rel="stylesheet" href="style/main.css" />
+    </head>
+    <section class="nav-bar">
+      <div class="nav">
+        <a href="index.html">Index</a>
+        <a href="Git_and_Terminal.html">Git and Terminal</a>
+        <a href="JS_Basics _Extended.html">JS Basics Extended</a>
+        <a href="HTML_CSS_Advanced.html">HTML + CSS Advanced</a>
+        <a href="contacts.html">Contact</a>
+      </div>
+    </section>
+    <div class="container">
+      <h1 class="main-topic-title">lesson topic: HTML_CSS_Advanced.html</h1>
+      <div class="select-HTML-CSS-Advanced">
+        <select name="selectSection" id="HTML_CSS_Advanced">
+          <option value="#">-- Select section --</option>
+          <option value="#">Первый раздел</option>
+        </select>
+      </div>
+
+      <section class="HTML-CSS-Advanced">
+        <h3>Налаштування середовища</h3>
+        <hr />
+        <p>
+          Для виконання завдань цього та наступних модулів необхідно встановити
+          деякі інструменти. Правильне налаштування середовища допоможе тобі
+          ефективно навчатися та працювати над проєктами.
+        </p>
+        <h3>Що таке Node.js?</h3>
+        <hr />
+        <p>
+          Node.js — це вільне та відкрите середовище виконання JavaScript, яке
+          побудоване на двигуні V8 JavaScript Engine компанії Google Chrome. Це
+          означає, що ти можеш створювати вебдодатки з використанням однієї мови
+          на обох сторонах — клієнтській та серверній.
+        </p>
+        <h3>Чому це потрібно?</h3>
+        <hr />
+        <p>Node.js надає безліч переваг:</p>
+        <ol>
+          <li>
+            <b>Швидкість:</b> завдяки асинхронній обробці запитів, Node.js може
+            обробляти багато запитів одночасно.
+          </li>
+          <li>
+            <b>Універсальність:</b> виконання JavaScript не тільки в браузері
+            відкриває розробникам можливість створення серверних додатків без
+            необхідності вивчення нової мови програмування.
+          </li>
+          <li>
+            <b>Велика спільнота:</b> завдяки великій спільноті ти завжди можеш
+            знайти бібліотеки та ресурси, які спростять твою роботу.
+          </li>
+          <p>
+            У цьому модулі ти не будеш занурюватись у використання Node.JS. Він
+            знадобиться нам для підключення і роботи зі сторонніми бібліотеками.
+          </p>
+        </ol>
+        <h3>Встановлення Node.js 20</h3>
+        <hr />
+        <p>
+          Щоб встановити Node.js 20 собі на комп'ютер, виконай наступні кроки:
+        </p>
+        <ol>
+          <li>
+            Завантаж 64-розрядний інсталятор для твоєї операційної системи
+            <a
+              href="https://nodejs.org/en/download/package-manager"
+              target="_blank"
+            >
+              з цієї сторінки.
+            </a>
+          </li>
+          <li>
+            Запусти його та дійди до кінця залишаючи всі налаштування за
+            замовчуванням.
+          </li>
+          <li>Відкрий термінал (GitBash для Windows або ZSH для macOS).</li>
+          <li>
+            У терміналі виконай команду node -v. Ти маєш побачити версію
+            v20.xx.x.
+          </li>
+        </ol>
+        <h3>Встанови останні версії розширень VSCode</h3>
+        <hr />
+        <p>
+          Використання розширень у VSCode допоможе підвищити продуктивність і
+          зручність роботи. Ось кілька рекомендованих розширень:
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint"
+              target="_blank"
+              >ESLint:
+            </a>
+            допомагає підтримувати код у чистоті та відповідності стилю.
+          </li>
+          <li>
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig"
+              target="_blank"
+              >EditorConfig:
+            </a>
+            створює єдині правила форматування для різних редакторів.
+          </li>
+          <li>
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint"
+              target="_blank"
+              >Stylelint:
+            </a>
+            перевіряє CSS на помилки та недоліки.
+          </li>
+          <li>
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=kamikillerto.vscode-linthtml"
+              target="_blank"
+              >LintHTML:
+            </a>
+            перевіряє HTML-код на помилки.
+          </li>
+          <li>
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode"
+              target="_blank"
+              >Prettier:
+            </a>
+            автоматично форматує код, роблячи його більш читабельним.
+          </li>
+        </ul>
+        <h3>NPM</h3>
+        <hr />
+        <p>
+          <b>NPM (Node Package Manager)</b> — це менеджер пакетів для Node.js,
+          який дозволяє управляти бібліотеками та інструментами, які ти будеш
+          використовувати у своїх проєктах.
+        </p>
+        <h3>Чому це потрібно?</h3>
+        <hr />
+        <ul>
+          <li>
+            Управління залежностями: з NPM ти можеш легко встановлювати,
+            оновлювати та видаляти необхідні модулі. Це можуть бути як
+            CSS-бібліотеки, так і інструменти для збірки проєкту.
+          </li>
+          <li>
+            Широкий вибір бібліотек: у NPM доступні тисячі готових бібліотек,
+            які можуть прискорити твою розробку.
+          </li>
+        </ul>
+        <h3>Як використовувати NPM?</h3>
+        <ol>
+          <li>
+            У терміналі введи команду npm init, щоб створити файл package.json.
+            Цей файл міститиме інформацію про твій проєкт і його залежності.
+          </li>
+          <li>
+            Щоб встановити новий пакет, використай команду npm install <назва
+            пакета>. Наприклад, npm install express для встановлення бібліотеки
+            Express.
+          </li>
+          <li>
+            Щоб встановлений пакет також додався до файлу package.json, при
+            виклику npm install треба передати параметр –save. Наприклад, npm
+            install express –save.
+          </li>
+          <li>
+            Після налаштування Node.js та NPM, ти можеш використовувати
+            різноманітні інструменти, які спростять процес розробки. Ось кілька
+            з них:
+          </li>
+        </ol>
+        <ul>
+          <li>
+            Parcel — інструмент для пакування вебдодатків. Він пропонує швидку
+            роботу з використанням багатоядерної обробки та не вимагає
+            налаштувань.
+          </li>
+          <li>
+            Bootstrap/Tailwind — популярні CSS-фреймворки, що можуть спростити
+            процес створення вебінтерфейсів.
+          </li>
+          <li>
+            React/Angular — JavaScript-фреймворки для створення динамічних
+            односторінкових вебдодатків.
+          </li>
+        </ul>
+      </section>
+      <section class="figma">
+        <h1 class="main-topic-title">Знайомство з Figma</h1>
+        <hr />
+        <p>
+          У процесі навчання і в подальшій роботі тобі потрібно буде працювати з
+          Figma, оскільки цей інструмент є популярним серед дизайнерів.
+          Опанувавши його, ти зможеш легко отримувати доступ до макетів,
+          переглядати специфікації (кольори, шрифти, розміри) та відтворювати
+          дизайн у коді.
+        </p>
+        <p>
+          Тому перш ніж перейти до навчання та перших завдань, потрібно
+          зареєструватися в Figma. Для цього:
+        </p>
+        <ol>
+          <li>
+            Перейди на офіційний сайт
+            <a href="https://www.figma.com/" target="_blank">Figma.</a>
+          </li>
+          <li>
+            Натисни на кнопку Get started for free на сторінці або в правому
+            верхньому кутку.
+          </li>
+          <li>
+            Введи свою електронну пошту та придумай пароль, або скористайся
+            реєстрацією через Google. Натисни на кнопку Create account.
+          </li>
+          <li>
+            Перевір свою електронну скриньку, знайди лист від Figma з темою
+            Verify your email address і натисни на кнопку Verify email.
+          </li>
+          <li>
+            Заповни дані про себе і дай відповідь на декілька запитань стосовно
+            планів на використання Figma (ти можеш обрати будь-які варіанти
+            відповіді на них на свій вибір).
+          </li>
+          <li>
+            Реєстрація майже завершена, залишилося обрати план — для навчання
+            тобі буде достатньо Starter.
+          </li>
+        </ol>
+        <p>
+          Тепер ти можеш почати працювати з Figma! А в наступному відео ти
+          дізнаєшся, як саме використовувати Figma для виконання завдань.
+        </p>
+      </section>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

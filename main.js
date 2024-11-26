@@ -520,10 +520,10 @@ const user1 = {
 console.log(user1);
 
 const people = [
-  { 
-    nameFirst: "Diana", 
-    lastName: "Voronova", 
-    gender: "female", 
+  {
+    nameFirst: "Diana",
+    lastName: "Voronova",
+    gender: "female",
     age: 25,
   },
   {
@@ -536,12 +536,12 @@ const people = [
 
 function removeFemaleAges(peop) {
   for (const i of peop) {
-    if (i.gender === 'female') {
+    if (i.gender === "female") {
       delete i.age;
     }
   }
 }
-removeFemaleAges(people)
+removeFemaleAges(people);
 console.log(people);
 // Массив роботов и отбор их по Версии
 const robots = [
@@ -552,106 +552,425 @@ const robots = [
   { coreVersion: 14 },
 ];
 
-
 function getOutdated(robotsArr, newVersion) {
   const arrayInd = [];
-  for(let i = 0; i < robotsArr.length; i ++){
-    if(robotsArr[i].coreVersion < newVersion){
+  for (let i = 0; i < robotsArr.length; i++) {
+    if (robotsArr[i].coreVersion < newVersion) {
       console.log(robotsArr[i]);
       arrayInd.push(i);
-    } 
+    }
   }
   return arrayInd;
 }
 console.log(getOutdated(robots, 10));
 // классная работа условие по нахождение наличие свойства в обьекте
 const userN = {
-  firstName: 'Misha',
+  firstName: "Misha",
   age: 39,
   isMarried: false,
-}
-const key = 'isMarried';
+};
+const key = "isMarried";
 
 // хорошая проверка если не указать явно undefined в занчении свойства.
 
-if(userN[key] !== undefined){
-  console.log(
-    `Property exists`,
-     userN[key],
-     );
+if (userN[key] !== undefined) {
+  console.log(`Property exists`, userN[key]);
 }
 // Надежная проверка, но проверяет и унаследованные свойства.
-if (key in userN){
-  console.log(
-    `Property exists`,
-    userN[key],
-    userN.age)
+if (key in userN) {
+  console.log(`Property exists`, userN[key], userN.age);
 }
 // Отличная проверка но этот метод новый и еще потдерживаетс яне всеми браузерами
-if(Object.hasOwn(userN, 'isMarried')){
-  console.log('Object.hasOwn сработал !')
+if (Object.hasOwn(userN, "isMarried")) {
+  console.log("Object.hasOwn сработал !");
 }
 // проверка на наличии свойства в обьекте и создание свойства из имеющегося свойства с получением значения из его первой части свойства.
 const usersAll = [
   {
     firstName: undefined,
-    lastName: 'Holy',
-    fullName: 'Jack Holy',
+    lastName: "Holy",
+    fullName: "Jack Holy",
   },
   {
-    lastName: 'Adams',
-    fullName: 'Mike Adams',
+    lastName: "Adams",
+    fullName: "Mike Adams",
   },
 ];
 function restoreNames(users) {
   for (const n of users) {
     if (!n.firstName || n.firstName === undefined) {
-      n.firstName = n.fullName.split(' ')[0];
+      n.firstName = n.fullName.split(" ")[0];
     }
   }
 }
 restoreNames(usersAll);
-console.log(usersAll)
+console.log(usersAll);
 // подсчет типов товаров и создание обьекта с типом и колличеством
-
 
 let boxesObj = {};
 function countBoxes(boxes) {
   for (const n of boxes) {
-    if(!boxesObj[n]){
+    if (!boxesObj[n]) {
       boxesObj[n] = 1;
-    } else
-    if (boxesObj[n]) {
+    } else if (boxesObj[n]) {
       boxesObj[n] += 1;
     }
   }
   return boxesObj;
 }
-console.log(countBoxes('aabbbbbca'));
+console.log(countBoxes("aabbbbbca"));
 
-for(const k in boxesObj){
+for (const k in boxesObj) {
   console.log(k, boxesObj[k]);
 }
 // let arrObj = (Object.keys(boxesObj));
 
-
-for(const k of Object.keys(boxesObj)){
+for (const k of Object.keys(boxesObj)) {
   console.log(k, boxesObj[k]);
 }
 console.log(Object.keys(boxesObj));
 console.log(Object.values(boxesObj));
 console.log(Object.entries(boxesObj));
-// сравнение роботов 
-const charlie = { serialNo: 1, chipVer: 12 };
-
-const lordy = { serialNo: 2, chipVer: 12 };
+// сравнение роботов
+const charlie = { serialNo: 1, chipVer: 15 };
+const lordy = { serialNo: 2, chipVer: 15 };
 
 const compareRobots = (robot1, robot2) => {
-  console.log(Object.entries(robot1)[1], Object.entries(robot2)[1]);
-  if(Object.entries(robot1)[1] === Object.entries(robot2)[1]){
-    return true;
-  } else {
-    false
+  if (Object.keys(robot1).length !== Object.keys(robot2).length) {
+    return false;
   }
+  for (const key in robot1) {
+    console.log(key);
+    if (key === "serialNo" && key in robot2) {
+      continue;
+    }
+    if (!(key in robot2) || robot1[key] !== robot2[key]) {
+      return false;
+    }
+  }
+  return true;
 };
 console.log(compareRobots(charlie, lordy));
+
+// if (Object.values(robot1)[1] === Object.values(robot2)[1]) {
+//   return true;
+// } else {
+//   return false;
+// }
+
+// for(const key of charlie){
+//   console.log(key);
+// }
+// ----- Анализ Дистанции спортсмена
+function getTriathlonDistance(distance) {
+  let totalDistance = 226.31;
+  const overcame = {};
+
+  if (distance === 0) {
+    return "Starting Line... Good Luck!";
+  }
+  if (distance >= 226.31) {
+    return "You're done! Stop running!";
+  } else if (distance > 0 && distance < 3.86) {
+    overcame.swim = `${(totalDistance - distance).toFixed(2)} to go!`;
+  }
+  if (distance >= 3.86 && distance < 184.11) {
+    overcame.bike = `${(totalDistance - distance).toFixed(2)} to go!`;
+  }
+  if (distance >= 184.11 && distance < 226.31) {
+    overcame.run = `${(totalDistance - distance).toFixed(2)} to go!`;
+  }
+  return overcame;
+}
+console.log(getTriathlonDistance(2.31));
+// Удалить повторяющиеся символы и вывести кол-во удаленных символов
+function colorStones(stones) {
+  let newStones = "";
+
+  for (let i = 0; i < stones.length; i++) {
+    if (stones[i] !== stones[i + 1]) {
+      newStones += stones[i];
+    }
+  }
+  return stones.length - newStones.length;
+}
+console.log(colorStones("rggbsttu"));
+// подсчет кол-ва меньших цифр относительно предыдущего числа в массиве.
+console.log("***************");
+
+let arr = [5, 4, 4, 2, 1];
+
+function countNextSmaller(numbers) {
+  let newArrNumbers = [];
+
+  for (let i = 0; i < numbers.length; i++) {
+    let countNum = 0;
+
+    for (let k = [i + 1]; k < numbers.length; k++) {
+      if (numbers[i] > numbers[k]) {
+        countNum += 1;
+      }
+    }
+
+    newArrNumbers.push(countNum);
+  }
+
+  return newArrNumbers;
+}
+console.log(countNextSmaller(arr));
+// вытащить из url адресса строку с кодом товара
+
+let urlProd = "exampleshop.com/fancy-coffee-cup-p-90764-12052019.html";
+
+function getProductId(url) {
+  let strtInd = url.lastIndexOf("-p-") + 3;
+  let endInd = url.lastIndexOf("-");
+
+  console.log(strtInd, endInd);
+
+  let string = url.slice(strtInd, endInd);
+
+  return string;
+}
+console.log(getProductId(urlProd));
+// массив из произведения всех чисел массива с обеих сторон от первоначалного числа.
+
+// ----- таже но с выводом в консоль для понимания
+/* function getArrayProduct(numbers) {
+  if(numbers.length < 2){
+    return false;
+  }
+  for(const k of numbers){
+    if(k < 0){
+      return false;
+    }
+  }
+  let arrayNewNumbers = [];
+
+  for(let i = 0; i < numbers.length; i ++){
+    let result = numbers[i+1];
+    console.log(`Начальный элем. ${numbers[i]}`);
+
+    for( let k = 0; k < numbers.length; k ++){
+
+      if(i !== k){
+        console.log(`Индексы разные ${i} end ${k}`)
+        console.log(`ПроизвНач: ${result}`);
+        console.log(`Умнож на : ${numbers[k]}`);
+
+        result *= numbers[k];
+        console.log(`Конечное: ${result}`);
+      }
+    }
+    arrayNewNumbers.push(result)
+  }
+  return arrayNewNumbers;
+}
+console.log(getArrayProduct([1, 5, 2])); */
+console.log("****************************");
+
+function getArrayProduct(numbers) {
+  console.log(`Зашел массив: ${numbers}`);
+  if (numbers.length < 2) {
+    return false;
+  }
+  for (const k of numbers) {
+    if (k < 0) {
+      return false;
+    }
+  }
+
+  let arrayNewNumbers = [];
+  let result = 1;
+
+  for (let i = 0; i < numbers.length; i++) {
+    result *= numbers[i];
+  }
+  console.log(result);
+  for (let k = 0; k < numbers.length; k++) {
+    arrayNewNumbers.push(result / numbers[k]);
+  }
+  return arrayNewNumbers;
+}
+console.log(getArrayProduct([1, 5, 2]));
+
+/* Привіт, загалом треба поправити трохи логіку. Функція getArrayProduct має приймаи масив чисел як аргумент. Спочатку вона оголошує змінну total, ініціалізовану значенням 1, для обчислення добутку всіх елементів масиву, та порожній масив totalArr, який міститиме результат. Перший цикл for проходить по всіх елементах масиву numbers, і на кожній ітерації значення total множиться на поточний елемент numbers[i], щоб отримати загальний добуток усіх чисел у масиві. Після завершення цього циклу змінна total містить добуток всіх чисел у масиві.
+
+Далі другий цикл for знову ітерується по масиву numbers, і на кожній ітерації функція ділить total на поточний елемент numbers[j], щоб отримати добуток усіх чисел, окрім поточного. Отримане значення додається до масиву totalArr за допомогою методу push(). Після завершення циклу totalArr містить масив, де кожен елемент відповідає добутку всіх чисел у вхідному масиві, окрім числа на відповідній позиції. В кінці функція повертає масив totalArr як результат. */
+
+function getRowWeights(people) {
+  let time1 = 0;
+  let time2 = 0;
+  const newArr = [];
+  for (let i = 0; i < people.length; i++) {
+    if (i % 2 === 0) {
+      time1 += people[i];
+    } else {
+      time2 += people[i];
+    }
+  }
+  newArr.push(time1);
+  console.log(`Команда 1: ${time1}`);
+  newArr.push(time2);
+  console.log(`Команда 2: ${time2}`);
+  return newArr;
+}
+// console.log(getRowWeights([10, 85, 90]));
+console.log(getRowWeights([10]));
+
+console.log("****************************");
+// сравнение свойств в обьекте между собой
+let suspects = {
+  James: ["Jacob", "Bill", "Lucas"],
+  Johnny: ["David", "Kyle", "Lucas"],
+  Peter: ["Lucy", "Kyle"],
+};
+
+let dead = ["Lucas", "Bill"];
+
+// function getKiller(suspects, dead) {
+
+// let arrValue = Object.values(suspects);
+
+// for (let n = 0; n < arrValue.length; n++) {
+
+//   let peopls = arrValue[n];
+//   let countSuspects = 0;
+
+//   for (const k of peopls) {
+//     console.log(`${k} = ${dead[0]} and ${dead[1]}`);
+//     if (dead.includes(k)) {
+//       countSuspects += 1;
+//     }
+//   }
+//   console.log(countSuspects);
+//   if(countSuspects === dead.length){
+//     console.log('Подозреваемый найден', peopls);
+//   }
+// }
+
+// }
+function getKiller(suspects, dead) {
+  let arrKeys = Object.keys(suspects);
+
+  for (let n = 0; n < arrKeys.length; n++) {
+    let suspect = arrKeys[n];
+    let peopls = suspects[suspect];
+    let countSuspects = 0;
+
+    for (const k of peopls) {
+      if (dead.includes(k)) {
+        countSuspects += 1;
+      }
+    }
+    if (countSuspects === dead.length) {
+      return suspect;
+    }
+  }
+}
+console.log(getKiller(suspects, dead));
+// */*/*/*/*/*/*
+
+friends = [
+  { username: "David", status: "online", lastActivity: 10 },
+  { username: "Lucy", status: "offline", lastActivity: 22 },
+  { username: "Bob", status: "online", lastActivity: 104 },
+];
+
+function whoIsOnline(friends) {
+  let statusFriendObj = {};
+
+  for (const friend of friends) {
+    let keysProp = Object.keys(friend);
+
+    let key = null;
+    let value = null;
+
+    for (let p = 0; p < keysProp.length; p++) {
+      if (keysProp[p] === "username") {
+        value = friend[keysProp[p]];
+      }
+      if (keysProp[p] === "status") {
+        key = friend[keysProp[p]];
+      }
+
+      console.log(`Значение: ${keysProp[p]} ${friend[keysProp[p]]}`);
+
+      if (keysProp[p] === "lastActivity") {
+        if (friend[keysProp[p]] > 10 && key === "online") {
+          key = "away";
+        }
+      }
+    }
+    if (key && value) {
+      if (!statusFriendObj[key]) {
+        statusFriendObj[key] = [];
+      }
+      statusFriendObj[key].push(value);
+    }
+  }
+  return statusFriendObj;
+}
+
+console.log(whoIsOnline(friends));
+// **-**-**-**-***-***-***-***-
+const first = { a: 2, b: 4 };
+const second = { a: 2, b: 10 };
+const third = { d: -5 };
+
+function sumObjects(...arryObj) {
+  let resultObj = {};
+
+  for (const obj of arryObj) {
+    for (let key in obj) {
+      if (!resultObj[key]) {
+        resultObj[key] = obj[key];
+      } else {
+        resultObj[key] = resultObj[key] + obj[key];
+      }
+    }
+  }
+  return resultObj;
+}
+
+console.log(sumObjects(first, second, third));
+// ***-***-***-***-***-
+
+// function countMatchingSocks(colors) {
+//   let pars = 0;
+
+//   for (let i = 0; i < colors.length; i++) {
+//     let count = 1;
+
+//     for (let k = 0; k < colors.length; k++) {
+//       if (i !== k && colors[i] === colors[k]) {
+//         console.log(i, k);
+
+//         count += 1;
+//       }
+//     }
+//     console.log(count);
+//     pars += Math.floor(count / 2);
+//   }
+//   return pars;
+// }
+
+function countMatchingSocks(colors) {
+  let countColor = {};
+  let result = 0;
+
+  for (let color of colors) {
+    countColor[color] = (countColor[color] || 0) + 1;
+  }
+
+  let prop = Object.values(countColor);
+  for (const numCol of prop) {
+    result += Math.floor(numCol / 2);
+  }
+
+  return result;
+}
+
+console.log(countMatchingSocks([10, 20, 30, 10, 20, 10, 60]));
+
+console.log(Math.floor(4 / 2));
