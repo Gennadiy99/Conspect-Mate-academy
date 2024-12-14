@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./images/Logo MateAcademy.png" />
+    <link rel="stylesheet" href="style/fontello.css" />
+    <link rel="stylesheet" href="style/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <section class="nav-bar">
+        <div class="nav">
+          <a href="index.html">Index</a>
+          <a href="Git_and_Terminal.html">Git and Terminal</a>
+          <a href="JS_Basics _Extended.html">JS Basics Extended</a>
+          <a href="HTML_CSS_Advanced.html">HTML + CSS Advanced</a>
+          <a href="BEM.html">BEM</a>
+          <a href="SASS.html">SASS</a>
+        </div>
+      </section>
+      <section class="sass">
+        <h1 class="sass main-topic-title">SASS</h1>
+        <hr />
+        <h3>Налаштування зборки проєкту з препроцесором Sass</h3>
+        <p>
+          При використанні препроцесора ми пишемо стилі з використанням
+          синтаксису, відмінного від CSS. Тому браузер не може напряму
+          використовувати такі стилі. З'являється необхідність у компіляції
+          стилів з SCSS у CSS. Крім того, під час розробки, ми хочемо, щоб
+          сторінка автоматично оновлювалася кожного разу при зміні стилів. Тобто
+          нам потрібно, щоб компіляція стилів виконувалася автоматично при зміні
+          файлів.
+        </p>
+        <p>
+          Тому, замість розширення Live-server, ми використаємо зборщик
+          <a href="https://parceljs.org/getting-started/webapp/">parcel</a>
+          . Для цього ми маємо виконати наступні кроки:
+        </p>
+        <ol>
+          <li>
+            Запустити npm init -y, щоб створити файл package.json, де будуть
+            налаштування нашого проєкту.
+          </li>
+          <li>Встановити parcel командою npm i -D parcel.</li>
+          <li>
+            Створити директорію src з файлом index.html, що містить базову
+            розмітку.
+          </li>
+          <li>
+            Створити файл ./src/styles.scss і підключити його до index.html
+            тегом link:
+            <pre>&ltlink rel="stylesheet" href="styles.scss" /> </pre>
+          </li>
+          <li>
+            Для запуску проєкту додати команду "start" в розділі "scripts" файлу
+            package.json:
+            <pre>"start": "parcel ./src/index.html --open"</pre>
+          </li>
+          <li>
+            Запустити npm start, щоб parcel встановив усі необхідні пакети і
+            відкрив сторінку в браузері.
+          </li>
+        </ol>
+        <p>Ось орієнтовний вміст файлу package.json:</p>
+        <pre>
+          {
+            "scripts": {
+              "start": "parcel ./src/index.html --open",
+              "build": "parcel build --public-url=/dist/"
+            },
+            "devDependencies": {
+              "@parcel/transformer-sass": "^2.12.0",
+              "parcel": "^2.12.0"
+            }
+          }
+        </pre>
+        <p>
+          Схожа конфігурація вже використовується в усіх завданнях, тож для них
+          додатково нічого налаштовувати не потрібно.
+        </p>
+      </section>
+      <section class="Intro-to-SASS">
+        <h3 class="main-topic-title">Intro-to-SASS / Вступ до Sass</h3>
+        <hr />
+        <p>
+          Коли CSS коду стає багато, підтримувати стилі може стати складно.
+          Уникнути дублювань, спростити синтаксис та покращити структуру коду
+          допоможе CSS препроцесор.
+        </p>
+        <p>
+          <b>CSS препроцесор</b> — це програма, яка має свій власний синтаксис,
+          який потім перетворюється на CSS. Ти пишеш стилі в трохи іншому
+          синтаксисі, а потім програма перетворює цей код на звичайний CSS, який
+          браузери розуміють. Ми будемо розглядати препроцесор Sass з
+          використанням його синтаксису SCSS. Його синтаксис схожий на CSS, але
+          має додаткові можливості, які роблять написання стилів зручнішим.
+          Популярними альтернативами є Less та Stylus.
+        </p>
+        <h3>Можливості SCSS</h3>
+        <hr />
+        <p>
+          Синтаксис SCSS є розширенням звичайного CSS, тому почати можна з
+          простого перейменування CSS-файлу, і все буде працювати, як і раніше.
+          Нижче ми розглянемо приклади коду на SCSS і аналогічний код на CSS для
+          кращого розуміння можливостей.
+        </p>
+        <p>
+          <b>Вкладеність та &</b>
+        </p>
+        <p>Sass дозволяє вкладати селектори один в одного:</p>
+
+        <div style="display: flex">
+          <div>
+            <pre>
+              <p>SCSS</p>
+              .block {
+                font-size: 20px;
+              
+                p {
+                  color: red;
+                }
+              }
+            </pre>
+          </div>
+          <div>
+            <pre>
+              <p>CSS</p>
+              .block {
+                font-size: 20px;
+              }
+              p {
+                  color: red;
+                }
+            </pre>
+          </div>
+        </div>
+        <p>
+          Це дозволяє краще групувати стилі і уникати дублювання селектора, якщо
+          ми стилізуємо вкладені елементи. При вкладанні правил одне в одне ми
+          можемо використовувати префікс &, який заміняє селектор найближчого
+          контейнера.
+        </p>
+        <p>В цьому випадку фінальний селектор не матиме вкладеності:</p>
+        <div style="display: flex">
+          <div>
+            <pre>
+              <p>SCSS</p>
+              .block {
+                font-size: 20px;
+                
+                &__element {
+                  color: red;
+              
+                  &--modifier {
+                    color: blue;
+                  }
+                }
+              }
+              
+            </pre>
+          </div>
+          <div>
+            <pre>
+              <p>CSS</p>
+              .block {
+                font-size: 20px;
+              }
+              
+              .block__element {
+                color: red;
+              }
+              
+              .block__element--modifier {
+                color: blue;
+              }
+              
+            </pre>
+          </div>
+        </div>
+        <h3>Вирази</h3>
+        <hr />
+        <p>
+          <b>Sass</b> дозволяє виконувати обчислення з абсолютними значеннями
+          <u>(наприклад, px)</u> ще на етапі компіляції. Це дозволяє прибрати
+          <b>calc</b> та <b>var</b>, які не залежать від відносних розмірів:
+        </p>
+        <div style="display: flex">
+          <div>
+            <pre>
+              <p><b><u>SCSS</u></b></p>
+              $screenWidth: 600px;
+
+              .block {
+                width: $screenWidth * 2;
+                height: calc(#{$screenWidth + 10px} + 10%);
+              }
+            </pre>
+          </div>
+          <div>
+            <pre>
+              <p><b><u>CSS</u></b></p>
+              .block {
+                width: 1200px;
+                height: calc(610px + 10%);
+              }
+            </pre>
+          </div>
+        </div>
+      </section>
+      <section class="look-and-functions">
+        <h3 class="main-topic-title">
+          look and functions / внешний вид и Функции
+        </h3>
+        <hr />
+        <h3>Цикли</h3>
+        <p>Цикли дозволяють уникнути дублювання коду. Наприклад, цикл @for:</p>
+
+        <div style="display: flex">
+          <div>
+            <pre>
+              <p>SCSS</p>
+              @for $i from 1 through 3 {
+                .block-#{$i} {
+                  height: 100% / $i;
+                }
+              }
+              
+            </pre>
+          </div>
+          <div>
+            <pre>
+              <p>CSS</p>
+              .block-1 {
+                height: 100%; 
+              }
+              
+              .block-2 {
+                height: 50%; 
+              }
+              
+              .block-3 {
+                height: 33.3333333333%;
+              }
+              
+            </pre>
+          </div>
+        </div>
+        <p>
+          За допомогою циклу @each можна створювати стилі для кожного елемента
+          зі списку або кожної пари в map:
+        </p>
+        <div style="display: flex">
+          <div>
+            <pre>
+              <p>SCSS</p>
+              $colors: (
+                'error': #f00,
+                'notification': #0f0,
+                'success': #00f
+              );
+              
+              @each $name, $color in $colors {
+                .message--#{$name} {
+                  color: $color;
+                }
+              }
+                       
+            </pre>
+          </div>
+          <div>
+            <pre>
+              <p>CSS</p>
+              .message--error {
+                color: #f00;
+              }
+              
+              .message--notification {
+                color: #0f0;
+              }
+              
+              .message--success {
+                color: #00f;
+              }
+                       
+            </pre>
+          </div>
+        </div>
+        <h3>Функції</h3>
+        <p>Функції дозволяють перевикористовувати логіку обчислень:</p>
+        <div style="display: flex">
+          <div>
+            <pre>
+              <p>SCSS</p>
+              $bodyWidth: 600px;
+
+              @function size($width) {
+                @return $width / 2;
+              }
+              
+              .container {
+                width: size($bodyWidth);
+              }
+                      
+            </pre>
+          </div>
+          <div>
+            <pre>
+              <p>CSS</p>
+              .container {
+                width: 300px;
+              }
+              
+            </pre>
+          </div>
+        </div>
+        <p>
+          Взято из чата GPT подключение Parcel глобально на ПК для всех проэктов. Есть минус при командной работе, в случаи разных версий у каждого члена команды и своих наборах иструментов могут быть проблеммы. Поэтому для работы с командой лучше устанавливать Parcel локально к проэкту.
+        </p>
+        <p>
+          Рекомендованный порядок: 
+          Установить Parcel: bash Копировать код: 
+          <b>npm install -g parcel-bundler </b>
+          Инициализировать проект: bash Копировать код:
+          <b>npm init -y</b> 
+          Запустить Parcel: bash Копировать код: 
+          <b>parcel index.html</b>
+          Это обеспечит правильную работу Parcel с вашим проектом.
+        </p>
+      </section>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,12 +1,13 @@
 // Рабочий скрипт для Конспекта, - Не удалять
-const selectElem = document.querySelector("#SelectJs");
-selectElem.addEventListener("change", function () {
-  let sectionId = this.value;
-  if (sectionId) {
-    window.location.href = sectionId;
-  }
+document.querySelectorAll(".Select-section").forEach((selectElem) => {
+  selectElem.addEventListener("change", function () {
+    let sectionEl = this.value;
+    if (sectionEl) {
+      window.location.href = sectionEl;
+    }
+  });
 });
-console.log(selectElem);
+
 // --------- //
 let mark = 59;
 let passedTheTest = mark >= 60;

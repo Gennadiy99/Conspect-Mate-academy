@@ -16,17 +16,18 @@
   </head>
   <body>
     <section class="nav-bar">
-      <div class="nav"> 
+      <div class="nav">
         <a href="index.html">Index</a>
         <a href="Git_and_Terminal.html">Git and Terminal</a>
         <a href="JS_Basics _Extended.html">JS Basics Extended</a>
         <a href="HTML_CSS_Advanced.html">HTML + CSS Advanced</a>
-        <a href="contacts.html">Contact</a>
+        <a href="BEM.html">BEM</a>
+        <a href="SASS.html">SASS</a>
       </div>
     </section>
     <div class="container">
       <div class="select-Section-JS">
-        <select name="selectSection" id="SelectJs">
+        <select class="Select-section" name="selectSection">
           <option value="">-- Select section --</option>
           <option value="#styleCode">style code</option>
           <option value="#WorkingNumber">Working With Numbers</option>
@@ -2301,9 +2302,7 @@
           ); 
 
         </pre>
-        <p>
-          І перебір об'єкта може виглядати наступним чином:
-        </p>
+        <p>І перебір об'єкта може виглядати наступним чином:</p>
         <pre>
           for (const key of Object.keys(user)) {
             console.log(`${key} is ${user[key]}`); 
@@ -2321,27 +2320,47 @@
       </section>
       <section class="Useful-links">
         <h3>Корисні посилання</h3>
-        <hr>
+        <hr />
         <p>
-          <a href="https://www.w3schools.com/js/js_objects.asp">JavaScript Objects</a>
+          <a href="https://www.w3schools.com/js/js_objects.asp"
+            >JavaScript Objects</a
+          >
         </p>
         <p>
-          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/delete">delete operator</a>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/delete"
+            >delete operator</a
+          >
         </p>
         <p>
-          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/in">in operator</a>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/in"
+            >in operator</a
+          >
         </p>
         <p>
-          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty">hasOwnProperty()</a>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty"
+            >hasOwnProperty()</a
+          >
         </p>
         <p>
-          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">Object.keys()</a>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/keys"
+            >Object.keys()</a
+          >
         </p>
         <p>
-          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/values">Object.values()</a>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/values"
+            >Object.values()</a
+          >
         </p>
         <p>
-          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/entries">Object.entries()</a>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/entries"
+            >Object.entries()</a
+          >
         </p>
       </section>
     </div>
