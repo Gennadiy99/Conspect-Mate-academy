@@ -7,6 +7,10 @@ html {
 *::before {
   box-sizing: inherit;
 }
+
+.color-grey {
+  color: grey;
+}
 /* Стили для Nav-bar */
 .nav {
   display: flex;

@@ -120,7 +120,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p>SCSS</p>
+              <p class="color-grey">SCSS</p>
               .block {
                 font-size: 20px;
               
@@ -132,7 +132,7 @@
           </div>
           <div>
             <pre>
-              <p>CSS</p>
+              <p class="color-grey">CSS</p>
               .block {
                 font-size: 20px;
               }
@@ -152,7 +152,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p>SCSS</p>
+              <p class="color-grey">SCSS</p>
               .block {
                 font-size: 20px;
                 
@@ -169,7 +169,7 @@
           </div>
           <div>
             <pre>
-              <p>CSS</p>
+              <p class="color-grey">CSS</p>
               .block {
                 font-size: 20px;
               }
@@ -195,7 +195,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p><b><u>SCSS</u></b></p>
+              <p><b><u class="color-grey">SCSS</u></b></p>
               $screenWidth: 600px;
 
               .block {
@@ -206,7 +206,7 @@
           </div>
           <div>
             <pre>
-              <p><b><u>CSS</u></b></p>
+              <p><b><u class="color-grey">CSS</u></b></p>
               .block {
                 width: 1200px;
                 height: calc(610px + 10%);
@@ -226,7 +226,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p>SCSS</p>
+              <p class="color-grey">SCSS</p>
               @for $i from 1 through 3 {
                 .block-#{$i} {
                   height: 100% / $i;
@@ -237,7 +237,7 @@
           </div>
           <div>
             <pre>
-              <p>CSS</p>
+              <p class="color-grey">CSS</p>
               .block-1 {
                 height: 100%; 
               }
@@ -260,7 +260,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p>SCSS</p>
+              <p class="color-grey">SCSS</p>
               $colors: (
                 'error': #f00,
                 'notification': #0f0,
@@ -277,7 +277,7 @@
           </div>
           <div>
             <pre>
-              <p>CSS</p>
+              <p class="color-grey">CSS</p>
               .message--error {
                 color: #f00;
               }
@@ -298,7 +298,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p>SCSS</p>
+              <p class="color-grey">SCSS</p>
               $bodyWidth: 600px;
 
               @function size($width) {
@@ -313,7 +313,7 @@
           </div>
           <div>
             <pre>
-              <p>CSS</p>
+              <p class="color-grey">CSS</p>
               .container {
                 width: 300px;
               }
@@ -322,17 +322,236 @@
           </div>
         </div>
         <p>
-          Взято из чата GPT подключение Parcel глобально на ПК для всех проэктов. Есть минус при командной работе, в случаи разных версий у каждого члена команды и своих наборах иструментов могут быть проблеммы. Поэтому для работы с командой лучше устанавливать Parcel локально к проэкту.
+          Взято из чата GPT подключение Parcel глобально на ПК для всех
+          проэктов. Есть минус при командной работе, в случаи разных версий у
+          каждого члена команды и своих наборах иструментов могут быть
+          проблеммы. Поэтому для работы с командой лучше устанавливать Parcel
+          локально к проэкту.
         </p>
         <p>
-          Рекомендованный порядок: 
-          Установить Parcel: bash Копировать код: 
+          Рекомендованный порядок: Установить Parcel: bash Копировать код:
           <b>npm install -g parcel-bundler </b>
           Инициализировать проект: bash Копировать код:
-          <b>npm init -y</b> 
-          Запустить Parcel: bash Копировать код: 
+          <b>npm init -y</b>
+          Запустить Parcel: bash Копировать код:
           <b>parcel index.html</b>
           Это обеспечит правильную работу Parcel с вашим проектом.
+        </p>
+        <p><b>Резюме по подключению SCSS к проєкту локально:</b></p>
+        <ul>
+          <li>npm init -y</li>
+          <li>
+            <pre>
+              <span class="color-gray">изменение в package.json</span>
+              "source": "src/index.html",
+              "scripts": {
+                "start": "parcel --open",
+                "build": "parcel build --public-url=/dist/"
+              }
+            </pre>
+            <p>
+              В свойстве:"start": "parcel --open", <br />
+              start - запускает утилиту , - parcel <br />
+              Флаг "--open" - автоматически открывает проэкт в браузере.
+            </p>
+            <p>
+              В свойстве: <b>"build"</b>:
+              <i>
+                <u>"parcel build --public-url=/dist/"</u>
+              </i>
+              <br />
+              указываем флаг
+              <i>
+                <u>"--public-url=/dist/"</u>
+              </i>
+              Где в <u>url</u> добавляем папку <b>/dist/</b> в которой будет
+              находится проэкт после сборки утилитой <b>Parcel</b>
+            </p>
+          </li>
+          <li>npm install --save-dev parcel</li>
+          <li>npm start</li>
+          <li>"ctrl + c" - остановка сборки</li>
+          <li>"npm run build" - сборка проэкта в папку "dist"</li>
+        </ul>
+        <p>
+          <b>
+            Обращаю внимание, что у картинок или иконок возможно нужно будет
+            перепрописать путь на одну папку выше, так как Parcel строит сборку
+            от основной папки Style.scss а не от папки относящейся к описанию
+            конкретного блока
+          </b>
+        </p>
+      </section>
+      <section class="mixin-and-media">
+        <h3 class="main-topic-title">
+          mixin and media / Миксині и Медиазапросы
+        </h3>
+        <hr />
+        <h3>Міксини</h3>
+        <p>
+          Міксини дозволяють перевикористовувати набори CSS властивостей або
+          правила. Міксин створюється директивою @mixin та підключається за
+          допомогою <br />
+          <i>@include:</i>
+        </p>
+        <div style="display: flex">
+          <div>
+            <pre>
+              <p class="color-grey">SCSS</p>
+              @mixin circle($size) {
+                height: $size;
+                width: $size;
+                border-radius: 50%;
+              }
+              
+              .avatar {
+                @include circle(50px);
+              
+                font-size: 16px;
+                color: white;
+              }
+              
+            </pre>
+          </div>
+          <div>
+            <pre>
+              <p class="color-grey">CSS</p>
+              .avatar {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+              
+                font-size: 16px;
+                color: white;
+              }
+              
+            </pre>
+          </div>
+        </div>
+        <h3>Підключення файлів</h3>
+        <p>
+          Зазвичай у проєкті є головний файл стилів main.scss або index.scss, до
+          якого підключаються усі необхідні файли:
+        </p>
+        <pre>
+          @import './utils/mixins';
+
+          @import './blocks/header';
+          @import './blocks/page';
+          @import './blocks/footer';
+
+        </pre>
+        <p>
+          Також можна підключати файли один до одного за допомогою директиви
+          @use для використання змінних, функцій та міксинів з одних файлів в
+          інших:
+        </p>
+        <pre>
+          <span class="color-grey">// src/_corners.scss</span>
+
+          $radius: 3px;
+
+          @mixin rounded {
+            border-radius: $radius;
+          }
+
+        </pre>
+        <pre>
+          <span class="color-grey">// style.scss</span>
+
+          @use "src/corners" as c;
+
+          .button {
+            @include c.rounded;
+            padding: 5px + c.$radius;
+          }
+      
+        </pre>
+        <p>
+          Більше деталей про можливості Sass можна отримати з
+          <a href="https://sass-lang.com/playground/" target="_blank"
+            >офіційної документації</a
+          >.
+        </p>
+        <h3>
+          Пояснение из 'GPT', разница подключения стилей одного файла к другому
+          (в основном Главному scss файлу)
+        </h3>
+        <p>
+          1. <b>Что делает @import?</b> <br />
+          @import просто вставляет содержимое одного файла в другой. Он не
+          ограничивает доступ к переменным, миксинам или функциям из
+          подключаемого файла. То есть, после подключения всё содержимое файла
+          становится "глобальным" и доступно в любом другом месте.
+        </p>
+        <pre>
+          <span class="color-grey">// _icon.scss</span>
+
+          $icon-color: red;
+
+          .icon {
+            color: $icon-color;
+          }
+
+          <span class="color-grey">// main.scss</span>
+
+          @import "icon"; <span class="color-grey">// Вставляет содержимое _icon.scss</span>
+          .box {
+            background: $icon-color; <span class="color-grey">// Можно напрямую использовать $icon-color</span>
+          }
+        </pre>
+        <p>
+          Проблема @import: Если вы подключаете несколько файлов, содержащих
+          одноименные переменные или миксины, они могут конфликтовать
+          (перезаписываться).
+        </p>
+        <p>
+          2. <b>Что делает @use?</b> <br />
+          @use подключает файл как
+          <u>"модуль".</u> Всё, что импортировано из файла, становится
+          <u>доступным только через префикс, указанный после as</u> (например,
+          c. <b><u>в @use "corners" as c</u></b
+          >;).
+        </p>
+        <p>
+          Это: Изолирует пространство имен. Переменные, функции и миксины
+          подключаемого файла больше не становятся глобальными. Чтобы
+          использовать их, нужно явно указать, из какого модуля они взяты.
+          Защищает от конфликтов. Если два файла содержат одинаковую переменную
+          <b>$radius</b>, <u>они не перезапишут друг друга</u>, потому что будут
+          использоваться как
+          <b>
+            <u>module1.$radius и module2.$radius.</u>
+          </b>
+        </p>
+        <pre>
+          <span class="color-grey">// _corners.scss</span>
+          $radius: 5px;
+
+          @mixin rounded {
+            border-radius: $radius;
+          }
+
+          <span class="color-grey">// main.scss</span>
+          @use "corners" as c;
+
+          .box {
+            @include c.rounded; <span class="color-grey">// Используем миксин из corners</span>
+            padding: 10px + c.$radius; <span class="color-grey">// Используем переменную из corners</span>
+          }
+        </pre>
+        <p>
+          <b>Преимущество @use:</b> <br />
+          Даже если вы подключите другой файл с переменной
+          <b>$radius</b>, он не повлияет на содержимое модуля corners.
+        </p>
+        <p>
+          3. <b>Ключевое отличие С @import</b><br />
+          вы подключаете содержимое файлов целиком. После этого переменные и
+          миксины из подключаемого файла "смешиваются" с текущими. <br />
+          <b>С @use вы подключаете "инструменты"</b> <br />
+          из файла, но всегда обращаетесь к ним <b>через префикс</b>. Это делает
+          ваш код модульным и защищённым от конфликтов.
         </p>
       </section>
     </div>
