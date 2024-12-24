@@ -24,8 +24,260 @@
         <a href="HTML_CSS_Advanced.html">HTML + CSS Advanced</a>
         <a href="BEM.html">BEM</a>
         <a href="SASS.html">SASS</a>
-        <a href="Transf and Animations.html">SASS</a>
+        <a href="Transf and Animations.html">Transform Animations</a>
       </div>
+      <section class="transition">
+        <h1 class="main-topic-title">Переходи (transition)</h1>
+        <hr />
+        <p>
+          За замовчуванням, усі стилі змінюються миттєво. Наприклад, якщо
+          змінити висоту елемента при наведенні, він буде нібито «стрибати».
+          Властивість transition дозволяє зробити це плавно. Наприклад:
+        </p>
+        <pre>
+        .box {
+          height: 100px;
+          background-color: #f00;
+          transition: height 1s;
+        }
+        
+        .box:hover {
+          height: 200px;
+        }
+        
+      </pre
+        >
+        <p>
+          Властивість transition є скороченням для окремих властивостей, які
+          керують плавністю переходу: transition-property, transition-duration,
+          transition-timing-function, transition-delay, де:
+        </p>
+        <ul>
+          <li>
+            <b>transition-property</b> дозволяє вказати властивості, які будуть
+            змінюватися плавно;
+          </li>
+          <li>
+            <b>transition-duration</b> встановлює, скільки триватиме зміна
+            стану;
+          </li>
+          <li>
+            <b>transition-timing-function</b> визначає криву, за якою
+            відбуватиметься зміна значення протягом встановленого часу;
+          </li>
+          <li>
+            <b>transition-delay</b> задає час очікування перед початком змін.
+          </li>
+        </ul>
+        <p>Наприклад:</p>
+        <pre>
+        .box {
+          transition: height 4s ease-in-out 1s;
+          
+          /* is the same as */
+          
+          transition-property: height;
+          transition-duration: 4s;
+          transition-timing-function: ease-in-out;
+          transition-delay: 1s;
+        }
+        
+      </pre
+        >
+        <p>
+          Якщо додати властивості transition- до елементу в стані :hover, то
+          вони застосовуватимуться тільки при наведенні на елемент. Коли ж ми
+          приберемо курсор, то ці стилі миттєво зникнуть і плавної зміни не
+          відбудеться.
+        </p>
+      </section>
+      <section class="animation">
+        <h3 class="main-topic-title">Анімації (animation)</h3>
+        <hr />
+        <p>
+          Ти міг помітити, що часто при завантаженні даних з сервера на сайті
+          відображається "спінер" чи індикатор завантаження, щоб користувач
+          розумів, що процес триває. Або при наведенні на кнопку “В кошик” в
+          інтернет-магазині кнопка може плавно збільшуватися та змінювати колір
+          при наведенні, щоб привернути увагу користувача та допомогти йому
+          зрозуміти куди натиснути або що робити далі.
+        </p>
+        <p>
+          Все це робиться за допомогою анімації. Анімації не лише дозволяють
+          створювати красиві візуальні ефекти, а й відіграють важливу роль в
+          покращенні взаємодії користувача з веб-сайтом. Завдяки ним можна
+          покращити UX, зробити елементи сайту більш інтерактивними та
+          інтуїтивно зрозумілими.<br />
+          акож анімації дозволяють змінювати стилі CSS плавно, але, на відміну
+          від переходів, дозволяють мати більше, ніж два стани (початковий та
+          кінцевий) та повторювати їх кілька разів без будь-яких дій
+          користувача. На сучасних сайтах часто використовуються анімовані
+          бокові панелі меню або випадаючі списки для більш зрозумілої і плавної
+          навігації.<br />
+          Анімації дозволяють змінювати стилі CSS плавно, але, на відміну від
+          переходів, дозволяють мати більше, ніж два стани (початковий та
+          кінцевий) та повторювати їх кілька разів без будь-яких дій
+          користувача.<br />
+          Щоб створити анімацію, використовуй @keyframes разом з from (0%), to
+          (100%) та з одним або кількома проміжними (наприклад, 50%) станами (за
+          бажанням):
+        </p>
+        <pre>
+        @keyframes move {
+          0% {
+            top: 0;
+            left: 0;
+          }
+        
+          50% {
+            top: 10px;
+            left: 10px;
+          }
+        
+          100% {
+            top: 50px;
+            left: 50px;
+          }
+        }
+        
+      </pre
+        >
+        <p>
+          Зверни увагу: у цьому прикладі move — це назва анімації, яку потім
+          потрібно вказати в animation-name.
+        </p>
+        <p>
+          Властивість animation є скороченням для animation-duration,
+          animation-timing-function, animation-delay, animation-iteration-count,
+          animation-direction, animation-fill-mode, animation-name, де:
+        </p>
+        <ul>
+          <li>
+            <b>animation-name</b> встановлює назву анімації, надану в
+            @keyframes;
+          </li>
+          <li>
+            <b>animation-duration</b> встановлює час, за який закінчиться
+            анімація;
+          </li>
+
+          <li>
+            <b>animation-timing-function</b> встановлює, як анімація
+            просувається протягом кожного свого циклу виконання;
+          </li>
+          <li>
+            <b>animation-delay</b> встановлює час очікування перед початком
+            анімації;
+          </li>
+          <li>
+            <b>animation-iteration-count</b> встановлює, скільки разів буде
+            виконана анімація;
+          </li>
+          <li>
+            <b>animation-direction</b> встановлює напрямок виконання анімації
+            (вперед, назад тощо);
+          </li>
+          <li>
+            <b>animation-fill-mode </b>встановлює, як анімація застосовує стилі
+            до своєї цілі до та після її виконання.
+          </li>
+        </ul>
+        <p>Наприклад:</p>
+        <pre>
+        .box {
+          animation: move 5s ease 2s 3 reverse;
+          
+          /* is the same as */ 
+          
+          animation-name: move;
+          animation-duration: 5s;
+          animation-timing-function: ease;
+          animation-delay: 2s;
+          animation-iteration-count: 3;
+          animation-direction: reverse;
+        }
+        
+      </pre
+        >
+        <p>
+          Зверни увагу: плавно змінюватися можуть лише CSS-властивості, які
+          мають безперервний набір значень (розміри, кольори, прозорість тощо).
+          Якщо набір значень фіксований (position, display, visibility...), то
+          зміна відбуватиметься миттєво після застосування.
+        </p>
+        <p>
+          Перевірити властивість можна у документі
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties"
+            >Animatable CSS properties.</a
+          >
+        </p>
+      </section>
+      <section class="Transformation">
+        <h3 class="main-topic-title">Трансформації (transform)</h3>
+        <hr />
+        <p>
+          Трансформації дозволяють обертати, масштабувати, нахиляти або
+          переміщувати елементи.<br />
+
+          Основні функції трансформацій:
+        </p>
+        <ul>
+          <li>
+            translate(left, top) зміщує елемент на вказану відстань від його
+            початкового положення;
+          </li>
+          <li>
+            rotate(angle) повертає елемент за годинниковою стрілкою на вказаний
+            кут;
+          </li>
+          <li>
+            scale(factor) збільшує або зменшує елемент у вказане число разів;
+          </li>
+          <li>skew(x-angle, y-angle) нахиляє елемент на вказані кути.</li>
+        </ul>
+        <pre>
+        .box {
+          transform: translate(50px, 50px);
+          transform: rotate(180deg);
+          transform: scale(2);
+          transform: skew(25deg, 25deg);
+        }
+        
+      </pre
+        >
+        <p>
+          Зверни увагу: трансформації не впливають на сусідні елементи і, так
+          само як і позиціоновані, малюються в окремому шарі. Тому вони
+          потребують менше перевірок від браузера під час перемальовування, бо
+          не впливають на геометрію та кольори інших шарів.
+        </p>
+      </section>
+      <section class="Useful-links">
+        <h3 class="main-topic-title">Корисні посилання</h3>
+        <hr />
+        <p>
+          <a href="https://www.w3schools.com/css/css3_transitions.asp" target="_blank">CSS Transitions</a>
+        </p>
+        <p>
+          <a href="https://cubic-bezier.com/#.17,.67,.83,.67" target="_blank">cubic-bezier</a>
+        </p>
+        <p>
+          <a href="https://www.w3schools.com/css/css3_animations.asp" target="_blank">CSS Animations</a>
+        </p>
+        <p>
+          <a href="https://css-tricks.com/almanac/properties/t/transform/" target="_blank">transform</a>
+        </p>
+        <p>
+          <a href="https://css-tricks.com/almanac/properties/t/transform-origin/" target="_blank">transform-origin</a>
+        </p>
+        <p>
+          <a href="https://www.w3schools.com/css/css3_2dtransforms.asp" target="_blank">CSS 2D Transforms</a>
+        </p>
+        <p>
+          <a href="https://mate-academy.github.io/animations/" target="_blank">Simple examples</a>
+        </p>
+      </section>
     </div>
   </body>
 </html>
