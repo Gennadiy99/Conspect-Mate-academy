@@ -24,6 +24,7 @@
           <a href="HTML_CSS_Advanced.html">HTML + CSS Advanced</a>
           <a href="BEM.html">BEM</a>
           <a href="SASS.html">SASS</a>
+          <a href="Transf and Animations.html">SASS</a>
         </div>
       </section>
       <section class="sass">
@@ -510,7 +511,7 @@
           @use подключает файл как
           <u>"модуль".</u> Всё, что импортировано из файла, становится
           <u>доступным только через префикс, указанный после as</u> (например,
-          c. <b><u>в @use "corners" as c</u></b
+          c.<b><u>в @use "corners" as c</u></b
           >;).
         </p>
         <p>
@@ -552,6 +553,81 @@
           <b>С @use вы подключаете "инструменты"</b> <br />
           из файла, но всегда обращаетесь к ним <b>через префикс</b>. Это делает
           ваш код модульным и защищённым от конфликтов.
+        </p>
+        <h3>Важная Особенность подключения файлов scss в главный файл scss</h3>
+        <p>
+          Когда ты подключаешь файл mixins.scss через @import или @use в главный
+          файл (например, style.scss), он становится доступен всем файлам,
+          которые тоже подключены в style.scss. Это возможно потому, что SCSS
+          компилирует все подключённые файлы в единый.
+        </p>
+        <h3>Еще есть свойство @forward</h3>
+        <p>
+          НУЖНО УТОЧНИТЬ ПРИМЕРАМИ С ДОКУМЕНТАЦИИ но внешне работает также как и
+          @import но тоько доавляется тоько в SCSS и работает в связке с @use
+        </p>
+      </section>
+      <section class="Useful-links">
+        <h3 class="main-topic-title">Корисні посилання</h3>
+        <hr />
+        <p>
+          <a href="https://sass-lang.com/guide/" target="_blank">Sass Basics</a>
+        </p>
+        <p>
+          <a
+            href="https://sass-lang.com/documentation/variables/"
+            target="_blank"
+            >Variables</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://sass-lang.com/documentation/style-rules/declarations/"
+            target="_blank"
+            >Property Declarations</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://sass-lang.com/documentation/style-rules/parent-selector/"
+            target="_blank"
+            >Parent Selector</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://sass-lang.com/documentation/interpolation/"
+            target="_blank"
+            >Interpolation</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://sass-lang.com/documentation/style-rules/placeholder-selectors/"
+            target="_blank"
+            >Placeholder Selectors</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://sass-lang.com/documentation/at-rules/mixin/"
+            target="_blank"
+            >@mixin and @include</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://sass-lang.com/documentation/at-rules/control/if/"
+            target="_blank"
+            >@if and @else</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://sass-lang.com/documentation/at-rules/control/each/"
+            target="_blank"
+            >@each</a
+          >
         </p>
       </section>
     </div>

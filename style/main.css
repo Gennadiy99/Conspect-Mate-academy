@@ -97,7 +97,6 @@ body {
   padding: 0 25px;
 }
 section {
-  /* background-color: #b9f6b8; */
   padding: 80px 0 50px;
 }
 .operator {
@@ -119,7 +118,6 @@ section {
 /* стилизация Ссылок*/
 .icon-item {
   font-size: 24px;
-  /* color: inherit; */
 }
 .link-icon {
   text-decoration: none;
