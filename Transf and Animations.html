@@ -257,26 +257,366 @@
         <h3 class="main-topic-title">Корисні посилання</h3>
         <hr />
         <p>
-          <a href="https://www.w3schools.com/css/css3_transitions.asp" target="_blank">CSS Transitions</a>
+          <a
+            href="https://www.w3schools.com/css/css3_transitions.asp"
+            target="_blank"
+            >CSS Transitions</a
+          >
         </p>
         <p>
-          <a href="https://cubic-bezier.com/#.17,.67,.83,.67" target="_blank">cubic-bezier</a>
+          <a href="https://cubic-bezier.com/#.17,.67,.83,.67" target="_blank"
+            >cubic-bezier</a
+          >
         </p>
         <p>
-          <a href="https://www.w3schools.com/css/css3_animations.asp" target="_blank">CSS Animations</a>
+          <a
+            href="https://www.w3schools.com/css/css3_animations.asp"
+            target="_blank"
+            >CSS Animations</a
+          >
         </p>
         <p>
-          <a href="https://css-tricks.com/almanac/properties/t/transform/" target="_blank">transform</a>
+          <a
+            href="https://css-tricks.com/almanac/properties/t/transform/"
+            target="_blank"
+            >transform</a
+          >
         </p>
         <p>
-          <a href="https://css-tricks.com/almanac/properties/t/transform-origin/" target="_blank">transform-origin</a>
+          <a
+            href="https://css-tricks.com/almanac/properties/t/transform-origin/"
+            target="_blank"
+            >transform-origin</a
+          >
         </p>
         <p>
-          <a href="https://www.w3schools.com/css/css3_2dtransforms.asp" target="_blank">CSS 2D Transforms</a>
+          <a
+            href="https://www.w3schools.com/css/css3_2dtransforms.asp"
+            target="_blank"
+            >CSS 2D Transforms</a
+          >
         </p>
         <p>
-          <a href="https://mate-academy.github.io/animations/" target="_blank">Simple examples</a>
+          <a href="https://mate-academy.github.io/animations/" target="_blank"
+            >Simple examples</a
+          >
         </p>
+      </section>
+      <section class="grid">
+        <h1 class="main-topic-title">Сітки (Grid)</h1>
+        <hr />
+        <p>
+          Сітки дозволяють легко проєктувати макети з рядками та колонками, не
+          використовуючи плаваючі <u>(float)</u> елементи та позиціонування.
+        </p>
+        <p>
+          Ми можемо зробити елемент контейнером сітки, встановивши
+          <b>display: grid:</b>
+        </p>
+        <pre>
+          .container {
+            display: grid;
+          }
+          
+        </pre>
+        <h3 class="main-topic-title">Рядки та колонки</h3>
+        <hr />
+        <p>
+          Щоб задати розміри рядків та стовпців сітки, використовуй наступні
+          властивості:
+        </p>
+        <pre>
+          .container {
+            grid-template-rows: 1fr 2fr 1fr;  
+            grid-template-columns: 60px 60px 60px;
+          
+            /* the shorthand for the `grid-template-rows` and `grid-template-columns` */
+            grid-template: 1fr 2fr 1fr / 60px 60px 60px;
+          }
+          
+        </pre>
+        <p>
+          Одиниця 1fr означає 1 частину вільного місця, що залишається в
+          контейнері. Тож 1fr 2fr 1fr означатиме 1/4 2/4 1/4 наявного вільного
+          простору.
+        </p>
+        <p>
+          Також можна використовувати значення auto, яке дозволяє визначити
+          розмір рядка чи колонки за розміром вмісту.
+        </p>
+        <p>
+          Крім того, існує функція minmax(), яка дозволяє встановити границі для
+          розміру колонки чи стовпця. Наприклад:
+        </p>
+        <pre>
+          grid-template-columns: minmax(150px, 25%) 1fr; // ліва колонка займатиме чверть ширини, але не менше 150px
+
+        </pre>
+        <p>
+          Для уникнення дублювання розмірів можна використовувати функцію
+          repeat(), яка дозволяє створити кілька колонок чи рядків однакового
+          розміру:
+        </p>
+        <pre>
+          grid-template-columns: repeat(12, 1fr); // 12 однакових колонок
+
+        </pre>
+        <p>
+          Значення auto-fill та auto-fit дозволяють гнучко адаптувати кількість
+          колонок до ширини контейнера, залежно від доступного простору.
+        </p>
+        <ul>
+          <li>
+            <b>auto-fill</b> заповнює рядок якомога більшою кількістю колонок,
+            що відповідають заданій мінімальній ширині.
+          </li>
+          <li>
+            <b>auto-fit</b> працює схоже, але колонки розтягуються, щоб зайняти
+            всю доступну ширину контейнера, коли кількість елементів не вистачає
+            для заповнення всіх рядів.
+          </li>
+        </ul>
+        <pre>
+          .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          }
+          
+        </pre>
+        <h3 class="main-topic-title">Розміщення Grid-елементів</h3>
+        <hr />
+        <p>
+          Усі прямі дочірні елементи контейнера сітки називаються
+          <b>grid items.</b> За замовчуванням вони розміщуються зліва направо і
+          зверху вниз по одному в комірку гріда. Це зручно для регулярних сіток,
+          таких як товари в інтернет-магазині.
+        </p>
+        <p>
+          Властивість <b>grid-auto-flow</b> контролює, як grid-елементи
+          розташовуються у контейнері, коли ми не вказуємо їх розміщення явно.
+          Може бути корисною, коли кількість елементів не відома заздалегідь.
+        </p>
+        <ul>
+          <li>
+            <b>row</b> (за замовчуванням) — елементи розташовуються по рядках.
+          </li>
+          <li><b>column</b> — елементи розташовуються по колонках.</li>
+          <li>
+            <b>dense</b> — автоматично заповнює порожні клітинки, якщо це
+            можливо, зберігаючи при цьому загальний порядок елементів.
+          </li>
+        </ul>
+        <p>
+          Також <b>Grid</b>-контейнер дозволяє керувати вирівнюванням рядків та
+          стовпців за допомогою властивостей <b>align-content</b> та
+          <b>justify-content</b>. Вони мають такі ж значення, як і для
+          <b>Flexbox</b>.
+        </p>
+        <p>
+          А для вирівнювання елементів всередині рядків та стовпців
+          використовують властивості <b>align-items</b> та <b>justify-items.</b>
+        </p>
+        <p>
+          Але іноді потрібно вручну розмістити елементи. Для цього можна
+          використати нижченаведені властивості, встановивши
+          <b>grid line numbers</b> — лінії між стовпцями або рядками:
+        </p>
+        <pre>
+          .item {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 1;
+            grid-column-end: 3;
+          
+            /* the shorthand for the `grid-row-start grid-row-end` */
+            grid-row: 1 / 2;
+          
+            /* the shorthand for the `grid-column-start grid-column-end` */
+            grid-column: 1 / 3;
+          
+            /* the shorthand for the `grid-row-start grid-column-start grid-row-end grid-column-end` */
+            grid-area: 1 / 1 / 2 / 3;
+          }
+          
+        </pre>
+        <p>
+          Також можна надати лініям імена, що робить CSS більш зрозумілим і
+          легшим для читання:
+        </p>
+        <pre>
+          .container {
+            display: grid;
+            grid-template-columns: [start] 1fr [middle] 1fr [end];
+          }
+          
+          .item {
+            grid-column: start / end;
+          }
+          
+        </pre>
+        <p>
+          Простір між рядками та колонками називається gap. Щоб додати його,
+          використовуй такі властивості:
+        </p>
+        <pre>
+          .container {
+            row-gap: 50px;
+            column-gap: 40px;
+          
+            /* the shorthand for the `row-gap column-gap` */
+            gap: 50px 40px;
+          }
+          
+        </pre>
+        <h3 class="main-topic-title">
+          Застосування grid-area для створення складних макетів
+        </h3>
+        <hr />
+        <p>
+          Властивість <b>grid-area</b> дозволяє не тільки вказувати
+          місцеположення елемента в сітці, але й використовувати його для
+          визначення макетів, які включають декілька рядків та/або колонок. Крім
+          того, ви можете використовувати <b>grid-template-areas</b> у
+          контейнері для створення "шаблону" макету з іменами областей, що дає
+          більше візуального представлення структури макета.
+        </p>
+        <pre>
+          .container {
+            display: grid;
+            grid-template-areas: 
+              "header header header header"
+              "title title title sidebar"
+              "menu content content sidebar"
+              "footer footer footer footer";
+          }
+          
+          .header { grid-area: header; }
+          .menu { grid-area: menu; }
+          .content { grid-area: content; }
+          .sidebar { grid-area: sidebar; }
+          .footer { grid-area: footer; }
+          
+        </pre>
+        <h3 class="main-topic-title">Інші можливості</h3>
+        <hr />
+        <p>
+          Це лише декілька прикладів того, як можна використовувати CSS Grid для
+          створення складних, але гнучких макетів з легкістю. Ознайомся з
+          <a
+            href="https://css-tricks.com/snippets/css/complete-guide-grid/"
+            target="_blank"
+            >A Complete Guide to CSS Grid</a
+          >
+          , щоб детальніше дізнатися про властивості та використання сіток.
+          Також пам'ятай про корисні посилання.
+        </p>
+        <h3 class="main-topic-title">Дополнительная иформация с Видео урока</h3>
+        <hr />
+        <p>
+          В Грид контейнере указано какое количество строк и колоной будет и с
+          какой пропорцией
+        </p>
+        <pre>
+          .container {
+            height: 100vh;
+            display: grid;
+            grid-template-rows: 1fr 1fr 3fr 1fr; 4 строки. 3я занимает место равное 3м строкам
+            grid-template-columns: 1fr 2fr 1fr; 3колонки. 2я занимает место равное 2м колонкам
+          }
+           
+        </pre>
+        <p>
+          А в элементе прописывается сколько линий занимает именно ОН в строке и
+          в колонке.
+        </p>
+        <pre>
+          .footer {
+            background-color: #257d92;
+            grid-row: -2 / -1; - Нумирация линий с конца -2 вторая с конца -1 первая с конца (Строка)
+            grid-column: 1 / -1; - Первая линия в начала и последняя с конца (Колонка)
+          }
+        </pre>
+        <h3>ДРУГОЙ МЕТОД УПРАВЛЕНИЯ СЕТКОЙ ГРИД через "Именованную Область.</h3>
+        <hr />
+        <pre>
+          к описанию строк и колонок, 
+
+          grid-template-rows: 1fr 1fr 3fr 1fr;
+          grid-template-columns: 1fr 2fr 1fr;
+        
+          в Грид-контейнере добавляется "Именованная Область"
+        </pre>
+        <p>
+          Именнованые диапазоны, в которых указывается название Области и
+          сколько в Строке занимает Колонок эта Область:
+        </p>
+        <pre>
+          grid-template-areas: 
+          "header header header" - Область "header" 1 Строка, 3 Колонки
+          "sidebar ads ads"      - Область "sidebar" 2 Строка, 1 Колонки
+          "sidebar main news"    - Область "main" 1 Строка, 1 Колонки/ "news" 1 Строка, 1 Колонки
+          "footer footer footer" - Область "footer" 1 Строка, 3 Колонки
+          ;
+        </pre>
+        <p>
+          И теперь обязательно Привязать Элементы к названиям Области, указать в
+          каждом элементе свойство:
+        </p>
+        <pre>
+          elem-1 {grid-area: header;}
+          elem-2 {grid-area: ads;}
+          elem-3 {grid-area: news;}
+          elem-4 {grid-area: footer;}
+        </pre>
+        <p>Пример для контейнера</p>
+        <pre>
+          .container {
+            height: 100vh;
+            display: grid;
+            grid-template-rows: 1fr 1fr 3fr 1fr;
+            grid-template-columns: 1fr 2fr 1fr;
+          
+            grid-template-areas: 
+            "header header header"
+            "sidebar ads ads"
+            "sidebar main news"
+            "footer footer footer"
+            ;
+          }
+        </pre>
+        <p>Пример для элемента:</p>
+        <pre>
+          .header {
+            grid-area: header;
+            background-color: #235b4a;
+          }
+        </pre>
+        <p>Некоторые практические примеры:</p>
+        <pre>
+           grid-template-columns: repeat(var(--column-count), 100px); 
+          - Колонка равна кол-ву в переменной (1) с разм 100px 
+
+          grid-template-columns: repeat(auto-fit, minmax(100px, 200px) ); 
+          - Колонка равна кол-ву которое Указанно и поместится в Контейнер имея разм 100px-200px 
+
+          grid-template-columns: repeat(var(--column-count), minmax(150px, 200px) ); 
+          - Колонка равна кол-ву в переменной имея разм 100px до 200px 
+
+          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+          - Колонка равна кол-ву сколько поместится в Контейнер имея разм 100px до 200px */
+        </pre>
+        <p>
+          Еще один способ установки начала колонки и ряда ВНУТРИ самого элемента
+          грид контейнера
+        </p>
+        <pre>
+          .card-1 {
+            grid-column: 5 / span 3;
+          
+          }
+          5 - указывает с какой линии сетки начинать строить элемента
+          span 3 - указывает сколько промежутков будут включаться в элемент.
+        </pre>
       </section>
     </div>
   </body>
