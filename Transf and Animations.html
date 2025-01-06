@@ -254,7 +254,7 @@
         </p>
       </section>
       <section class="Useful-links">
-        <h3 class="main-topic-title">Корисні посилання</h3>
+        <h3 class="main-topic-title">Корисні посилання Transform</h3>
         <hr />
         <p>
           <a
@@ -617,6 +617,317 @@
           5 - указывает с какой линии сетки начинать строить элемента
           span 3 - указывает сколько промежутков будут включаться в элемент.
         </pre>
+      </section>
+
+      <section class="Useful-links">
+        <h3 class="main-topic-title">Корисні посилання Grid</h3>
+        <hr />
+        <p>
+          <a
+            href="https://css-tricks.com/snippets/css/complete-guide-grid/"
+            target="_blank"
+            >A Complete Guide to CSS Grid</a
+          >
+        </p>
+        <p>
+          <a href="https://cssgridgarden.com/#en" target="_blank"
+            >GRID GARDEN (A Grid game)</a
+          >
+        </p>
+        <p>
+          <a href="https://www.youtube.com/watch?v=qm0IfG1GyZU" target="_blank"
+            >10 modern layouts in 1 line of CSS</a
+          >
+        </p>
+        <ul>
+          <li>
+            <a href="https://1linelayouts.glitch.me/">1-Line Layouts</a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp"
+              >clamp()</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio#browser_compatibility"
+              >aspect-ratio</a
+            >
+          </li>
+        </ul>
+        <p>
+          <a
+            href="https://css-tricks.com/introduction-fr-css-unit/"
+            target="_blank"
+            >An Introduction to the fr CSS unit</a
+          >
+        </p>
+      </section>
+      <section class="Document-and-Events">
+        <h1 class="main-topic-title">Document and Events</h1>
+        <hr />
+        <p>Управление HTML страницей при помощи JS script</p>
+        <ul>
+          const page = document.querySelector(".page");
+          <li>const page - сщздали константу</li>
+          <li>document.querySelector - ссылаемся на селектор</li>
+          <li>".page" - селектор который попадает в константу</li>
+        </ul>
+        <ul>
+          switcher.addEventListener("click", () => {}
+          <li>switcher - константа за которой наблюдаем</li>
+          <li>.addEventListener - метод которій наблюдает</li>
+          <li>"click" - событие которое отслеживается</li>
+          <li>() => {} - функция которая будет выполнена при событии</li>
+          <li></li>
+        </ul>
+        <ul>
+          page.classList.contains("page--theme--dark")
+          <li>page - константа или переменная</li>
+          <li>.classList - метод для работы с классами</li>
+          <li>.contains - метод проверяет наличие класса</li>
+          <li>("page--theme--dark") - класс который проверяется</li>
+          <li>.remove - метод удаляет класс</li>
+          <li>.add - метод добавляет класс</li>
+        </ul>
+        <ul>
+          themeName.textContent = "Theme: light";
+          <li>themeName - переманная</li>
+          <li>.textContent = - метод устанавливает текст в элементе</li>
+          <li>"Theme: light" - текс который кстанавливается</li>
+        </ul>
+        <ul>
+          themeName.innerHTML = "Theme:
+          <strong>dark</strong
+          >";
+          <li>themeName - переманная</li>
+          <li>.innerHTML = - метод устанавлтивает HTML элемент в элеманте.</li>
+          <li>"Theme: &ltstrong> dark &lt/strong>" - текст и тег &ltstrong></li>
+        </ul>
+        <p>
+          Блок кода для создания переключателя на темную и светлую тему
+          страницы. Сам принцип переключения это определеняе для страницы
+          переменных с цветом Фона и Текста, создание модификатора с
+          переопределением цветов этих переменных на противоположные, все это
+          через CSS.Через JS происходит переключение, сам контакт пользователя с
+          кнопкой, который запускает функцию изменяющуюю изменение цветов
+          переменных Фона, Текста а так же написание в теге Текста, - Светлая
+          Тема,- Темная тема.
+        </p>
+        <pre>
+          Создание Грид-блока для переключателя световой темы страницы:
+          .page__header {
+            display: grid;
+            grid-template-columns: 1fr 60px;
+            padding: 10px;
+            color: var(--color-header);
+            background-color: var(--bg-header);
+            box-shadow: inset 0 -1px 0 #dee2ed;
+          
+            transition: color 0.3s, bacground-color 0.3s;
+          }
+
+        </pre>
+        <pre>
+          Создание блока переключатель для темы:
+          .theme-switcher {
+            border-radius: 20px;
+            padding: 5px;
+            background-color: var(--color-header);
+          }
+          .theme-switcher::after {
+            content: "";
+            display: block;
+            width: 50%;
+            padding-bottom: 50%;
+            border-radius: 50%;
+            background-color: var(--bg-header);
+            transition: transform 0.3s;
+          }
+          Модификатор смещающий псевдо элемент при изменении темы:
+          .theme-switcher--theme--dark::after {
+            transform: translateX(100%);
+          }
+        </pre>
+        <pre>
+          Сам код JS  который выполняет переключение тем:
+          "use strict";
+          const page = document.querySelector(".page");
+          const switcher = document.querySelector(".theme-switcher");
+          const themeName = document.querySelector(".theme-name");
+                  
+          switcher.addEventListener("click", () => {
+            if (page.classList.contains("page--theme--dark")) {
+              page.classList.remove("page--theme--dark");
+              switcher.classList.remove("theme-switcher--theme--dark");
+              themeName.textContent = "Theme: light";
+            } else {
+              page.classList.add("page--theme--dark");
+              switcher.classList.add("theme-switcher--theme--dark");
+              themeName.innerHTML = "Theme: &ltstrong> dark &lt/          strong>";
+            }
+          });
+        </pre>
+        <h4>
+          Обращу внимание на добавление в начало страницы директивы
+          <b>"use strict";</b>
+        </h4>
+        <h3 class="main-topic-title">Custom Dropdown</h3>
+        <hr />
+        <p>
+          Создание Выпадающего списка, по принципу select, но который можно
+          стилизовать.
+        </p>
+        <p>
+          Установка для блока "Списка" стилей:<br />
+          <ul>
+            <li>height: 0; - убирает высоту (блок исчезает)</li>
+            <li>overflow: hidden; - Обрезает содержимое блока (которое остается при height: 0;) </li>
+          </ul>
+        </p>
+        <p>
+          Создаем селектор
+          <code>
+            .dropdown--active .dropdown__content {height: auto;}
+          </code>
+          Который говорит, что при активном списке контент имеет высоту авто, тоесть полную высоту вмещающего весь контент.
+        </p>
+        <h4><u>'contextmenu'</u> - Событие при нажатии Правой клавиши меню</h4>
+        <p>
+          <code>trigger.addEventListener("contextmenu", (event) => {
+            event.preventDefault();})</code>
+            В методе для прослушивания собитий <b>"addEventListener"</b> вторым параметром можно указать обьект <br>
+             <b>(event)</b> - "Событие" котрое произошло,<br>
+              и есть метод <b>".preventDefault()"</b> - отменяет стандартное поведение события.
+        </p>
+        <p>
+          Можно использовать другой метод <b>".toggle"</b>, который обьединяет в себе использование метод remove / add при проверке наличия класса и переключает стиль.
+          <code>dropdown.classList.toggle("dropdown--active");</code>
+        </p>
+        <p>
+          Если установить элементу списка с контентом свойство для плавности появлениея высоты:
+          <code>transition: height 0.3s;</code>
+          это не сработает так как у установленного модиикатора стоит свойство:
+          <code>height: auto;</code> а у него нет числа и браузер не может расчитать плавность. Пэтому плавности появления элемента не получается. Если бы в модификаторе укстановить фиксированное значение высоты: 
+          <code>height: 100px;</code> Тогда бы код срабатывал. Значит нам нужно узнать какая будет высота у списка.
+        </p>
+        <h4>Можно получить переменную последнего выбранного Элемента $0</h4>
+        <p>
+          Для этого нужно выбрать элемент в браузере, перейти в панель разработчика, выбрать Консоль, и в ней прописать $0 - Это и будет переменная получившая в себя последний выбранный элемент.
+        </p>
+        <p>
+          в панели разработчика можно прописать и выбрать высоту у элемента при помоши свойств:
+          $0.clientHeight - внутренняя высота
+          208 - значение высоты.
+          .scrollHeight - общая прокручиваемая высота
+          .offsetHeight - высота элем с падингами + бордерами. 
+        </p>
+        <p>
+          В JS есть свойства <b>"style"</b> - где можно указывать его свойства и значения:<br>
+          <code>content.style.height = '0';</code>
+        </p>
+        <p>
+          Что бы получить правильное значение высоты нужно его взять у элемента в расскрытом положении через свойство:<b>clientHeight</b> у элемента <b>"Список"- .dropdown__content</b>
+        </p>
+        <pre>
+          const content = dropdown.querySelector(".dropdown__content");
+          - Создаем переменную для списка.
+          const initialHeight = content.clientHeight;
+          - Получаем значение высоты списка (в раскрытом положении)
+          content.style.height = "0";
+          - Перед обработчиком собитя ставим высоту "списка" = 0
+        </pre>
+        <p>
+          Для плавности появления списка, нужно использовать в функции полученное значение высоты списка (в развернутом виде)
+        </p>
+        <pre>
+          const initialHeight = content.clientHeight; - переменная с высотой списка.
+          content.style.height = `${initialHeight}px`; - код в функции устанавливает для контента высоту из переменной.
+        </pre>
+        <p>
+          Так как скрипт устанавливает высоту строки,<br>
+          <code>content.style.height = `${initialHeight}px`;</code> <br>
+          и устанавливает элементу класс .dropdown--active <br>
+          <code>dropdown.classList.add("dropdown--active");</code> <br>
+          Применяется стиль высоты прописанный в css
+          <code>height: auto;</code>
+        </p>
+        <h4>Можно использовать другой подход с использованием анимации свойств </h4>
+        <pre>
+          .dropdown__content {
+            max-height:0;
+          }
+          .dropdown--active .dropdown__content {
+            max-height: 100vh;
+          }
+          Здесь при получении элементом класса .dropdown--active 
+          Элемент получает высоту 100% от видимой высоты экрана. 
+        </pre>
+        <p>
+          Не очент хороший способ, так как выполняется не равномерное открывание элемента и закрывание, при закрывании ожидаем пока закроется видимая высота экранна с самого низа до нашего элемента а потом происходит закрытие всей высоты с нашим элементом. 
+        </p>
+        <p>Использование свойства scaleY() - маштабирование</p>
+        <hr>
+        <pre>
+          .dropdown__content {
+           transform: scaleY(0); 
+          }
+          .dropdown--active .dropdown__content {
+           transform: scaleY(1); 
+          }
+        </pre>
+        <p>
+          Все работает, но что бы выполнялась плавность ставим элементу свойство:<br>
+        <code>transition: transform 0.3s;</code><br>
+        При этом плавность появляется но элемент открывается и исчезает от своей середины.<br>
+        Что бы изменить точку раскрытия "списка" добавляем элементу свойство <code>transform-origin: top;</code> <br>
+        теперь элемент открывается сверху вниз, но есть маленткий момент, буквы в "списке" перед полным закрытием элемента начинают деформироваться.
+      </p>
+      <h4>Можно использовать свойства: transform: translateY(-160%);- перемещение по вертикали</h4>
+      <p>
+        при этом свойстве "список" находится вверху а потом перемещается вниз, создавая илюзию "разворачивания списка сверха" 
+      </p>
+      <pre>
+        .dropdown__content {
+          transform: translateY(-160%); 
+         }
+         .dropdown--active .dropdown__content {
+          transform: translateY(0);
+         }
+      </pre>
+      <p>
+        но проблемма в том что список перемещается вверх с своего блока через остальные ввер, если список будет в середени страницы, по будет перемещениее через весь контент к началу документа, это не годится
+      </p>
+      <p>
+        Тогда можем применить несколько свойств:<br>
+        transform: translateY(-15%);
+        opacity: 0; <br>
+        Это создаст эект поднятия элемент и исчезновения его, тоесть Илюзию его разворачивания.
+      </p>
+      <pre>
+        .dropdown__content {
+          transform: translateY(-15%); 
+          opacity: 0;
+          transition: 
+            transform 0.2s, 
+            opacity 0.2s;
+          pointer-events: none;
+
+         }
+         .dropdown--active .dropdown__content {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+         }
+      </pre>
+      <p>
+        В этом варианте все работает хорошо, и для того что бы изначально скрыты "список" который поднят вверх не перекрывал возможность клика на кнопку, добавляется свойство <br>
+        <code>pointer-events: none;</code><br>
+        А после клика,- 
+        <code>pointer-events: auto;</code>
+      </p>
+      <h3 class="main-topic-title">Adding And Removing Elements</h3>
+      <hr>
       </section>
     </div>
   </body>
