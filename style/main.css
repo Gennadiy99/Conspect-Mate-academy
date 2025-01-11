@@ -8,8 +8,11 @@ html {
   box-sizing: inherit;
 }
 
-.color-grey {
+.descrip-color-pre {
   color: grey;
+}
+.accent-color-pre {
+  color: blue;
 }
 /* Стили для Nav-bar */
 .nav {

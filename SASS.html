@@ -121,7 +121,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p class="color-grey">SCSS</p>
+              <p class="descrip-color-pre">SCSS</p>
               .block {
                 font-size: 20px;
               
@@ -133,7 +133,7 @@
           </div>
           <div>
             <pre>
-              <p class="color-grey">CSS</p>
+              <p class="descrip-color-pre">CSS</p>
               .block {
                 font-size: 20px;
               }
@@ -153,7 +153,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p class="color-grey">SCSS</p>
+              <p class="descrip-color-pre">SCSS</p>
               .block {
                 font-size: 20px;
                 
@@ -170,7 +170,7 @@
           </div>
           <div>
             <pre>
-              <p class="color-grey">CSS</p>
+              <p class="descrip-color-pre">CSS</p>
               .block {
                 font-size: 20px;
               }
@@ -196,7 +196,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p><b><u class="color-grey">SCSS</u></b></p>
+              <p><b><u class="descrip-color-pre">SCSS</u></b></p>
               $screenWidth: 600px;
 
               .block {
@@ -207,7 +207,7 @@
           </div>
           <div>
             <pre>
-              <p><b><u class="color-grey">CSS</u></b></p>
+              <p><b><u class="descrip-color-pre">CSS</u></b></p>
               .block {
                 width: 1200px;
                 height: calc(610px + 10%);
@@ -227,7 +227,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p class="color-grey">SCSS</p>
+              <p class="descrip-color-pre">SCSS</p>
               @for $i from 1 through 3 {
                 .block-#{$i} {
                   height: 100% / $i;
@@ -238,7 +238,7 @@
           </div>
           <div>
             <pre>
-              <p class="color-grey">CSS</p>
+              <p class="descrip-color-pre">CSS</p>
               .block-1 {
                 height: 100%; 
               }
@@ -261,7 +261,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p class="color-grey">SCSS</p>
+              <p class="descrip-color-pre">SCSS</p>
               $colors: (
                 'error': #f00,
                 'notification': #0f0,
@@ -278,7 +278,7 @@
           </div>
           <div>
             <pre>
-              <p class="color-grey">CSS</p>
+              <p class="descrip-color-pre">CSS</p>
               .message--error {
                 color: #f00;
               }
@@ -299,7 +299,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p class="color-grey">SCSS</p>
+              <p class="descrip-color-pre">SCSS</p>
               $bodyWidth: 600px;
 
               @function size($width) {
@@ -314,7 +314,7 @@
           </div>
           <div>
             <pre>
-              <p class="color-grey">CSS</p>
+              <p class="descrip-color-pre">CSS</p>
               .container {
                 width: 300px;
               }
@@ -398,7 +398,7 @@
         <div style="display: flex">
           <div>
             <pre>
-              <p class="color-grey">SCSS</p>
+              <p class="descrip-color-pre">SCSS</p>
               @mixin circle($size) {
                 height: $size;
                 width: $size;
@@ -416,7 +416,7 @@
           </div>
           <div>
             <pre>
-              <p class="color-grey">CSS</p>
+              <p class="descrip-color-pre">CSS</p>
               .avatar {
                 height: 50px;
                 width: 50px;
@@ -448,7 +448,7 @@
           інших:
         </p>
         <pre>
-          <span class="color-grey">// src/_corners.scss</span>
+          <span class="descrip-color-pre">// src/_corners.scss</span>
 
           $radius: 3px;
 
@@ -458,7 +458,7 @@
 
         </pre>
         <pre>
-          <span class="color-grey">// style.scss</span>
+          <span class="descrip-color-pre">// style.scss</span>
 
           @use "src/corners" as c;
 
@@ -486,7 +486,7 @@
           становится "глобальным" и доступно в любом другом месте.
         </p>
         <pre>
-          <span class="color-grey">// _icon.scss</span>
+          <span class="descrip-color-pre">// _icon.scss</span>
 
           $icon-color: red;
 
@@ -494,11 +494,11 @@
             color: $icon-color;
           }
 
-          <span class="color-grey">// main.scss</span>
+          <span class="descrip-color-pre">// main.scss</span>
 
-          @import "icon"; <span class="color-grey">// Вставляет содержимое _icon.scss</span>
+          @import "icon"; <span class="descrip-color-pre">// Вставляет содержимое _icon.scss</span>
           .box {
-            background: $icon-color; <span class="color-grey">// Можно напрямую использовать $icon-color</span>
+            background: $icon-color; <span class="descrip-color-pre">// Можно напрямую использовать $icon-color</span>
           }
         </pre>
         <p>
@@ -526,19 +526,19 @@
           </b>
         </p>
         <pre>
-          <span class="color-grey">// _corners.scss</span>
+          <span class="descrip-color-pre">// _corners.scss</span>
           $radius: 5px;
 
           @mixin rounded {
             border-radius: $radius;
           }
 
-          <span class="color-grey">// main.scss</span>
+          <span class="descrip-color-pre">// main.scss</span>
           @use "corners" as c;
 
           .box {
-            @include c.rounded; <span class="color-grey">// Используем миксин из corners</span>
-            padding: 10px + c.$radius; <span class="color-grey">// Используем переменную из corners</span>
+            @include c.rounded; <span class="descrip-color-pre">// Используем миксин из corners</span>
+            padding: 10px + c.$radius; <span class="descrip-color-pre">// Используем переменную из corners</span>
           }
         </pre>
         <p>

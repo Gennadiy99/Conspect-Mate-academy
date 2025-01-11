@@ -664,6 +664,7 @@
         </p>
       </section>
       <section class="Document-and-Events">
+        <!-- #region Document / Events -->
         <h1 class="main-topic-title">Document and Events</h1>
         <hr />
         <p>Управление HTML страницей при помощи JS script</p>
@@ -772,6 +773,8 @@
           Обращу внимание на добавление в начало страницы директивы
           <b>"use strict";</b>
         </h4>
+      <!-- #endregion Document / Events -->
+        <!-- #region Dropdown -->
         <h3 class="main-topic-title">Custom Dropdown</h3>
         <hr />
         <p>
@@ -926,8 +929,158 @@
         А после клика,- 
         <code>pointer-events: auto;</code>
       </p>
+      <!-- #endregion Dropdown  -->
+        <!-- #region Elements add / remov Js to HTML  -->
       <h3 class="main-topic-title">Adding And Removing Elements</h3>
       <hr>
+      <p>
+        Если в форме не указываешь атрибут <b>action=""</b> то отправка формы происходит на эту же страницу!
+      </p>
+      <p>
+        Можно в HTML в форму установить как атрибут?- обработчик событий <span class="accent-color-pre"><b>"onsubmit"</b></span> и установить ему значение <b>"<span class="accent-color-pre">return false"</span></b>.Таким образом мы отключает событие отправки формы, Данные не отправляются, Страница не перезагружается.
+        Так же можно добавить в обработчик событий метод для Очишения Формы: <b><span class="accent-color-pre">"this.reset();"</span></b> 
+      </p> 
+      <pre>
+        &ltform class="todo-app__form" 
+        <span class="accent-color-pre">
+          onsubmit="this.reset(); return false"
+        </span>
+        &ltinput type="text" placeholder="Enter a todo" />
+        &ltbutton> Add &lt/button>
+        &lt/form>
+      </pre>
+      <p>
+        <b>Список событий и команд:</b>
+      </p>
+      <ul>
+        <li>
+          <b>form.addEventListener('submit', () => {});</b> Событие <u>'submit' - отправка формы</u>
+        </li>
+        
+        <li>
+          <u>"onsubmit"</u> - Событие прописываемое Атрибутом внутри HTML
+        </li>
+        <li>
+          <b>onsubmit="this.reset(); return false"</b>
+          <ul>
+            <li><u>this</u> - Это текущий элемент</li>
+            <li><u>.reset();</u> - метод очищающий форму</li>
+            <li><u>return false</u> - в случаи с формой, Отменяет ее отправку.
+            </li><br>
+
+            Но много кода писать в HTML неудобно, по этому длинные выражения лучше писать в JS  
+          </ul>
+        </li>
+      </ul>
+      <p>
+        Для добавления элемена в список на странице HTML, можно воспользоваться методом:<br>
+        <b>list.append()</b> в скобках которого указывается новый созданный элемент.
+      </p>
+      <p>
+        Для Создания элемента используется метод:<br>
+        <b>document.createElement('li');</b>
+        <u>const item = document.createElement('li');</u>
+      </p>
+      <p>
+        Для добавления текста в созданный элемент используем метод: <br>
+        <b>.textContent = 'New';</b>
+        <u>item.textContent = 'New';</u>
+      </p>
+      <p>
+        В данном случаи не удобно когда код к одному событию написан и в HTML Ии в JS поєтому удаляем код из HTML и прописівает его в нутри функции при событии <b>'submit'</b> 
+      </p>
+      <pre>
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+        
+          const item = document.createElement("li");
+          item.textContent = "New";
+          list.append(item);
+        
+          form.reset();
+        });
+      </pre>
+      <h4>Есть более удобный способ добавления элементов и содержимого, похож на прицип Реакта</h4>
+      <p>Метод: <b>.insertAdjacentHTML('beforeend',``)</b> Вот пример использование этого метода:</p>
+      <pre>
+        list.insertAdjacentHTML(
+          "beforeend",
+          `
+          &lt;li>
+          ${form.elements.todo.value}
+          &lt;button onclick="this.parentElement.remove()">
+            X
+          &lt;/button>
+          &lt;/li>
+          `
+        );
+      </pre>
+      <ol>
+        <li>Первій подход это:
+          <ul>
+            <li>Создание Элемента</li>
+            <li>Наполнение элемента</li>
+            <li>Добавление элемента</li>
+          </ul> 
+        </li>  
+        <li>
+          Второй подход это добавление HTML через метод .<b>insertAdjacentHTML()</b> в котором 2 параметра:
+          <ul>
+            <li>"beforeend" - куда вставляется элемент</li>
+            <li> ` &ltli> CONTENT &lt/li>` - сам вставляемый элемент.</li>
+            <li></li>
+          </ul>
+        </li>
+      </ol>
+
+      <h4>Резюме по методам событиям и работе с элементами.</h4>
+      <ul>
+        <li><u>submit</u> - Событие отправка</li>
+        <li>
+          <u>.addEventListener</u>("", ()=>{}) - прослущиватель событий с функцией 
+        </li>
+        <li>
+          form<u>.reset()</u> - очистка формы
+        </li>
+        <li>
+          list<u>.append(item)</u> - добавление элемента в список li
+        </li>
+        <li>
+          item<u>.textContent</u> = "New"; - Добавление текста ("New" в элемент item )
+        </li>
+        <li>
+          <u>.preventDefault()</u> - удаляет действие браузера по умолчанию
+        </li>
+        <li><u>"dblclick"</u> - двойной клик</li>
+        <li><u>.remove()</u> - Удаление элемента</li>
+        <li>
+          <b>form.elements.todo.value; </b>
+          <u>.elements</u> - Обращение к элементам формы (добавить имя todo) 
+        </li>
+        <li><u>.value</u> - Значение элемента</li>
+        <li><u>.prepend(item);</u> - Метод добавляет элемент в начало блока </li>
+        <li><u>.insertAdjacentHTML</u> - Метод дабавляющий HTML разметку</li>
+        <li> <u>.parentElement</u> - обращается к Родителю элемента</li>
+        <li> <u>.remove()</u> - удаляет Элемент</li>
+      </ul>
+        <!--#endregion Elements add / remov Js to HTML  -->
+      </section>
+      <section class="Useful-links">
+        <p>
+          <a href="https://codepen.io/mateacademy/pen/ZEqwbMM">
+            Theme Switcher - Ирструкция переключателя тем
+          </a>
+        </p>
+        <p>
+          <a href="https://codepen.io/mateacademy/pen/PoyVbEg">
+            Custom Dropdown - Пользовательский выпадающий список
+          </a>
+        </p>
+        <p>
+          <a href="https://codepen.io/mateacademy/pen/rNqPwMd">
+            Todo List - Код по добавлению и удалению Элементов в HTML
+          </a>
+        </p>
       </section>
     </div>
   </body>
