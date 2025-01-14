@@ -4366,6 +4366,7 @@ a {
                     to {
                       transform: translate(-50%, -100%) rotate(360deg);
                     }
+                  }
                 </pre>
 
               </li>
@@ -4616,6 +4617,226 @@ a {
           ---------------
           /* #endregion */
         </pre>
+        <div class="comande-for-SASS">
+          <pre>
+            Шпаргалка по работе с SASS (локально и глобально)
+            Установка SASS
+            Установка глобально через npm (доступен для всех проектов):
+                
+            bash
+            Копировать код
+            npm install -g sass
+            Установка локально в проект (зависимость в package.json):
+                
+            bash
+            Копировать код
+            npm install sass --save-dev
+            Проверка версии SASS (проверка установки):
+                
+            bash
+            Копировать код
+            sass --version
+            Компиляция файлов SASS
+            Компиляция одного файла:
+                
+            bash
+            Копировать код
+            sass input.scss output.css
+            Автоматическая компиляция с отслеживанием изменений:
+                
+            bash
+            Копировать код
+            sass --watch input.scss output.css
+            Компиляция всех файлов из директории (дерево):
+                
+            bash
+            Копировать код
+            sass --watch src:dist
+            Здесь src — папка с исходниками .scss.
+            dist — папка, куда будут сохранены скомпилированные .css.
+            Компиляция в сжатый (минифицированный) файл:
+                
+            bash
+            Копировать код
+            sass input.scss output.css --style=compressed
+            Работа с глобально установленным SASS
+            Если SASS установлен глобально через npm install -g sass:
+            Используйте sass напрямую:
+            bash
+            Копировать код
+            sass input.scss output.css
+            Работа с локально установленным SASS
+            Использование npx для локальной установки:
+            Если SASS установлен в проекте как зависимость:
+                
+            bash
+            Копировать код
+            npx sass input.scss output.css
+            Добавление команды в package.json для удобства: В scripts вашего      package.json добавьте:
+                
+            json
+            Копировать код
+            "scripts": {
+              "sass": "sass src:dist --watch",
+              "sass-build": "sass src:dist --style=compressed"
+            }
+            Теперь вы можете запустить SASS через команды:
+            
+            bash
+            Копировать код
+            npm run sass       # для разработки
+            npm run sass-build # для финальной сборки
+            Параметры компиляции SASS
+            Выбор формата CSS:
+            
+            expanded — стандартный формат (читаемый, с отступами):
+            bash
+            Копировать код
+            sass input.scss output.css --style=expanded
+            compressed — сжатый файл (минификация):
+            bash
+            Копировать код
+            sass input.scss output.css --style=compressed
+            Сжатие CSS:
+            
+            bash
+            Копировать код
+            sass input.scss output.css --style=compressed
+            Компиляция с исходными картами (source maps):
+            Позволяет отладить SASS в браузере:
+            
+            bash
+            Копировать код
+            sass input.scss output.css --source-map
+            Работа с вложенными директориями:
+            
+            Компиляция всех .scss файлов в проекте:
+            bash
+            Копировать код
+            sass --watch src:dist
+            Полезные команды
+            Помощь по SASS (список всех команд):
+            
+            bash
+            Копировать код
+            sass --help
+            Узнать текущую версию SASS:
+            
+            bash
+            Копировать код
+            sass --version
+            Советы
+            Всегда используйте --watch в процессе разработки, чтобы       автоматически отслеживать изменения.
+            Для минификации используйте флаг --style=compressed.
+            Настраивайте команды через package.json для упрощения работы в      командах.
+          </pre>
+          
+          <h4>Подключение Шрифтов (Шпаргалка)</h4>
+          <pre>
+            Шпаргалка подключения шрифтов в проект
+            1. Подключение через &ltlink> (Google Fonts)
+            Добавь &ltlink> в &lthead> HTML:
+
+            html
+            Копировать код
+            &ltlink rel="preconnect" href="https://fonts.googleapis.com">
+            &ltlink rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            &ltlink href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&            family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+            Используй шрифты прямо в CSS:
+
+            css
+            Копировать код
+            body {
+              font-family: "Open Sans", sans-serif;
+              font-weight: 400;
+            }
+
+            h1 {
+              font-family: "Poppins", sans-serif;
+              font-weight: 700;
+            }
+            2. Подключение локально (через @font-face)
+            Скачай шрифты (например, с Google Fonts или другого источника). Размести их в             проекте:
+
+            bash
+            Копировать код
+            /project
+            ├── /fonts
+            │   ├── OpenSans-Regular.woff2
+            │   ├── OpenSans-Bold.woff2
+            │   ├── Poppins-Regular.woff2
+            │   └── Poppins-Bold.woff2
+            ├── /css
+            │   └── style.css
+            └── index.html
+            Пропиши @font-face в CSS:
+
+            css
+            Копировать код
+            @font-face {
+              font-family: "Open Sans";
+              src: url("../fonts/OpenSans-Regular.woff2") format("woff2");
+              font-weight: 400;
+              font-style: normal;
+            }
+
+            @font-face {
+              font-family: "Open Sans";
+              src: url("../fonts/OpenSans-Bold.woff2") format("woff2");
+              font-weight: 700;
+              font-style: normal;
+            }
+
+            @font-face {
+              font-family: "Poppins";
+              src: url("../fonts/Poppins-Regular.woff2") format("woff2");
+              font-weight: 400;
+              font-style: normal;
+            }
+
+            @font-face {
+              font-family: "Poppins";
+              src: url("../fonts/Poppins-Bold.woff2") format("woff2");
+              font-weight: 700;
+              font-style: normal;
+            }
+            Используй шрифты в CSS:
+
+            css
+            Копировать код
+            body {
+              font-family: "Open Sans", sans-serif;
+            }
+
+            h1 {
+              font-family: "Poppins", sans-serif;
+              font-weight: 700;
+            }
+            3. Подключение через &lt@import> (CSS)
+            Добавь импорт в начало CSS файла:
+
+            css
+            Копировать код
+            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&           family=Poppins:wght@300;500;700&display=swap');
+            Используй шрифты в CSS:
+
+            css
+            Копировать код
+            body {
+              font-family: "Open Sans", sans-serif;
+              font-weight: 400;
+            }
+
+            h1 {
+              font-family: "Poppins", sans-serif;
+              font-weight: 700;
+            }
+            Когда какой метод использовать?
+            Через &ltlink>: Удобно для быстрой интеграции, но требует интернет-соединения.
+            Локально (@font-face): Независимость от внешних источников, быстрее загрузка, подходит для продакшн-проектов.
+            Через <@import>: Удобно для простых стилей, но менее производительно, так как импорт блокирует рендеринг.
+          </pre>
+        </div>
       </div>
     </section>
     <script src="main.js"></script>
