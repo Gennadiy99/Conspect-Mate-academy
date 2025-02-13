@@ -4236,6 +4236,7 @@ a {
               &:hover {
                 #{$property}: $toValue;
               }
+            }
           </pre>
           <ul>
             <li>$property - переменная для свойства: "transform"</li>
@@ -4836,6 +4837,86 @@ a {
             Локально (@font-face): Независимость от внешних источников, быстрее загрузка, подходит для продакшн-проектов.
             Через <@import>: Удобно для простых стилей, но менее производительно, так как импорт блокирует рендеринг.
           </pre>
+          <p>
+            Вес Шрифтов, список:
+          </p>
+          <pre>
+            Стандартные веса шрифта:
+            100 — Thin (Тонкий)
+            200 — Extra Light (Ультратонкий) / Ultra Light
+            300 — Light (Светлый)
+            400 — Normal (Нормальный) / Regular
+            500 — Medium (Средний)
+            600 — Semi Bold (Полужирный) / Demi Bold
+            700 — Bold (Жирный)
+            800 — Extra Bold (Экстра-жирный) / Ultra Bold
+            900 — Black (Чёрный) / Heavy
+            Особенности:
+            Значение 400 эквивалентно значению по умолчанию normal.
+            Значение 700 эквивалентно bold.
+            Не все шрифты поддерживают все веса. Некоторые могут иметь только нормальный (400) и жирный (700) вес.
+          </pre>
+        </div>
+        <div>
+          <p>
+             ВАЖНОЕ СВОЙСТВО ДЛЯ INPUT при автозаполнении.
+            <pre>
+              input:-webkit-autofill {
+                box-shadow: 0 0 0 1000px $bg-header inset !important;
+               -webkit-text-fill-color: #fff !important; /* Обязателен для правильной работы */
+              }
+            </pre>
+            Таким образом, фон задается через box-shadow, <br>
+            а -webkit-text-fill-color заставляет браузер принять этот стиль.
+          </p>
+          <p>
+            Для управления <b>псевдоэлементом созданным под элементом</b>, что бы он соответствовал размеру родителя нужно указать у Псевдоэлемента: <b>width: 100%; - Ширина 100% от родителя.</b><br>
+            А для родителя:<b> display:inline-block;</b>
+            Если же для элемента необходим <u>display: block;</u> тогда нужно добавить свойство:
+             <b>width:max-content</b>;
+          </p>
+          <div>
+            <p>
+              <b>Управление цветом <b>svg</b> Иконки загруженной через <b>bacground-img</b></b>
+            </p>
+            <pre>
+              .link-fb {
+                display: block;
+                width: 32px;
+                height: 32px;
+                background-color: white;
+                mask-image: url(../images/facebook\ 1.svg);
+                -webkit-mask-image: url(../images/facebook\ 1.svg);
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                transition: all 0.3s;
+              }
+              <p>Для работы непосредственно с иконкой важны свойства:<br>
+                <ul>
+                  <li>
+                    background-color: white;
+                  </li>
+                  <li>
+                    mask-image: url(../images/facebook\ 1.svg);
+                  </li>
+                  <li>
+                    -webkit-mask-image: url(../images/facebook\ 1.svg);
+                  </li>
+                </ul>
+              </p>
+              <p>
+                Смена цвета svg иконки через свойства:
+                <pre>
+                  .link-fb:hover {
+                    background-color: #2060f6;
+                    transform: scale(1.3);
+                  }
+                </pre>
+              </p>
+            </pre>
+          </div>
+          <hr>
         </div>
       </div>
     </section>

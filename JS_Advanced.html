@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Advanced</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./images/Logo MateAcademy.png" />
+    <link rel="stylesheet" href="style/fontello.css" />
+    <link rel="stylesheet" href="style/main.css" />
+  </head>
+  <script src="main.js"></script>
+  <body>
+    <div class="container">
+      <section class="JS_Advanced Useful-links">
+        <h1>How to Solve Tasks on Github</h1>
+        <h2 class="main-topic-title">Корисні посилання</h2>
+
+        <p>
+          <a
+            href="https://doc.clickup.com/24383048/p/h/q83j8-478895/5c8e6ac12123a17"
+          >
+            Комбінації клавіш VSCode
+          </a>
+        </p>
+
+        <p>
+          <a
+            href="https://doc.clickup.com/24383048/p/h/q83j8-478955/72cf30d21cab1bc"
+          >
+            Словничок термінів
+          </a>
+        </p>
+
+        <p>
+          <a href="https://code.visualstudio.com/docs/terminal/basics">
+            VS Code Terminal Basics
+          </a>
+        </p>
+
+        <p>
+          <a href="https://code.visualstudio.com/docs/editor/debugging">
+            VS Code Debugging
+          </a>
+        </p>
+
+        <p>
+          <a href="https://jestjs.io/docs/troubleshooting">
+            Tests Troubleshooting
+          </a>
+        </p>
+
+        <p>
+          <a href="https://mate-academy.github.io/fe-program/js/extra/string">
+            String Methods Cheatsheet
+          </a>
+        </p>
+      </section>
+      <section class="Object_Destructuring">
+        <h2 class="main-topic-title">
+          Object Destructuring Диструктуризация обьекта
+        </h2>
+        <p>
+          Очень интересный способ передачи данных из массива или обьекта:
+          (Получаем значения из массива и помещаем их в переменные)
+        </p>
+        <pre>
+          const numbers = [1, 2, 3];
+          const [a, b, c] = numbers;
+
+          console.log(a); // 1
+          console.log(b); // 2
+          console.log(c); // 3
+        </pre>
+        <p>Деструктуризация объекта:</p>
+        <pre>
+          const user = { name: "Alice", age: 25 };
+          const { name, age } = user;
+
+          console.log(name); // "Alice"
+          console.log(age);  // 25
+        </pre>
+        <p>
+          Что произошло?<br />
+          Переменные name и age получили значения из объекта по ключам
+        </p>
+        <p>
+          Спред-оператор (...) раскрывает элементы массива или свойства
+          объекта.<br />
+          Спред в массивах:
+        </p>
+        <pre>
+          const arr1 = [1, 2, 3];
+          const arr2 = [...arr1, 4, 5];
+
+          console.log(arr2); // [1, 2, 3, 4, 5]
+        </pre>
+        <p>
+          Что произошло?<br />
+
+          ...arr1 развернул элементы [1, 2, 3], добавив [4, 5].
+        </p>
+        <p>Спред в объектах:</p>
+        <pre>
+          const user = { name: "Alice", age: 25 };
+          const newUser = { ...user, city: "New York" };
+
+          console.log(newUser);
+          // { name: "Alice", age: 25, city: "New York" }
+        </pre>
+        <p>
+          Что произошло? <br />
+          ...user развернул свойства { name: "Alice", age: 25 }, добавив city.
+        </p>
+        <p>
+          Рест + Деструктуризация Можно использовать "рест" в деструктуризации:
+          <b>Оставшиеся элементы в массиве (rest оператор)</b>
+        </p>
+        <pre>
+          const numbers = [1, 2, 3, 4, 5];
+          const [first, second, ...rest] = numbers;
+
+          console.log(first); // 1
+          console.log(second); // 2
+          console.log(rest); // [3, 4, 5]
+        </pre>
+        <p>
+          Что произошло? <br />
+          first = 1, second = 2.<br />
+          ...rest собирает оставшиеся элементы в массив [3, 4, 5]
+        </p>
+        <p><b>Оставшиеся свойства в объекте (rest оператор)</b></p>
+        <pre>
+          const user = { name: "Alice", age: 25, city: "New York" };
+          const { name, ...rest } = user;
+
+          console.log(name); // "Alice"
+          console.log(rest); // { age: 25, city: "New York" }
+        </pre>
+        <p>
+          Что произошло? <br />
+          name извлекается отдельно. <br />
+          ...rest собирает оставшиеся свойства { age: 25, city: "New York" }.
+        </p>
+        <p>
+          <b
+            >Так же при получении значений в переменную из обьекта, можно
+            переименовывать Ключь</b
+          ><br />
+          При деструктуризации объекта можно переименовывать ключи с помощью :
+        </p>
+        <pre>
+          const user = { 
+            name: "Alice", 
+            age: 25, 
+            city: "New York" 
+          };
+          
+          // Переименовываем ключи при деструктуризации
+          const { name: userName, age: userAge, city: userCity } = user;
+          
+          console.log(userName); // "Alice"
+          console.log(userAge);  // 25
+          console.log(userCity); // "New York"
+        </pre>
+        <p>Что произошло?</p>
+        <ul>
+          <li>name → userName</li>
+          <li>age → userAge</li>
+          <li>city → userCity</li>
+        </ul>
+        <p>
+          <b>Можно использовать переименование ключей в аргументах функции:</b>
+        </p>
+        <pre>
+          function printUser({ name: userName, age: userAge }) {
+            console.log(`Имя: ${userName}, Возраст: ${userAge}`);
+          }
+          
+          const person = { name: "Bob", age: 30 };
+          printUser(person); // "Имя: Bob, Возраст: 30"
+        </pre>
+        <p>
+          Что произошло?<br />
+
+          Функция принимает объект, сразу деструктуризируя его и переименовывая
+          name → userName, age → userAge.
+        </p>
+        <p>
+          <b
+            >Можно переименовывать ключи при деструктуризации:<br />
+            const { ключ: новоеИмя } = объект; <br />
+            Работает как в обычных переменных, так и в функциях.</b
+          >
+        </p>
+      </section>
+      <section class="Useful-links">
+        <p>
+          <a href="https://javascript.info/object">Objects</a>
+        </p>
+        <p>
+          <a href="https://javascript.info/object-copy"
+            >Object references and copying</a
+          >
+        </p>
+      </section>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

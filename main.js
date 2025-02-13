@@ -975,3 +975,141 @@ function countMatchingSocks(colors) {
 console.log(countMatchingSocks([10, 20, 30, 10, 20, 10, 60]));
 
 console.log(Math.floor(4 / 2));
+
+const kolli = {
+  Kolli: "name",
+  123: "chipVer",
+  3: "wheels",
+};
+
+const robert = {
+  123: "chipVer",
+  Robert: "name",
+  11: "chip",
+  113: "chipVer",
+};
+
+// function inverseRobot(robot) {
+//   const resValue = Object.values(robot);
+//   const resUnik = new Set(resValue);
+
+//   if (resUnik.size === resValue.length) {
+//     const resKeyVel = Object.entries(robot);
+
+//     const totalArr = [];
+
+//     for (const item of resKeyVel) {
+//       const arr = [];
+//       arr.push(item[1]);
+//       arr.push(item[0]);
+//       totalArr.push(arr);
+//     }
+
+//     return Object.fromEntries(totalArr);
+//   } else {
+//     return null;
+//   }
+// }
+
+// console.log(inverseRobot(robert));
+
+// Функция работает
+
+function inverseRobot(robot) {
+  const resValue = Object.values(robot);
+  const resUnik = new Set(resValue);
+  let newObj = {};
+
+  if (resUnik.size === resValue.length) {
+    for (let key in robot) {
+      newObj[robot[key]] = key;
+    }
+    return newObj;
+  } else {
+    return null;
+  }
+}
+console.log(inverseRobot(kolli));
+
+function inverseRobot(robot) {
+  const newRobot = {};
+
+  for (let key in robot) {
+    const value = robot[key];
+
+    if (value in newRobot) {
+      return null;
+    } else {
+      newRobot[robot[key]] = key;
+    }
+  }
+  return newRobot;
+}
+console.log(inverseRobot(robert));
+
+// новая функция
+
+function generateChart(statistics) {
+  let summParts = 0;
+  const deg = 360;
+  const newObj = {};
+
+  for (let value of Object.values(statistics)) {
+    summParts += value;
+  }
+  for (let key of Object.keys(statistics)) {
+    newObj[key] = Math.round((deg / summParts) * statistics[key]);
+  }
+
+  return newObj;
+}
+
+generateChart({ cleaner: 2, driver: 8 });
+
+console.log(generateChart({ cleaner: 2, driver: 8 }));
+
+// функция по добавлению и удалению элементов согласно указанных в свойстве команд
+
+const actions = [
+  {
+    type: "addProperties", // додавання властивостей
+    extraData: {
+      // властивості, які слід додати до стану
+      key1: "value1",
+      key2: "value2",
+    },
+  },
+  {
+    type: "removeProperties", // видалення властивостей
+    keysToRemove: ["key1", "key2"], // ключі, які слід видалити зі стану
+  },
+  {
+    type: "clear", // стан має стати порожнім після виконання цієї дії
+  },
+];
+
+const state = { foo: "bar", bar: "foo" };
+
+function transformState(changeObj, propObj) {
+  console.log(changeObj);
+
+  for (const obj of propObj) {
+    console.log(obj);
+
+    if (obj.type === 'addProperties') {
+      Object.assign(changeObj, obj.extraData);
+    }
+    console.log(changeObj);
+
+    if (obj.type === 'removeProperties') {
+      obj.keysToRemove.forEach((elem) => delete changeObj[elem]);
+    }
+
+    if (obj.type === 'clear') {
+      Object.keys(changeObj).forEach(key => delete changeObj[key])
+    }
+  }
+  return changeObj;
+}
+
+console.log(transformState(state, actions));
