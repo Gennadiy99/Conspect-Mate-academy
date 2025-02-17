@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style/fontello.css" />
     <link rel="stylesheet" href="style/main.css" />
   </head>
-  <script src="main.js"></script>
+
   <body>
     <section class="nav-bar">
       <div class="nav">
@@ -36,10 +36,16 @@
         <select class="Select-section" name="selectSection">
           <option value="">-- Select section --</option>
           <option value="#">1</option>
-          <option value="#">2</option>
+          <option value="#Useful-JS-Advanced">Useful links JS-Advanced</option>
+          <option value="#Destruct">Object_Destructuring</option>
+          <option value="#Useful-Desrt-Copy">Useful links Desrt-Copy</option>
+          <option value="#methods">methods</option>
+          <option value="#Getters">Getters</option>
+          <option value="#Setters">Setters</option>
+          <option value="#Useful-methods">Useful links methods</option>
         </select>
       </div>
-      <section class="JS_Advanced Useful-links">
+      <section class="class=Useful-links" id=" Useful-JS-Advanced">
         <h1>How to Solve Tasks on Github</h1>
         <h2 class="main-topic-title">Корисні посилання</h2>
 
@@ -83,7 +89,7 @@
           </a>
         </p>
       </section>
-      <section class="Object_Destructuring">
+      <section class="Object_Destructuring" id="Destruct">
         <h2 class="main-topic-title">
           Object Destructuring Диструктуризация обьекта
         </h2>
@@ -221,13 +227,302 @@
           >
         </p>
       </section>
-      <section class="Useful-links">
+      <section class="Useful-links" id="Useful-Desrt-Copy">
         <p>
           <a href="https://javascript.info/object">Objects</a>
         </p>
         <p>
           <a href="https://javascript.info/object-copy"
             >Object references and copying</a
+          >
+        </p>
+      </section>
+      <section class="methods" id="methods">
+        <h2 class="main-topic-title">Методи об'єкта</h2>
+        <hr>
+        <h4>
+          Метод об'єкта — це властивість, яка містить функцію. Для початку розглянемо функцію, яка друкує інформацію про користувача:
+        </h4>
+        <p>
+          Методод это Функция которая хранится в Свойствах обьекта <br>
+          <b>this</b> - это То что стоит перед Точкой при вызове.
+        </p>
+        <pre>
+          function printFullName(user) {
+            console.log(`${user.firstName} ${user.lastName}`);
+          }
+          
+          const firstUser = {
+            firstName: 'John',
+            lastName: 'Smith',
+            age: 25,
+            printInfo: printFullName,
+          };
+          
+          printFullName(firstUser); // John Smith
+          
+        </pre>
+        <p>
+          Зараз ми отримуємо об'єкт, як параметр, і виконуємо з ним необхідні дії. Проблема такого підходу в тому, що теоретично можна передати не об'єкт, а значення іншого типу, або об'єкт, що не містить необхідних властивостей. Наприклад:
+        </p>
+        <pre>
+          printFullName({}); // undefined undefined
+
+        </pre>
+        <p>
+          Звісно, можна додати перевірку типів відповідних властивостей за допомогою оператора typeof:
+        </p>  
+          <pre>
+            function printFullName(user) {
+              if (typeof user.firstName !== 'string'
+                || typeof user.lastName !== 'string'
+              ) {
+                return; // просто завершуємо функцію
+              }
+            
+              console.log(`${user.firstName} ${user.lastName}`);
+            }
+            
+          </pre>
+          <p>
+            Або можна використати TypeScript для перевірки типів (розглянемо його пізніше).<br>
+            Альтернативою може бути додавання метода до об'єкта:
+          </p>
+          <pre>
+            function printFullName(user) {
+              console.log(`${user.firstName} ${user.lastName}`);
+            }
+            
+            const user = {
+              firstName: 'John',
+              lastName: 'Smith',
+              age: 25,
+            
+              printInfo: printFullName,
+            };
+            
+          </pre>
+          <p>
+            При виклику такого метода замість передачі об'єкта через аргумент, можна використати ключове слово <b>this.</b> Воно містить посилання на об'єкт, що стоїть перед крапкою при виклику метода:
+          </p>
+          <pre>
+            function printFullName() {
+              // Використовуємо `this` замість `user`
+              console.log(`${this.firstName} ${this.lastName}`);
+            }
+            
+            const user = {
+              firstName: 'John',
+              lastName: 'Smith',
+              age: 25,
+            
+              printInfo: printFullName,
+            };
+            
+            user.printInfo(); // John Smith
+            
+          </pre>
+          <p>
+            Якщо ж таку функцію викликати не як метод об'єкта, то this буде невизначений (undefined), і станеться помилка:
+          </p>
+          <pre>
+            printFullName(); // Uncaught TypeError: Cannot read properties of undefined (reading 'firstName')
+
+          </pre>
+          <p>Тому замість створення окремої функції, її можна додати прямо в об'єкт:</p>
+          <pre>
+            const user = {
+              firstName: 'John',
+              lastName: 'Smith',
+              age: 25,
+            
+              printInfo: function() {
+                console.log(`${this.firstName} ${this.lastName}`);
+              },
+            };
+            
+          </pre>
+          <p>
+            Або навіть скоротити з використанням синтаксису методів об'єкта:
+          </p>
+          <pre>
+            const user = {
+              firstName: 'John',
+              lastName: 'Smith',
+              age: 25,
+            
+              printInfo() {
+                console.log(`${this.firstName} ${this.lastName}`);
+              },
+            };
+            
+          </pre>
+          <p>
+            Таке поєднання даних з "поведінкою" дозволяє обмежити використання метода тільки для "правильних" об'єктів. На такому поєднанні будується Об'єктно Орієнтоване Програмування (ООП), яке зараз є доволі розповсюдженим при написанні серверних застосунків. Основи ООП ми розглянемо пізніше в окремому модулі.
+
+            Невеликим недоліком є те, що ми маємо додавати всі необхідні методи в кожен об'єкт. Пізніше ми вирішимо це за допомогою наслідування (в темах Prototype, Constructors та Classes).
+          </p>
+      </section>
+      <section class="Getters" id="Getters">
+        <h2 class="main-topic-title">Обчислювані властивості (Гетери) Getters </h2>
+        <hr>
+        <p>
+          Іноді при роботі з об'єктами може виникнути необхідність обчислювати якусь інформацію на основі властивостей об'єкта. Наприклад, повне ім'я користувача:
+        </p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+          };
+          
+          user.fullName = `${user.firstName} ${user.lastName}`;
+          
+          console.log(user.fullName); // 'John Smith'
+          
+        </pre>
+        <p>
+          Звісно, якщо змінити ім'я користувача, то fullName не зміниться, оскільки ми не присвоюємо нове значення до fullName:
+        </p>
+        <pre>
+          user.firstName = 'Bob';
+
+          console.log(user.fullName); // 'John Smith'
+
+        </pre>
+        <p>
+          За допомогою метода цю проблему можна вирішити:
+        </p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            
+            getFullName() {
+              return `${this.firstName} ${this.lastName}`
+            }
+          };
+          
+          console.log(user.getFullName()); // 'John Smith'
+          
+          user.firstName = 'Bob';
+          
+          console.log(user.getFullName()); // 'Bob Smith'
+          
+        </pre>
+        <p>
+          Але це змушує нас переписати весь код, що використовує наш об'єкт, що може бути проблематично, особливо, якщо ми написали функцію, яку використовують інші розробники. Щоб залишити синтаксис використання незмінним, можна застосувати обчислювану властивість (гетер). Її можна створити за допомогою ключового слова get і перед назвою метода об'єкта:
+        </p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            
+            get fullName() {
+              return `${this.firstName} ${this.lastName}`;
+            },
+          };
+          
+          console.log(user.fullName); // John Smith
+          
+          user.firstName = 'Bob';
+          
+          console.log(user.fullName); // Bob Smith
+          
+        </pre>
+        <p>
+          При читанні властивості user.fullName викликається гетер fullName і повертає обчислене значення.
+        </p>
+        <p>
+          Зверни увагу, що ми не ставимо круглі дужки після назви, тому гетер не може мати жодних параметрів.
+        </p>
+      </section>
+      <section class="Setters" id="Setters">
+        <h2 class="main-topic-title">Setters (Сетери)</h2>
+        <hr />
+        <p>
+          <u>Аналогічно до <b>гетерів</b></u
+          >, можна додати логіку, яка буде виконуватися, коли ми присвоюємо нове
+          значення до властивості об'єкта. Це робиться за допомогою ключового
+          слова <b>set</b> перед назвою методу.
+        </p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            
+            set fullName(value) {
+              const spacePosition = value.indexOf(' '); // знаходимо перший пробіл
+          
+              this.firstName = value.slice(0, spacePosition); // Ім'я має бути першим
+              this.lastName = value.slice(spacePosition); // Прізвище - другим
+            },
+          };
+          
+          user.fullName = 'Mike Brown';
+          
+          console.log(user.firstName); // 'Mike'
+          console.log(user.lastName); // 'Brown'
+        </pre>
+        <p>Зверни увагу: сетер повинен приймати рівно 1 параметр.</p>
+        <p>
+          За допомогою сетера можна валідувати нове значення. І звісно, сетер і
+          гетер можна використовувати одночасно:
+        </p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            
+            get fullName() {
+              return `${this.firstName} ${this.lastName}`;
+            },
+          
+            set fullName(value) {
+              if (typeof value !== 'string') {
+                return; // невалідний тип даних
+              }  
+                
+              if (!value.includes(' ')) {
+                return; // невалідний формат
+              }
+              
+              const spacePosition = value.indexOf(' ');
+          
+              this.firstName = value.slice(0, spacePosition);
+              this.lastName = value.slice(spacePosition);
+            },
+          };
+        </pre>
+        <p>Якщо додати сетер без <b>гетера</b>, то при читанні отримаємо <u>undefined.</u></p>
+        <p>
+          Якщо ж додати <b>гетер</b> без <b>сетера</b>, то при спробі присвоїти отримаємо помилку:
+        </p>
+        <pre>
+          const user = {
+            firstName: 'John',
+            lastName: 'Smith',
+            
+            get fullName() {
+              return `${this.firstName} ${this.lastName}`;
+            },
+          };
+          
+          user.fullName = 'Bob Black'; // Uncaught TypeError: Cannot set property fullName of #<Object> which has only a getter 
+          
+        </pre>
+      </section>
+      <section class="Useful-links" id="Useful-methods">
+        <p>
+          <a href="https://javascript.info/object-methods"
+            >Object methods, "this"</a
+          >
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get"
+            >getter</a
+          >
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set"
+            >setter</a
           >
         </p>
       </section>
