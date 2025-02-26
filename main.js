@@ -191,3 +191,290 @@ console.log(newRobot.info);
 console.log(newRobot.location);
 newRobot.goForward(5).goLeft(5).goBack(8);
 console.log(newRobot.location);
+// ----
+
+// const numbers = [1, 2, 3];
+// const newLength = numbers.push(10, 20);
+
+// console.log(newLength);
+
+// console.log(numbers.length);
+
+// numbers.push = function (...elems) {
+//   for (let i = 0; i < elems.length; i++) {
+//     this[this.length] = elems[i];
+//   }
+
+//   return this.length;
+// };
+
+// имитация метода pop()
+
+// numbers.pop = function () {
+//   if (this.length === 0) {
+//     return undefined;
+//   } else {
+//     const lastElem = this[this.length - 1];
+
+//     this.length = this.length - 1;
+
+//     return lastElem;
+//   }
+// };
+
+// имитация метода unshift
+
+// const numbers2 = {
+//   arrMet: [1, 2, 3],
+
+//   unshift: function (...el) {
+//     for (let i = el.length - 1; i >= 0; i--) {
+//       for (let f = this.arrMet.length; f > 0; f--) {
+//         this.arrMet[f] = this.arrMet[f - 1];
+//       }
+
+//       this.arrMet[0] = el[i];
+//     }
+
+//     return this.arrMet.length;
+//   },
+// };
+
+// numbers2.unshift(7);
+
+// console.log(numbers2.unshift(7));
+// console.log(numbers2.arrMet);
+
+// Имитация метода shift
+
+const numbers = [0, 1, 2, 3, 4, 5];
+
+numbers.shift = function () {
+  if (this.length === 0) {
+    return undefined;
+  }
+  const removedElement = this[0];
+
+  for (let i = 1; i < this.length; i++) {
+    this[i - 1] = this[i];
+  }
+  this.length--;
+
+  return removedElement;
+};
+
+// имитация функции indexOf
+
+numbers.indexOf = function (item, index = 0) {
+  startIndex = Math.trunc(index);
+  console.log(startIndex);
+
+  if (startIndex < 0) {
+    console.log(this.length);
+    console.log(startIndex);
+
+    startIndex = this.length + startIndex;
+
+    console.log(startIndex);
+
+    if (startIndex < 0) {
+      startIndex = 0;
+    }
+  }
+
+  for (let i = startIndex; i < this.length; i++) {
+    if (this[i] === item) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+console.log(numbers.indexOf(5, -2));
+
+// 0 1 2 3 4 5 6 = 7 'элементов' / 6й - индекс последний.
+//   indexOf(-6); 7 - 6 = 1;
+//   indexOf(-7); 7 - 7 = 0;
+//   indexOf(-8); 7 - 8 = -1;
+
+// Имитация метода includes()
+
+numbers.includes = function (item, index = 0) {
+  let indexStart = Math.trunc(index);
+
+  if (indexStart < 0) {
+    indexStart = this.length + indexStart;
+
+    if (indexStart < 0) {
+      indexStart = 0;
+    }
+  }
+
+  for (let n = indexStart; n < this.length; n++) {
+    console.log(this[n], item);
+
+    if (this[n] === item) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+console.log(numbers.includes(3, 6));
+// функция поиска робота на и возврат его рабочего места
+
+const robot = {
+  name: "Sundar",
+};
+const workPlaces = [
+  {
+    name: "mate academy",
+    staff: ["Roma", "Misha", "Yura"],
+  },
+  {
+    name: "Google",
+    staff: ["Larry", "Sergey", "Sundar"],
+  },
+];
+
+// const searchRobot = function (robotMain, places) {
+//   for (objPlace of places) {
+
+//     for (nameStaff of objPlace.staff) {
+//       if (robotMain.name === nameStaff) {
+//         return objPlace.name;
+//       }
+//     }
+//   }
+// };
+
+const searchRobot = function (robotMain, places) {
+  for (const objPlace of places) {
+    if (objPlace.staff.includes(robotMain.name)) {
+      return objPlace.name;
+    }
+  }
+  return null;
+};
+console.log(searchRobot(robot, workPlaces)); // повертає 'Google';
+
+// разбор операторов для создания массива
+
+const arryElem = new Array(9);
+const arrySecend = new Array(1, 2);
+
+console.log(arryElem[0] + arrySecend[0]);
+
+// console.log(arryElem.length);
+// console.log(arryElem);
+// console.log(arryElem)[0];
+// Имитация метода slice
+
+console.log(numbers);
+
+numbers.slice = function (indexSt = 0, indexEnd = this.length) {
+  let indNewSt = indexSt;
+  let indNewEnd = indexEnd;
+
+  if (indNewSt < 0) {
+    indNewSt = this.length + indNewSt;
+
+    if (indNewSt < 0) {
+      indNewSt = 0;
+    }
+  }
+
+  if (indNewEnd < 0) {
+    indNewEnd = this.length + indNewEnd;
+
+    if (indNewEnd < 0) {
+      indNewEnd = 0;
+    }
+  }
+
+  if (indNewEnd >= this.length) {
+    indNewEnd = this.length;
+  }
+
+  const newArr = [];
+
+  for (let i = indNewSt; i < indNewEnd; i++) {
+    newArr[newArr.length] = this[i];
+  }
+
+  return newArr;
+};
+
+console.log(numbers.slice());
+
+//  метод join()
+
+let numbers7 = [7, null, 3, 4];
+
+numbers.join = function (separator = ",") {
+  let newStr = "";
+
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === undefined || this[i] === null) {
+      this[i] = "";
+      newStr += this[i];
+    }
+
+    if (i !== this.length - 1) {
+      newStr += `${this[i]}` + separator;
+    } else {
+      newStr += this[i];
+    }
+  }
+
+  return newStr;
+};
+
+console.log(numbers7.join(null));
+
+// функция числа и выдача кол-ва слов из строки
+const wish = `I want a short stylish haircut, like my brother's`;
+
+function getOrder(wish, wordsCount) {
+  return wish.split(" ").slice(0, wordsCount).join(" ");
+}
+
+console.log(getOrder(wish, 4));
+
+// функция преобразования Формата Даты
+
+("18.02.2020");
+
+function formatDate(date) {
+  const arrDate = date.split("-");
+  const newDate = [];
+
+  for (let i = arrDate.length - 1; i >= 0; i--) {
+    newDate.push(arrDate[i]);
+  }
+
+  return newDate.join(".");
+}
+
+console.log(formatDate("2020-02-18"));
+
+// имитация метода revers
+
+numbers1 = [1, 2, 3, 4, 5, 6];
+
+numbers1.reverse = function () {
+  let left = 0;
+  let right = this.length - 1;
+
+  while (left < right) {
+    [this[left], this[right]] = [this[right], this[left]];
+    left++;
+    right--;
+  }
+
+  return this;
+};
+
+console.log(numbers1);
+console.log(numbers1.reverse());

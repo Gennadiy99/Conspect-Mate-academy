@@ -39,10 +39,13 @@
           <option value="#Useful-JS-Advanced">Useful links JS-Advanced</option>
           <option value="#Destruct">Object_Destructuring</option>
           <option value="#Useful-Desrt-Copy">Useful links Desrt-Copy</option>
-          <option value="#methods">methods</option>
+          <option value="#methods-OBJ">methods</option>
           <option value="#Getters">Getters</option>
           <option value="#Setters">Setters</option>
           <option value="#Useful-methods">Useful links methods</option>
+          <option value="#Array-Methods">Array Methods</option>
+          <option value="#Adding-and-Removing">Adding-and-Removing</option>
+          <option value="#Mutating">Mutating</option>
         </select>
       </div>
       <section class="class=Useful-links" id=" Useful-JS-Advanced">
@@ -180,7 +183,7 @@
             >Так же при получении значений в переменную из обьекта, можно
             переименовывать Ключь</b
           ><br />
-          При деструктуризации объекта можно переименовывать ключи с помощью :
+          При деструктуризации объекта можно переименовывать ключи с помощью оператора две точки, - ":"
         </p>
         <pre>
           const user = { 
@@ -237,7 +240,7 @@
           >
         </p>
       </section>
-      <section class="methods" id="methods">
+      <section class="methods OBJ" id="methods-OBJ">
         <h2 class="main-topic-title">Методи об'єкта</h2>
         <hr>
         <h4>
@@ -497,6 +500,7 @@
         <p>
           Якщо ж додати <b>гетер</b> без <b>сетера</b>, то при спробі присвоїти отримаємо помилку:
         </p>
+
         <pre>
           const user = {
             firstName: 'John',
@@ -507,9 +511,9 @@
             },
           };
           
-          user.fullName = 'Bob Black'; // Uncaught TypeError: Cannot set property fullName of #<Object> which has only a getter 
-          
+          user.fullName = 'Bob Black'; // Uncaught TypeError: Cannot set property fullName of # &ltObject> which has only a getter 
         </pre>
+
       </section>
       <section class="Useful-links" id="Useful-methods">
         <p>
@@ -524,6 +528,455 @@
             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set"
             >setter</a
           >
+        </p>
+      </section>
+      <section class="Array Methods" id="Array-Methods">
+        <h2 class="main-topic-title">Методи Роботи з Масивами</h2>
+        <hr />
+        <p>
+          У реальному житті ми дуже часто стикаємося з великою кількістю однотипних даних: слова в словнику, оцінки в журналі, товари в магазині, книги на полиці тощо. В Javascript для роботи з такими даними використовуються масиви.
+        </p>
+        <h2 class="main-topic-title">Створення масивів</h2>
+        <hr>
+        <p>
+          Пригадаємо декілька способів свтворення нового масиву:
+        </p>
+        <pre>
+          const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+          const numbers = [2, 5, 3, 4, 5, 1, 3];
+          const words = ['John', 25, true]; // кортеж
+
+          // це пустий масив, в ньому поки що немає елементів
+          const friends = []; 
+
+          // так теж можна створити масив, але на практиці використовують []
+          const marks = new Array(2, 5, 3, 4, 5, 1, 3);
+          const marks2 = Array(2, 5, 3, 4, 5, 1, 3);
+
+        </pre>
+        <p>
+          За допомогою метода <b>split</b> ти можеш створити масив із рядка. Він використовується для "розрізання" рядка на підрядки за заданим роздільником, наприклад:
+        </p>
+        <pre>
+          const str = 'one; two; three; four; five';
+
+          console.log(
+            str.split(' '),  // ['one;', 'two;', 'three;', 'four;', 'five']
+            str.split('; '),  // ['one', 'two', 'three', 'four', 'five']
+            str.split('; ', 3),  // ['one', 'two', 'three']
+            str.split('three'), // ['one; two; ', '; four; five']
+          );
+
+        </pre>
+        <p>
+          Також можна отримати масив окремих символів рядка:
+        </p>
+        <pre>
+          const str = 'abc def';
+
+          console.log(
+            str.split(''), // ['a', 'b', 'c', ' ', 'd', 'e', 'f']
+            Array.from(str), // створюємо масив з символів рядка
+            [...str], // спред оператор копіює до нового масиву символи з рядка
+          );
+
+        </pre>
+        <h2 class="main-topic-title">Об'єднання елементів масиву в рядок</h2>
+        <p>
+          Метод <b>join</b> використовується для об'єднання елементів масиву в рядок. Він приймає роздільник як аргумент і повертає рядок, утворений з об'єднаних елементів масиву:
+        </p>
+        <pre>
+          const words = ['Javascript', 'is', 'awesome'];
+
+          console.log(
+            words.join(' '), // 'Javascript is awesome'
+            words.join(', '), // 'Javascript, is, awesome'
+            words.join('---'), // 'Javascript---is---awesome'
+          );
+
+        </pre>
+        <h3 class="main-topic-title">Отримання елементів масиву</h3>
+        <p>
+          Елемент масиву можна отримати за його індексом:
+        </p>
+        <pre>
+          const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+          console.log(
+            daysOfWeek[0], // 'Mon'
+            daysOfWeek[1], // 'Tue'
+            daysOfWeek[6], // 'Sun'
+
+            // якщо індекс занадто великий, отримуємо undefined
+            daysOfWeek[10], // undefined
+
+            // чи від'ємний
+            daysOfWeek[-2], // undefined
+          );
+
+        </pre>
+        <p>
+          Також можна скористатися методом at. Він працює так само, як arr[index] для додатніх індексів, але обробляє від'ємні, як позиціє з кінця масиву. Наприклад:
+        </p>
+        <pre>
+          console.log(
+            daysOfWeek.at(-1), // 'Sun'
+            daysOfWeek.at(-2), // 'Sat'
+            daysOfWeek.at(1), // 'Tue'
+          );
+
+        </pre>
+        <h3 class="main-topic-title">Перебір елементів масиву</h3>
+        <p>
+          Для перебору елементів масиву можна скористатися одним з двох циклів:
+        </p>
+        <pre>
+          const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+          for (let i = 0; i < daysOfWeek.length; i++) {
+            console.log(daysOfWeek[i]);
+          }
+
+          for (const day of daysOfWeek) {
+            console.log(day);
+          }
+
+        </pre>
+        <p>Методи, які дозволяють перебрати масив ми розглянемо пізніше.</p>
+
+      </section>
+      <section class="Adding and Removing Array Elements" id="Adding-and-Removing">
+        <h2 class="main-topic-title">Додавання елементів в масив</h2>
+        <hr>
+        <p>
+          Також можна додати новий елемент до масиву:
+        </p>
+        <pre>
+          const numbers = [1, 2, 3, 4, 5];
+
+          numbers[5] = 100;
+          console.log(numbers); // [1, 2, 3, 4, 5, 100]
+
+        </pre>
+        <p>
+          Зверни увагу: якщо ми вкажемо неправильний індекс, то масив працюватиме некоректно:
+        </p>
+        <pre>
+          const numbers = [1, 2, 3];
+
+          numbers[5] = 100;
+          console.log(numbers); // [1, 2, 3, empty, empty, 100]
+
+        </pre>
+        <p>
+          Щоб уникнути помилки з попереднього прикладу, для додавання елементів до масиву використовуй метод push:
+        </p>
+        <pre>
+          const numbers = [1, 2, 3];
+
+          numbers.push(100);
+          console.log(numbers); // [1, 2, 3, 100]
+
+          // можна додати одразу декілька елементів
+          numbers.push(4, 5, 6);
+          console.log(numbers); // [1, 2, 3, 100, 4, 5, 6]
+
+        </pre>
+        <p>Для додавання елементу на початок масиву існує метод <b>unshift:</b></p>
+        <pre>
+          const numbers = [1, 2, 3];
+
+          numbers.unshift(100);
+          console.log(numbers); // [100, 1, 2, 3]
+
+          // можна додати одразу декілька елементів
+          numbers.unshift(4, 5, 6);
+          console.log(numbers); // [4, 5, 6, 100, 1, 2, 3]
+
+        </pre>
+        <p>
+          Методи <b>push та unshift</b> повертають нову довжину масиву (після додавання нових елементів):
+        </p>
+        <pre>
+          const numbers = [1, 2, 3];
+          const newLength = numbers.push(10, 20);
+
+          console.log(newLength); // 5
+
+        </pre>
+        <h3 class="main-topic-title">Видалення елементу з масиву</h3>
+        <p>
+          Метод <b>pop</b> видаляє останній елемент із масиву, а <b>shift</b> — перший. Наприклад:
+        </p>
+        <pre>
+          const numbers = [1, 2, 3, 4, 5];
+
+          numbers.pop();
+          console.log(numbers); // [1, 2, 3, 4]
+
+          numbers.shift();
+          console.log(numbers); // [2, 3, 4]
+
+        </pre>
+        <p>Методи pop та shift повертають видалений елемент:</p>
+        <pre>
+          const numbers = [1, 2, 3, 4, 5];
+          const removedElement = numbers.shift();
+
+          console.log(removedElement); // 1
+
+        </pre>
+        <h3 class="main-topic-title">Частина вхідного масиву</h3>
+        <hr>
+        <p>
+          Так саме, як і для рядка, метод slice() дозволяє створити новий масив з частиною елементів існуючого:
+        </p>
+        <pre>
+          const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+          console.log(
+            numbers.slice(3, 8), // [3, 4, 5, 6, 7]
+  
+            // перші 5 елементів
+            numbers.slice(0, 5), // [0, 1, 2, 3, 4]
+  
+            // елементи від індексу 4 до кінця 
+            numbers.slice(4), // [4, 5, 6, 7, 8, 9]
+  
+            // усі елементи масиву
+            numbers.slice(), // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+            // від'ємні індекси рахуються з кінця
+            numbers.slice(-6, -2), // [4, 5, 6, 7]
+
+            // усі елементи, крім першого та останнього 
+            numbers.slice(1, -1), // [1, 2, 3, 4, 5, 6, 7, 8]
+
+            // останні 3 елементи
+            numbers.slice(-3), // [7, 8, 9]
+          );
+
+        </pre>
+      </section> 
+      <section class="Mutating" id="Mutating">
+        <h2 class="main-topic-title">Mutating and No-Mutating Methods / Мутирующие и Не мутирующие Методы массивов</h2>
+        <hr>
+        <h3>Редагування масиву</h3>
+        <p>
+          На відміну від символу в рядку, елемент у масиві можна замінити за його індексом:
+        </p>
+        <pre>
+          const numbers = [1, 2, 3, 4, 5];
+
+          numbers[1] = 100;
+
+          console.log(numbers); // [1, 100, 3, 4, 5]
+
+        </pre>
+        <p>Замінити елементи масиву можна методом <b>.fill(value, start, end)</b>:</p>
+        <pre>
+          const numbers1 = [0, 1, 2, 3, 4, 5, 6, 7];
+
+          numbers1.fill(99);
+          console.log(numbers1); // [99, 99, 99, 99, 99, 99, 99, 99]
+
+          const numbers2 = [0, 1, 2, 3, 4, 5, 6, 7];
+
+          numbers2.fill(99, 2, -2);
+          console.log(numbers2); // [0, 1, 99, 99, 99, 99, 6, 7]
+
+        </pre>
+        <p>
+          Також для модифікації масиву існує дуже зручний метод <b>.splice(startIndex, deleteCount),</b> який може видаляти та додавати елементи:
+        </p>
+        <pre>
+          const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+          numbers.splice(4, 2); // починаючи з індекса 4 видаляє 2 елементи
+
+          console.log(numbers); // [0, 1, 2, 3, 6, 7, 8, 9]
+
+        </pre>
+        <p>Результатом метода splice є масив видалених елементів:</p>
+        <pre>
+          const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+          const deletedElements = numbers.splice(4, 2);
+
+          console.log(deletedElements); // [4, 5]
+
+        </pre>
+        <p>Також він підтримує від'ємні індекси:</p>
+        <pre>
+          const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+          numbers.splice(-4, 2); // відраховуємо 4 з кінця
+
+          console.log(numbers); // [0, 1, 2, 3, 4, 5, 8, 9]
+
+        </pre>
+        <p>
+          Якщо ми хочемо додати нові елементи замість видалених, їх треба передати починаючи з 3 аргумента:
+        </p>
+        <pre>
+          const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+          numbers.splice(4, 2, 100, 200, 300); // видаляємо 2 елементи та додаємо 3 нових замість них
+
+          console.log(numbers); // [0, 1, 2, 3, 100, 200, 300, 6, 7, 8, 9]
+
+        </pre>
+        <p>Звісно можна нічого не видаляти і просто додати елементи всередину</p>
+        <pre>
+          const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+          numbers.splice(-2, 0, 100, 200, 300); // перед двома останніми 2 елементами додаємо 3 нових
+
+          console.log(numbers); // [0, 1, 2, 3, 4, 5, 6, 7, 100, 200, 300, 8, 9]
+
+        </pre>
+        <h3 class="main-topic-title">Перевпорядкування елементів масиву</h3>
+        <hr>
+        <p>Щоб переставити елементи масиву у зворотньому порядку, існує метод reverse:</p>
+        <pre>
+          const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+          numbers.reverse();
+
+          console.log(numbers); // [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+        </pre>
+        <p>
+          Також є метод sort, який дозволяю впорядкувати елементи за зростанням:
+        </p>
+        <pre>
+          const numbers = [3, 7, 2, 0, 3, 4];
+
+          numbers.sort();
+
+          console.log(number); // [0, 2, 3, 3, 4, 7];
+
+        </pre>
+        <p>Рядки він розміщую в алфавітному порядку:</p>
+        <pre>
+          const letters = 'banana'.split('')
+
+          letters.sort()
+
+          console.log(letters.join('')); // 'aaabnn'
+
+        </pre>
+        <p>
+          Але це не працює корректно для великих літер, та чисел довших за 1 цифру, бо сортування завжди відбувається по кодах символів, навіть якщо це числа:
+        </p>
+        <pre>
+          const numbers = [12, 100, 9, 25];
+          const letters = 'AbCdXyZ'.split('');
+
+          numbers.sort();
+          letters.sort()
+
+          console.log(numbers); // [100, 12, 25, 9]
+          console.log(letters.join('')); // 'ACXZbdy'
+
+        </pre>
+        <p>Як вирішити цю проблему, ми розглянемо в уроці про перебираючі методи масивів.</p>
+        <h3 class="main-topic-title">Об'єднання масивів</h3>
+        <hr>
+        <p>Для об'єднання декількох масивів є метод <b>concat:</b></p>
+        <pre>
+          const first = [1, 2, 3];
+          const second = [10, 20, 30];
+
+          const result = first.concat(second);
+
+          console.log(result); // [1, 2, 3, 10, 20, 30];
+
+        </pre>
+        <p>Так можна поєднати декілька елементів та окремих значень:</p>
+        <pre>
+          const first = [1, 2, 3];
+          const second = [10, 20, 30];
+
+          console.log(
+            [42, 99].concat(0, first, 4, 5, second), // [42, 99, 0, 1, 2, 3, 4, 5, 10, 20, 30]
+          )
+
+        </pre>
+        <p>Того ж результату можна досягти за допомогою спред оператора:</p>
+        <pre>
+          const first = [1, 2, 3];
+          const second = [10, 20, 30];
+
+          const result = [...first, ...second];
+          console.log(result); // [1, 2, 3, 10, 20, 30];
+
+          const otherResult = [0, ...first, 4, 5, ...second];
+          console.log(otherResult); // [0, 1, 2, 3, 4, 5, 10, 20, 30]
+
+        </pre>
+        <h3 class="main-topic-title">Копіювання масиву</h3>
+        <hr>
+        <p>
+          Для створення точної копії масиву можна скористатися одним з методів, які ми розглядали вище:
+        </p>
+        <pre>
+          const numbers = [1, 2, 3, 4, 5, 6, 7];
+
+          const copy1 = [...numbers];
+          const copy2 = Array.from(numbers);
+          const copy3 = numbers.concat();
+          const copy4 = numbers.slice();
+
+        </pre>
+        <p>Мутуючі та не мутуючі методи</p>
+        <p>
+          <b>Мутацією називають зміну масиву чи об'єкту.</b> Пізніше, при вивченні React, ми обговоримо, коли може бути важливо уникати мутації даних. Для того, щоб уникати мутації, потрібно розуміти, які методи є мутуючіми, а які ні.
+        </p>
+        <p>
+          Використай наступний код, що побачити, як працюють методи, які ми розглянули в цьому уроці:
+        </p>
+        <pre>
+          'use strict';
+
+          const numbers = [3, 1, 12, 5, 2, 3, 4];
+          let result;
+
+          console.log(numbers);
+
+          /*  Mutating methods */
+          result = numbers.push(100, 200, 300);
+          // result = numbers.unshift(100, 200, 300);
+          // result = numbers.pop();
+          // result = numbers.shift();
+          // result = numbers.splice(2, 3, 100, 200, 300, 400);
+          // result = numbers.fill('a', 2, 5);
+          // result = numbers.reverse();
+          // result = numbers.sort();
+
+          /* Non mutating methods */
+          // result = numbers.includes(3);
+          // result = numbers.indexOf(3);
+          // result = numbers.lastIndexOf(3);
+          // result = numbers.join('-');
+          // result = numbers.slice(2, 5);
+          // result = numbers.concat(100, ['x', 'y', 999], 200, 300);
+
+          console.log('---------');
+
+          console.log(numbers);
+          console.log(result);
+
+        </pre>
+        <p>
+          Також для зручності в методів reverse, sort та splice нещодавно з'явилися немутуючі аналоги <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed" target="_blank">
+            toReversed
+          </a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted" target="_blank">
+            toSorted
+          </a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSpliced" target="_blank">
+            toSpliced.
+          </a> 
         </p>
       </section>
     </div>

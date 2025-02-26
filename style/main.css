@@ -194,3 +194,12 @@ img {
   left: 20px;
   z-index: 150;
 }
+
+/* пробный код Потом удалить */
+.newInput {
+  border: none;
+  outline: none;
+  background-color: #454444;
+  border-bottom: 1px #0666f7;
+  color: #fff;
+}
