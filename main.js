@@ -478,3 +478,136 @@ numbers1.reverse = function () {
 
 console.log(numbers1);
 console.log(numbers1.reverse());
+// Функция сортировки массива книг в строку
+
+let shelves = [
+  ["Going Over", "Brazen"],
+  ["The Enemy"],
+  ["Followers", "Belle Epoque"],
+];
+// ['Belle Epoque', 'Brazen', 'Followers', 'Going Over', 'The Enemy']
+
+function sortBooks(shelves) {
+  let allBooks = [];
+
+  for (const books of shelves) {
+    for (const book of books) {
+      allBooks.push(book);
+    }
+  }
+
+  return allBooks.sort();
+}
+
+console.log(sortBooks(shelves));
+// перевернуть каждый элемент в массиве
+
+let message = "tpircsavaJ si eht egaugnal fo erutuf";
+let message1 = "tpircsavaJ";
+let message2 = "";
+// 'Javascript is the language of future'
+
+function reverseMessage(messageParam) {
+  if (messageParam === "") {
+    return "";
+  }
+
+  const arrMessage = messageParam.split(" ");
+  const newMessage = [];
+
+  for (const message of arrMessage) {
+    newMessage.push(message.split("").reverse().join(""));
+  }
+
+  return newMessage.join(" ");
+}
+
+console.log(reverseMessage(message));
+
+// const arrayStr1 = ["ffff", "gggg", "sss", "rrr", "qqq"];
+
+// const arrayStrNew = ([first, , second, ...strRest] = arrayStr1);
+
+// console.log(first, second);
+// console.log(strRest);
+// функция формирования заказа роботами
+
+// const list = makeOrderList(order);
+
+/*
+list === {
+  coca_cola: 1,
+  chicken_nuggets: 5,
+  egg: 20,
+}
+*/
+const order = "1 coca  cola, 5 chicken nuggets, 20 egg";
+// const order1 = "";
+console.log(order);
+
+
+// Решение 2 способа через разные методы массивов
+
+// function makeOrderList(order) {
+//   const obj = {};
+
+//   if (order.length === 0) {
+//     return obj;
+//   }
+
+//   const arryStr = order.split(", ");
+
+//   for (const str of arryStr) {
+//     const arr1 = str.split(" ");
+//     let vel = arr1.slice(0, 1).join("");
+//     let key = arr1.slice(1).join("_");
+
+//     obj[key] = Number(vel);
+//   }
+
+//   return obj;
+// }
+
+// console.log(makeOrderList(order));
+
+function makeOrderList(order) {
+  const obj = {};
+
+  if (order.length === 0) {
+    return obj;
+  };
+
+  const arryStr = order.split(', ');
+
+  for (const str of arryStr) {
+    const arr1 = str.split(' ');
+    [k, ...y] = arr1;
+
+    const key = y.join('_');
+
+    obj[key] = Number(k);
+  }
+
+  return { obj };
+}
+
+console.log(makeOrderList(order));
+
+// методы создания массивов
+
+let arStr1 = 'sdfghj';
+let arStr2 = 'qqqqqq';
+
+let ar1 = Array.from(arStr1);// все элементы Строи становятся Отдельными эл массива
+let ar2 = new Array(arStr1); // вся строка становится Одним элементом массива
+let arr3 = Array.from({ length: 10 }, (x, i) => i);
+// let arr4 = Arr(3);
+console.log(['11', '22', '33'].includes('11')),
+
+console.log(ar1);
+console.log(ar2);
+console.log(arr3);
+console.log(arr4);
+
+
+
