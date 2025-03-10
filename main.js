@@ -545,7 +545,6 @@ const order = "1 coca  cola, 5 chicken nuggets, 20 egg";
 // const order1 = "";
 console.log(order);
 
-
 // Решение 2 способа через разные методы массивов
 
 // function makeOrderList(order) {
@@ -575,15 +574,15 @@ function makeOrderList(order) {
 
   if (order.length === 0) {
     return obj;
-  };
+  }
 
-  const arryStr = order.split(', ');
+  const arryStr = order.split(", ");
 
   for (const str of arryStr) {
-    const arr1 = str.split(' ');
+    const arr1 = str.split(" ");
     [k, ...y] = arr1;
 
-    const key = y.join('_');
+    const key = y.join("_");
 
     obj[key] = Number(k);
   }
@@ -595,19 +594,250 @@ console.log(makeOrderList(order));
 
 // методы создания массивов
 
-let arStr1 = 'sdfghj';
-let arStr2 = 'qqqqqq';
+let arStr1 = "sdfghj";
+let arStr2 = "qqqqqq";
 
-let ar1 = Array.from(arStr1);// все элементы Строи становятся Отдельными эл массива
+let ar1 = Array.from(arStr1); // все элементы Строи становятся Отдельными эл массива
 let ar2 = new Array(arStr1); // вся строка становится Одним элементом массива
 let arr3 = Array.from({ length: 10 }, (x, i) => i);
 // let arr4 = Arr(3);
-console.log(['11', '22', '33'].includes('11')),
-
-console.log(ar1);
+console.log(["11", "22", "33"].includes("11")), console.log(ar1);
 console.log(ar2);
 console.log(arr3);
-console.log(arr4);
 
+// реализации метода массива lastIndexOf();
 
+const numbers8 = [5, 6, 1, 4, 2, 5];
 
+numbers.lastIndexOf = function (item, index = this.length - 1) {
+  let indexSerch = index;
+
+  if (indexSerch < 0) {
+    indexSerch = this.length + indexSerch;
+  }
+
+  if (indexSerch < 0) {
+    return -1;
+  }
+
+  for (let i = indexSerch; i >= 0; i--) {
+    if (item === this[i]) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+console.log(numbers8.lastIndexOf(2, 0));
+
+let oldArr = [1, 2, 3, 4, 5];
+let arrNewDes = ([] = oldArr);
+console.log(arrNewDes);
+arrNewDes[1] = 77;
+console.log(oldArr);
+let newArrFromOld = oldArr.slice();
+console.log(newArrFromOld);
+
+newArrFromOld[4] = 7;
+
+console.log(newArrFromOld);
+console.log(arrNewDes);
+
+let strProb = "sdfghhjkl";
+
+const newArrX = Array.from(oldArr);
+console.log(newArrX);
+newArrX[4] = 9999;
+console.log(newArrX);
+console.log(oldArr);
+
+const newArrayX2 = new Array(oldArr, 9999, 77777);
+console.log(newArrayX2);
+console.log(newArrayX2[0]);
+console.log(newArrayX2[1]);
+
+let arrLeg = [...oldArr, 4444, 7777];
+console.log(arrLeg);
+
+let arrConcat = oldArr.concat(777, 444);
+console.log(arrConcat);
+// функция калькулятор
+
+const sum = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => a / b;
+
+function calculate(operands, operation) {
+  return operation(operands[0], operands[1]);
+}
+
+console.log(calculate([2, 6], sum)); // 8
+console.log(calculate([2, 6], multiply)); // 12
+// функция действий калькулятор 2
+
+const suma = (a, b, c) => a + b + c;
+const multipl = (a, b) => a * b;
+const cube = (x) => x ** 3;
+// const suma = (a, b, c) =>  a + b + c;
+
+function getResult(params, callback) {
+  return callback(...params);
+}
+
+console.log(getResult([3, 4, 2], suma));
+console.log(getResult([3, 4], multipl));
+console.log(getResult([3], cube));
+//  функция предложение гостинницы
+
+const getClientStatus = () => "vip";
+const offerLuxuriousRoom = () => "Luxury room";
+const offerStandardRoom = () => "Standard room";
+
+function offerRoom(getClientStatus, offerStandardRoom, offerLuxuriousRoom) {
+  if (getClientStatus() === "vip") {
+    return offerLuxuriousRoom();
+  } else {
+    return offerStandardRoom();
+  }
+}
+
+console.log(offerRoom(getClientStatus, offerStandardRoom, offerLuxuriousRoom));
+// === "Luxury room";
+
+// function version(a, b, c) {
+//   return (a * b) / c;
+// }
+const version = (a, b, c) => (a * b) / c;
+
+console.log(version(2, 4, 2));
+// использование функции колбек дя форматирования Строки
+
+const message3 = "использование функции колбек";
+
+function capitalize(word) {
+  return word[0].toUpperCase() + word.slice(1);
+}
+
+function formatMessage(message, callback) {
+  const newMessage = [];
+  message.split(" ").forEach((elem) => {
+    newMessage.push(callback(elem));
+  });
+  return newMessage.join(" ");
+}
+/* function formatMessage(message, callback) {
+  let newMessage = '';
+  message.split(' ').forEach((elem) => {
+    newMessage += ` ${callback(elem)}`;
+  });
+  return newMessage;
+} */
+
+console.log(formatMessage(message3, capitalize));
+
+// функция замены елемента массива результатом калбек функции
+
+const queue = [
+  { type: "robot" },
+  { type: "robot" },
+  { type: "robot" },
+  { type: "dog" },
+  { type: "robot" },
+];
+
+const isRobot = (robot) => {
+  if (robot.type === "robot") {
+    return true;
+  }
+
+  return false;
+};
+
+function processArray(items, callback) {
+  for (let i = 0; i < items.length; i++) {
+    items[i] = callback(items[i]);
+  }
+
+  return items;
+}
+
+console.log(processArray(queue, isRobot));
+// еще функция
+
+function getFirstBadVersion(checkVersion, currentVersion) {
+  for (let i = 0; i <= currentVersion; i++) {
+    if (checkVersion(i)) {
+      return i;
+    }
+  }
+}
+
+// РАзбор колобек функций, применение при обращении к Дом ДЕреву
+const destr = document.querySelector(".Object_Destructuring");
+
+console.log(destr);
+
+destr.addEventListener("click", () => {
+  destr.textContent = "123";
+
+  const timerTd = setInterval(() => {
+    destr.textContent = Date.now();
+  }, 1000);
+
+  document.addEventListener("contextmenu", () => {
+    clearInterval(timerTd);
+  });
+});
+
+// Классная работа по колбек функции
+const candies = [
+  "KitKat",
+  "Nuts",
+  "Lion",
+  "Mars",
+  "Snickers",
+  "Bounty",
+  "Nuts",
+];
+
+function filter(candies, isGoodEnough) {
+  const result = [];
+
+  for (const candy of candies) {
+    if (isGoodEnough(candy)) {
+      result.push(candy);
+    }
+  }
+
+  return result;
+}
+
+function createSizeFilter(size) {
+  return (x) => x.length <= size;
+}
+
+const isUpNo4 = createSizeFilter(4);
+const isUpNo6 = createSizeFilter(6);
+
+console.log(filter(candies, isUpNo4), filter(candies, isUpNo6));
+
+// функция с поиском в массиве конфет
+
+const contains0 = (item) => item.includes('o');
+const isLessThan = (item) => item.length < 5;
+
+function filter1(array, func) {
+  const arrayNew = [];
+
+  for (const item of array) {
+    if (func(item)) {
+      arrayNew.push(item);
+    } 
+  }
+  
+  return arrayNew;
+}
+
+console.log(filter1(candies, contains0));
+console.log(filter1(candies, isLessThan));

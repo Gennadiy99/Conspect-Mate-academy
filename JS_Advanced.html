@@ -46,10 +46,12 @@
           <option value="#Array-Methods">Array Methods</option>
           <option value="#Adding-and-Removing">Adding-and-Removing</option>
           <option value="#Mutating">Mutating</option>
-          <option value="#destructuringArray">Destructuring-Array</option>
+          <option value="#Destructuring-Array">Destructuring-Array</option>
+          <option value="#Callbacks">Callbacks Function</option>
+          <option value="#Timers">Timers</option>
         </select>
       </div>
-      <section class="class=Useful-links" id=" Useful-JS-Advanced">
+      <section class="class=Useful-links" id="Useful-JS-Advanced">
         <h1>How to Solve Tasks on Github</h1>
         <h2 class="main-topic-title">Корисні посилання</h2>
 
@@ -683,10 +685,7 @@
         </pre>
         <p>Методи, які дозволяють перебрати масив ми розглянемо пізніше.</p>
       </section>
-      <section
-        class="Adding and Removing Array Elements"
-        id="Adding-and-Removing"
-      >
+      <section class="Adding-and-Remov-Elem" id="Adding-and-Removing">
         <h2 class="main-topic-title">Додавання елементів в масив</h2>
         <hr />
         <p>Також можна додати новий елемент до масиву:</p>
@@ -1123,6 +1122,163 @@
           <a href="https://javascript.info/array-methods">Array methods</a>
         </p>
       </sectuon>
+      <section class="Callbacks" id="Callbacks">
+        <h1 class="main-topic-title">
+          Функції зворотнього виклику (callbacks)
+        </h1>
+        <hr />
+        <p>
+          <b>Функція зворотного виклику</b> - це функція, яка передається як
+          параметр іншій функції. Вони широко використовуються, наприклад, при
+          ітерації масивів, обробці асинхронних подій, таких як подій браузера,
+          таймери, відповіді сервера, тощо.
+        </p>
+        <h3>Колбек в циклі</h3>
+        <p>
+          Розглянемо функцію map, яка буде приймати масив чисел та колбек, і
+          повертати новий масив з результатами викликів колбеку для кожного
+          елементи масиву:
+        </p>
+        <pre>
+          function map(values, callback) {
+            const results = [];
+
+            for (const value of values) {
+              results.push(
+                callback(value)
+              );
+            }
+
+            return results;
+          }
+
+          const numbers = [1, 2, 3, 4, 5];
+          const double = x => x * 2;
+          const square = x => x ** 2;
+
+          console.log(
+            map(numbers, double), // [2, 4, 6, 8, 10]
+            map(numbers, square), // [1, 4, 9, 16, 25]
+          );
+        </pre>
+        <p>
+          Використання колбеків дозволяє нам перевикористовувати логіку функції
+          map, для різних масивів та різних функцій перетворення елементів
+          вхідного масиву. А використання стрілкових функцій дозволяє значно
+          скоротити та спростити таке перевикористання:
+        </p>
+        <pre>
+          const numbers = [1, 2, 3, 4, 5];
+
+          console.log(
+            map(numbers, x => x + 100), // [101, 102, 103, 104, 105]
+            map(numbers, x => x * 10), // [10, 20, 30, 40, 50]
+            map(numbers, x => x ** 2), // [1, 4, 9, 16, 25]
+          );
+        </pre>
+        <p>
+          В цьому прикладі ми створюємо анонімну функцію прямо підчас виклику
+          map. Вона виконується для кожного елемента. На виході ми отримуємо
+          масив результатів.
+        </p>
+      </section>
+      <section class="Timers-and-Event-Handlers" id="Timers">
+        <h1 class="main-topic-title">Таймери</h1>
+        <hr />
+        <p>
+          У JavaScript можна запланувати виклик функції за розкладом. Для цього
+          використовуються наступні методи:
+        </p>
+        <ul>
+          <li>
+            <b>setTimeout</b> дозволяє викликати функцію одноразово через певний
+            час;
+          </li>
+          <li>
+            <b>setInterval</b> дозволяє викликати функцію регулярно, повторюючи
+            виклик через фіксовані проміжки часу;
+          </li>
+          <li>
+            <b>clearTimeout</b> скасовує дію, заплановану за допомогою
+            setTimeout;
+          </li>
+          <li>
+            <b>clearInterval</b> скасовує дію, заплановану параметром
+            setInterval.
+          </li>
+        </ul>
+        <p>
+          Наприклад, наступний код буде виводити Hello кожну секунду, а за 5
+          секунд від початку ми відмінимо наступні виклики:
+        </p>
+        <pre>
+          function greet() {
+            console.log('Hello');
+          }
+          
+          const timerId = setInterval(greet, 1000);
+          
+          setTimeout(() => {
+            clearInterval(timerId);
+          }, 5000);
+          
+        </pre>
+        <h3>Обробка подій</h3>
+        <hr />
+        <p>
+          Для обробки подій на елементах сторінки також використовуються
+          колбеки:
+        </p>
+        <pre>
+          const element = document.querySelector('css_selector'); // знаходимо елемент
+
+          element.addEventListener('click', (event) => {
+            console.log(event.target); // елемент на якому відбувся клік
+          });
+
+        </pre>
+        <p>
+          До методу addEventListener ми передаємо назву події та функцію, яка
+          буде виконуватися кожного разу, коли стається вказана подія на
+          обраному елементі.
+        </p>
+        <p>Детальніше обробку подій ми обговоримо пізніше.</p>
+      </section>
+      <section class="Useful-links">
+        <p>
+          <a target="_blank" href="https://javascript.info/function-expressions"
+            >Function expressions, callback functions</a
+          >
+        </p>
+        <p>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout"
+            >setTimeout()</a
+          >
+        </p>
+        <p>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval"
+            >setInterval()</a
+          >
+        </p>
+        <p>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Window/clearTimeout"
+            >clearTimeout()</a
+          >
+        </p>
+        <p>
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Window/clearInterval"
+            >clearInterval()</a
+          >
+        </p>
+      </section>
     </div>
 
     <script src="main.js"></script>
