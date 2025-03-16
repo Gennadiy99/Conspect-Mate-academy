@@ -49,6 +49,7 @@
           <option value="#Destructuring-Array">Destructuring-Array</option>
           <option value="#Callbacks">Callbacks Function</option>
           <option value="#Timers">Timers</option>
+          <option value="#Iteration-Methods">Iteration Methods</option>
         </select>
       </div>
       <section class="class=Useful-links" id="Useful-JS-Advanced">
@@ -1278,6 +1279,252 @@
             >clearInterval()</a
           >
         </p>
+      </section>
+      <section class="Array-Iteration-Methods" id="Iteration-Methods">
+        <h1 class="mein-topic-title">Array Iteration Methods Implementation</h1>
+        <hr />
+        <h3>Методи перебору масивів</h3>
+        <p>
+          Під час роботи з масивами дуже часто доводиться виконувати однотипні
+          дії для кожного елементу масива. Тому в JavaScript існують стандартні
+          методи, які спрощують різні види переборів. Розглянемо їх.
+        </p>
+        <h3>forEach</h3>
+        <hr />
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach"
+          target="_blank"
+          >.forEach(callback)</a
+        >
+        запускає <b>callback</b> один раз для кожного елемента, повертає
+        <b>undefined</b>.
+        <p>До callback передаються три аргументи:</p>
+        <ul>
+          <li>поточний елемент масива;</li>
+          <li>індекс поточного елемента;</li>
+          <li>посилання на масив.</li>
+        </ul>
+        <p>
+          Для наступних методів map, filter, find, findIndex, some та every
+          параметри callback будуть такі самі.
+        </p>
+        <pre>
+          const callback = (element, index, arr) => {
+            console.log(element, index, arr);
+          };
+          
+          const result = ['a', 'b', 'c'].forEach(callback);
+          
+          // 'a' 0 ['a', 'b', 'c']
+          // 'b' 1 ['a', 'b', 'c']
+          // 'c' 2 ['a', 'b', 'c']
+          
+          console.log(result); // undefined
+          
+        </pre>
+        <h3>map</h3>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+            target="_blank"
+            >.map(callback)</a
+          >
+          виконує callback один раз для кожного елемента і повертає новий масив
+          з результатами викликів <b>callbac</b>k для кожного елементу.
+        </p>
+        <pre>
+          const callback = (element, index, arr) => (element + index);
+
+          console.log(
+            [10, 20, 30].map(callback), // [10, 21, 32]
+            [10, 20, 30].map(el => el + 5), // [15, 25, 35]
+          );
+
+        </pre>
+        <h3>filter</h3>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"
+            target="_blank"
+            >.filter(callback)</a
+          >
+          запускає callback один раз для кожного елемента і повертає новий
+          масив, до якого потрапляють елементи, для яких callback повертає
+          "правдиве" значення (яке при перетворенні на Boolean дає true).
+        </p>
+        <pre>
+          const callback = (x, i, arr) => x > arr.length;
+
+          console.log(
+            [1, 4, 7].filter(callback), // [4, 7]
+            [1, 4, 7].filter(x => (x % 2 === 0)), // [4] - тільки парні числа 
+          );
+
+        </pre>
+        <h3>find та findIndex</h3>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find"
+            target="_blank"
+            >.find(callback)</a
+          >
+          повертає перший елемент, для якого callback повертає "правдиве"
+          значення.
+        </p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex"
+            target="_blank"
+            >.findIndex(callback)</a
+          >
+          повертає індекс першого елемента, для якого callback повертає
+          "правдиве" значення.
+        </p>
+        <pre>
+          const callback = (el, i, arr) => el > arr.length;
+
+          console.log(
+            [1, 4, 7].find(callback), // 4
+            [1, 4, 7].findIndex(callback), // 1
+
+            [1, 4, 7].find(el => el > 10), // undefined
+            [1, 4, 7].findIndex(el => el > 10), // -1
+          );
+
+        </pre>
+        <h3>every та some</h3>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every"
+            target="_blank"
+            >.every(callback)</a
+          >
+          повертає false, якщо callback повертає "неправдиве" значення хоча б
+          для одного елемента масиву, інакше true. Дозволяє перевірити, що умова
+          виконується для всіх елементів масива.
+        </p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some"
+            target="_blank"
+            >.some(callback)</a
+          >
+          повертає true, якщо callback повертає "правдиве" значення для хоча б
+          одного елемента масиву, інакше false. Дозволяє перевірити, що існує
+          елемент, для якого виконується умова.
+        </p>
+        <pre>
+          const callback = (el, i, arr) => el > arr.length;
+
+          console.log(
+            [1, 4, 7].every(callback), // false
+            [1, 4, 7].some(callback), // true
+
+            [1, 4, 7].every(el => el > 0), // true
+            [1, 4, 7].some(el => el > 0), // true
+
+            [1, 4, 7].every(el => el > 10), // false
+            [1, 4, 7].some(el => el > 10), // false
+
+            [].every(el => el > 10), // true
+            [].some(el => el > 10), // false
+          );
+
+        </pre>
+        <h3>reduce</h3>
+        <hr />
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"
+            target="_blank"
+            >.reduce(callback, startValue)
+          </a>
+          запускає callback один раз для кожного елементу і повертає результат
+          останнього виклику callback. Другим аргументом reduce приймає
+          "стартове" значення довільного типу.
+        </p>
+        <p>До callback передаються чотири аргументи:</p>
+        <ul>
+          <li>
+            результат попереднього виклику callback, а для першого виклику
+          </li>
+          <li>"стартове" значення;</li>
+          <li>поточний елемент масива;</li>
+          <li>індекс поточного елемента;</li>
+          <li>посилання на масив.</li>
+        </ul>
+        <p>Ось типові приклади використання:</p>
+        <pre>
+          // порахувати суму чисел
+          [2, 5, 3, 1, 7].reduce(
+            (sum, x) => sum + x,
+            0,
+          );
+
+          // порахувати кількість входжень символів
+          'abrakadabra'.split('')
+            .reduce((counter, char) => ({
+              ...counter,
+              [char]: (counter[char] || 0) + 1,
+            }), {});
+          
+        </pre>
+        <h3>sort</h3>
+        <hr />
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#parameters"
+            target="_blank"
+            >.sort(callback)</a
+          >
+          сортує елементи в масиві за результатами виконання callback (має
+          повертати число) і повертає посилання на масив.
+        </p>
+        <p>
+          До callback передаються 2 аргументи - довільні елементи масиву, які
+          зараз порівнюються. В залежності від результату callback внутрішній
+          механізм сортування приймає рішення, який елемент має стояти раніше:
+        </p>
+        <ul>
+          <li>
+            якщо результат додатний, то перший з двох елементів має стояти
+            ближче до
+          </li>
+          <li>кінця масиву ніж другий;</li>
+          <li>якщо результат від'ємний, то другий має стояти</li>
+          <li>пізніше першого;</li>
+          <li>якщо 0, то порядок елементів змінювати не потрібно.</li>
+        </ul>
+        <pre>
+          // Сортування чисел
+          const numbers = [3, 12, 2, 11];
+                  
+          numbers.sort((a, b) => a - b);
+          console.log(numbers); // [2, 3, 11, 12]
+                  
+          // Перемішування у випадковому порядку
+          numbers.sort(() => Math.random() - 0.5)
+                  
+          // Сортування рядків з урахуванням регістру та спеціальних символів
+          const words = ['apple', 'Zebra', 'car'];
+                  
+          console.log(
+            words.sort(), // ['Zebra', 'apple', 'car']
+            words.sort(
+              (word1, word2) => word1.localeCompare(word2) 
+            ), // ['apple', 'car', 'Zebra']
+          );
+                  
+          // Сортування об'єктів за певною властивістю
+          users.sort(
+            (user1, user2) => user1.age - user2.age, // за числовим значенням
+          );
+                  
+          users.sort(
+            (user1, user2) => user1.name.localeCompare(user2.name) // за текстовим полем
+          );
+
+        </pre>
       </section>
     </div>
 

@@ -461,7 +461,7 @@ console.log(formatDate("2020-02-18"));
 
 // имитация метода revers
 
-numbers1 = [1, 2, 3, 4, 5, 6];
+numbers1 = [1, 2, 3, 4, 5];
 
 numbers1.reverse = function () {
   let left = 0;
@@ -824,7 +824,7 @@ console.log(filter(candies, isUpNo4), filter(candies, isUpNo6));
 
 // функция с поиском в массиве конфет
 
-const contains0 = (item) => item.includes('o');
+const contains0 = (item) => item.includes("o");
 const isLessThan = (item) => item.length < 5;
 
 function filter1(array, func) {
@@ -833,11 +833,151 @@ function filter1(array, func) {
   for (const item of array) {
     if (func(item)) {
       arrayNew.push(item);
-    } 
+    }
   }
-  
+
   return arrayNew;
 }
 
 console.log(filter1(candies, contains0));
 console.log(filter1(candies, isLessThan));
+// Имитация метода фильтр без использования методов массивов
+
+numbers.filter2 = function (call) {
+  const result = [];
+
+  for (let i = 0; i < this.length; i++) {
+    if (call(this[i], i, this)) {
+      if (result.length === 0) {
+        result[0] = this[i];
+      } else {
+        result[result.length] = this[i];
+      }
+    }
+  }
+
+  return result;
+};
+
+const callFit = function (item) {
+  if (item % 2 === 0) {
+    return item;
+  }
+};
+
+let resulArrfilter = numbers.filter2(callFit);
+
+console.log(resulArrfilter);
+
+// Имитация метода map
+
+numbers.map2 = function (call) {
+  const result = [];
+
+  for (let k = 0; k < this.length; k++) {
+    result[result.length] = call(this[k], k, this);
+  }
+
+  return result;
+};
+
+let newArrMap = numbers.map2((x) => x * 2);
+console.log(numbers);
+console.log(newArrMap);
+//  Имитация метода find
+
+numbers.find = function (callback) {
+  for (let i = 0; i < this.length; i++) {
+    console.log(this[i]);
+
+    if (callback(this[i], i, this)) {
+      return this[i];
+    }
+  }
+
+  return undefined;
+};
+const foundNumber = numbers.find((el) => el > 0);
+
+console.log(foundNumber);
+// Имитация работы метода findIndex
+
+numbers.findIndex = function (callback) {
+  for (let i = 0; i < this.length; i++) {
+    console.log(this[i]);
+
+    if (callback(this[i], i, this)) {
+      return i;
+    }
+  }
+
+  return -1;
+};
+const foundIndex = numbers.findIndex((el) => el > 4);
+
+console.log(numbers);
+console.log(foundIndex);
+// Имитация метод some
+
+numbers.some = function (callback) {
+  for (let i = 0; i < this.length; i++) {
+    if (callback(this[i], i, this)) {
+      return true;
+    }
+  }
+  return false;
+};
+// имитация метода every
+
+numbers.every = function (callback) {
+  const result = [];
+
+  for (let i = 0; i < this.length; i++) {
+    if (callback(this[i], i, this)) {
+      result[result.length] = this[i];
+    }
+  }
+
+  if (result.length === this.length) {
+    return true;
+  } else {
+    return false;
+  }
+};
+// имитация метода Редьюз
+/* 
+numbers.reduce((sum, n) => sum + n, ''), // '12345'
+numbers.reduce((result, n) => result * n, 10), 
+*/
+const numbers2 = [1, 2, 3, 4, 5];
+const calb1 = (st, n, i) => st + n * i;
+
+numbers.reduce = function (callback, start) {
+  if (this == null) {
+    throw new TypeError('Cannot read property "reduce2" of null or undefined');
+  }
+
+  if (typeof callback !== 'function') {
+    throw new TypeError(`${callback} +  is not a function`);
+  }
+
+  if (this.length === 0 && start === undefined) {
+    throw new TypeError('Reduce of empty array with no initial value');
+  }
+
+  let acomm = start;
+  let i = acomm === undefined ? 1 : 0;
+
+  if (acomm === undefined) {
+    acomm = this[0];
+  }
+
+  for (i; i < this.length; i++) {
+    acomm = callback(acomm, this[i], i, this);
+  }
+
+  return acomm;
+};
+
+console.log(numbers2);
+console.log(numbers2.reduce2(calb1, 10));
